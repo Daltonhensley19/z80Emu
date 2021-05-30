@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/z80EmuTests.dir/memorySuite.cpp.o -o z80EmuTests 

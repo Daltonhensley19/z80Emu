@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/dalton/Desktop/z80Emu/include/emuTypes.h
+cstdint
+-
+
+/home/dalton/Desktop/z80Emu/include/memory.h
+emuTypes.h
+/home/dalton/Desktop/z80Emu/include/emuTypes.h
+array
+-
+
+/home/dalton/Desktop/z80Emu/src/memory.cpp
+../include/memory.h
+/home/dalton/Desktop/z80Emu/include/memory.h
+

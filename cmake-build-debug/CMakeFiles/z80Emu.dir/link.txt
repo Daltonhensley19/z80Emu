@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/z80Emu.dir/src/main.cpp.o CMakeFiles/z80Emu.dir/src/z80.cpp.o -o z80Emu 
