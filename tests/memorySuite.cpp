@@ -112,6 +112,8 @@ TEST_CASE("testing the restMem function")
             resetMem(ram);
             bool isCleared = true;
 
+            // Note: we check here to see if RAM is clear
+            // if any byte in RAM is nonzero, we set `isCleared` flag to false
             for (auto byte: ram)
             {
                 if (byte != 0)
