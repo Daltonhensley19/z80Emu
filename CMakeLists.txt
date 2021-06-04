@@ -9,6 +9,6 @@ include_directories(include)
 
 
 add_executable(z80Emu
-        src/main.cpp include/emuTypes.h src/z80.cpp include/z80.h include/registers.h include/memory.h)
+        src/main.cpp include/emuTypes.h src/z80.cpp include/z80.h include/registers.h include/memory.h include/opcodes.h)
 
 add_subdirectory(tests)

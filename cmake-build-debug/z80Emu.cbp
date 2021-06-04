@@ -138,6 +138,9 @@
 		<Unit filename="/home/dalton/Desktop/z80Emu/include/memory.h">
 			<Option target="z80Emu"/>
 		</Unit>
+		<Unit filename="/home/dalton/Desktop/z80Emu/include/opcodes.h">
+			<Option target="z80Emu"/>
+		</Unit>
 		<Unit filename="/home/dalton/Desktop/z80Emu/include/registers.h">
 			<Option target="z80Emu"/>
 		</Unit>
