@@ -1,4 +1,5 @@
 #pragma once
+
 #include "emuTypes.h"
 
 
@@ -62,6 +63,70 @@ enum LD8
     E_L_LD = 0x6B;
     F_L_LD = 0x6C;
     L_L_LD = 0x6D;
+
+    // LD Immediate to register
+    n_A_LD = 0x3E;
+    n_B_LD = 0x06;
+    n_C_LD = 0x0E;
+    n_D_LD = 0x16;
+    n_E_LD = 0x1E;
+    n_H_LD = 0x26;
+    n_L_LD = 0x2E;
+    // Reg indirect to register
+    HL_A_LD = 0x7E;
+
+    HL_B_LD = 0x46;
+    HL_C_LD = 0x4E;
+    HL_D_LD = 0x56;
+    HL_E_LD = 0x5E;
+    HL_H_LD = 0x66;
+    HL_L_LD = 0x6E;
+    // Reg indirect to register
+    BC_A_LD = 0x0A;
+
+    DE_A_LD = 0x1A;
+    // Indexed (NOTE: Indexed is source [IDX or IDY] to generic register [R], A B C D E F L,
+    // which is the destination.
+    IDX_R_LD = 0xDD;
+
+    IDY_R_LD = 0xFD;
+    // Extended to register
+    nn_A_LD = 0x3A;
+
+    // Implied to register
+    I_A_LD = 0x57;
+
+    R_A_LD = 0x5F;
+    // Register to HL
+    A_HL_LD = 0x77;
+
+    B_HL_LD = 0x70;
+    C_HL_LD = 0x71;
+    D_HL_LD = 0x72;
+    E_HL_LD = 0x73;
+    F_HL_LD = 0x74;
+    L_HL_LD = 0x75;
+    // Register to register indirect (BC and DE)
+    A_BC_LD = 0x02;
+
+    A_DE_LD = 0x12;
+    // Register to Ext. Addr.
+    A_nn_LD = 0x32;
+
+    // Register to implied
+    A_I_LD = 0x47;
+
+    A_R_LD = 0x4F;
+    // Imm. to register indirect
+    n_HL_LD = 0x36;
+
+    //TODO(Dalton): Must add the 8-bit LD group opcodes.
+    // NOTE: remember to think about the opcode
+    // prefixes (DE, CB, DD, FD)
+
+
+
+
 
 
 };
