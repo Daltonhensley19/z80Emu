@@ -6,6 +6,8 @@
 // 8-Bit Load Group (LD)
 enum LD8
 {
+    //TODO(Dalton): Add prefixes to opcodes in 8-bit table.
+
     // NOTE: Format is register (source) to register (destination).
     A_A_LD = 0x7F;
     B_A_LD = 0x78;
@@ -29,7 +31,7 @@ enum LD8
     D_C_LD = 0x4A;
     E_C_LD = 0x4B;
     F_C_LD = 0x4C;
-    L_C_LD = 0x4D;
+    L_C_LD = 0x4D
 
     A_D_LD = 0x57;
     B_D_LD = 0x50;
@@ -122,15 +124,65 @@ enum LD8
     // Imm. to register indirect
     n_HL_LD = 0x36;
 
-    //TODO(Dalton): Must add the 8-bit LD group opcodes.
-
 
     // NOTE: remember to think about the opcode
     // prefixes (DE, CB, DD, FD)
 
 
+};
 
+enum LD16
+{
+    /* This starts the 16-bit load opcode table. */
 
+// Imm. Extended to Register pair
 
+    nn_BC_LD = 0x01;
+    nn_DE_LD = 0x11;
+    nn_HL_LD = 0x21;
+    nn_SP_LD = 0x31;
+    DD_nn_IX = 0x21; // Prefix: DD
+    FD_nn_IY_ = 0x21; // Prefix: FD
 
+// Ext. to register
+    ED_nn_BC_LD = 0x4B; // Prefix: ED
+    ED_nn_DE_LD = 0x5B; // Prefix: ED
+    nn_HL_LD = 0x2A;
+    ED_nn_SP_LD = 0x7B; // Prefix: ED
+    DD_nn_IX_LD = 0x2A; // Prefix: DD
+    FD_nn_IY_LD = 0x2A; // Prefix: FD
+
+    // Register to extended
+    ED_BC_nn_LD = 0x43; // Prefix: ED
+    ED_DE_nn_LD = 0x53; // Prefix: ED
+    HL_nn_LD = 0x22;
+    ED_SP_nn_LD = 0x73; // Prefix: ED
+    DD_IX_nn_LD = 0x22; // Prefix: DD
+    FD_IY_nn_LD = 0x22; // Prefix: FD
+
+    // Register to register
+    HL_SP_LD = 0xF9;
+    DD_IX_SP_LD = 0xF9; // Prefix: DD
+    FD_IY_SP_LD = 0xF9; // Prefix: FD
+
+};
+
+enum Pop
+{
+    // Push opcodes (found in the table with 16-bit load)
+    POP_AF = 0xF1;
+    POP_BC = 0xC1;
+    POP_DE = 0xD1;
+    POP_HL = 0xE1;
+    POP_DD_IX = 0xE1; // Prefix: DD
+    POP_FD_IY = 0xE1; // Prefix: FD
+};
+enum Push
+{
+    PUSH_AF = 0xF5;
+    PUSH_BC = 0xC5;
+    PUSH_DE = 0xD5;
+    PUSH_HL = 0xE5;
+    PUSH_DD_IX = 0xE5; //Prefix: DD
+    PUSH__FD_IY = 0xE5; // Prefix: FD
 };
