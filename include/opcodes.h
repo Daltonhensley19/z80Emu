@@ -15,7 +15,7 @@ public:
     const static Word C_A_LD = 0x79;
     const static Word D_A_LD = 0x7A;
     const static Word E_A_LD = 0x7B;
-    const static Word F_A_LD = 0x7C;
+    const static Word H_A_LD = 0x7C;
     const static Word L_A_LD = 0x7D;
 
     const static Word A_B_LD = 0x47;
@@ -23,7 +23,7 @@ public:
     const static Word C_B_LD = 0x41;
     const static Word D_B_LD = 0x42;
     const static Word E_B_LD = 0x43;
-    const static Word F_B_LD = 0x44;
+    const static Word H_B_LD = 0x44;
     const static Word L_B_LD = 0x45;
 
     const static Word A_C_LD = 0x4F;
@@ -31,7 +31,7 @@ public:
     const static Word C_C_LD = 0x49;
     const static Word D_C_LD = 0x4A;
     const static Word E_C_LD = 0x4B;
-    const static Word F_C_LD = 0x4C;
+    const static Word H_C_LD = 0x4C;
     const static Word L_C_LD = 0x4D;
 
     const static Word A_D_LD = 0x57;
@@ -39,7 +39,7 @@ public:
     const static Word C_D_LD = 0x51;
     const static Word D_D_LD = 0x52;
     const static Word E_D_LD = 0x53;
-    const static Word F_D_LD = 0x54;
+    const static Word H_D_LD = 0x54;
     const static Word L_D_LD = 0x55;
 
     const static Word A_E_LD = 0x5F;
@@ -47,7 +47,7 @@ public:
     const static Word C_E_LD = 0x59;
     const static Word D_E_LD = 0x5A;
     const static Word E_E_LD = 0x5B;
-    const static Word F_E_LD = 0x5C;
+    const static Word H_E_LD = 0x5C;
     const static Word L_E_LD = 0x5D;
 
     const static Word A_H_LD = 0x67;
@@ -55,7 +55,7 @@ public:
     const static Word C_H_LD = 0x61;
     const static Word D_H_LD = 0x62;
     const static Word E_H_LD = 0x63;
-    const static Word F_H_LD = 0x64;
+    const static Word H_H_LD = 0x64;
     const static Word L_H_LD = 0x65;
 
     const static Word A_L_LD = 0x6F;
@@ -63,7 +63,7 @@ public:
     const static Word C_L_LD = 0x69;
     const static Word D_L_LD = 0x6A;
     const static Word E_L_LD = 0x6B;
-    const static Word F_L_LD = 0x6C;
+    const static Word H_L_LD = 0x6C;
     const static Word L_L_LD = 0x6D;
 
     // LD Immediate to register
@@ -107,7 +107,7 @@ public:
     const static Word C_HL_LD = 0x71;
     const static Word D_HL_LD = 0x72;
     const static Word E_HL_LD = 0x73;
-    const static Word F_HL_LD = 0x74;
+    const static Word H_HL_LD = 0x74;
     const static Word L_HL_LD = 0x75;
 
     // Register to register indirect (BC and DE)
@@ -121,7 +121,7 @@ public:
     const static Word A_I_LD = 0x47;
     const static Word A_R_LD = 0x4F;
 
-    const static Word FD_nn_IY_ = 0x21; // Prefix: FD
+    const static Word FD_nn_IY_ = 0xFD21; // Prefix: FD
 
     // Imm. to register indirect
     const static Word n_HL_LD = 0x36;
@@ -144,29 +144,29 @@ public:
     const static Word nn_DE_LD = 0x11;
     const static Word nn_HL_LD = 0x21;
     const static Word nn_SP_LD = 0x31;
-    const static Word DD_nn_IX = 0x21; // Prefix: DD
-    const static Word FD_nn_IY = 0x21; // Prefix: FD
+    const static Word DD_nn_IX = 0xDD21; // Prefix: DD
+    const static Word FD_nn_IY = 0xFD21; // Prefix: FD
 
 // Ext. to register
-    const static Word ED_nn_BC_LD  = 0x4B; // Prefix: ED
-    const static Word ED_nn_DE_LD  = 0x5B; // Prefix: ED
+    const static Word ED_nn_BC_LD  = 0xED4B; // Prefix: ED
+    const static Word ED_nn_DE_LD  = 0xED5B; // Prefix: ED
     const static Word nn_HL_LD_EXT = 0x2A; // NOTE: this is close to nn_HL_LD above
-    const static Word ED_nn_SP_LD  = 0x7B; // Prefix: ED
-    const static Word DD_nn_IX_LD  = 0x2A; // Prefix: DD
-    const static Word FD_nn_IY_LD  = 0x2A; // Prefix: FD
+    const static Word ED_nn_SP_LD  = 0xED7B; // Prefix: ED
+    const static Word DD_nn_IX_LD  = 0xDD2A; // Prefix: DD
+    const static Word FD_nn_IY_LD  = 0xFD2A; // Prefix: FD
 
     // Register to extended
-    const static Word ED_BC_nn_LD = 0x43; // Prefix: ED
-    const static Word ED_DE_nn_LD = 0x53; // Prefix: ED
+    const static Word ED_BC_nn_LD = 0xED43; // Prefix: ED
+    const static Word ED_DE_nn_LD = 0xED53; // Prefix: ED
     const static Word HL_nn_LD    = 0x22;
-    const static Word ED_SP_nn_LD = 0x73; // Prefix: ED
-    const static Word DD_IX_nn_LD = 0x22; // Prefix: DD
-    const static Word FD_IY_nn_LD = 0x22; // Prefix: FD
+    const static Word ED_SP_nn_LD = 0xED73; // Prefix: ED
+    const static Word DD_IX_nn_LD = 0xDD22; // Prefix: DD
+    const static Word FD_IY_nn_LD = 0xFD22; // Prefix: FD
 
     // Register to register
     const static Word HL_SP_LD    = 0xF9;
-    const static Word DD_IX_SP_LD = 0xF9; // Prefix: DD
-    const static Word FD_IY_SP_LD = 0xF9; // Prefix: FD
+    const static Word DD_IX_SP_LD = 0xDDF9; // Prefix: DD
+    const static Word FD_IY_SP_LD = 0xFDF9; // Prefix: FD
 
 };
 
@@ -178,17 +178,17 @@ public:
     const static Word POP_BC    = 0xC1;
     const static Word POP_DE    = 0xD1;
     const static Word POP_HL    = 0xE1;
-    const static Word POP_DD_IX = 0xE1; // Prefix: DD
-    const static Word POP_FD_IY = 0xE1; // Prefix: FD
+    const static Word POP_DD_IX = 0xDDE1; // Prefix: DD
+    const static Word POP_FD_IY = 0xFDE1; // Prefix: FD
 };
 
 class Push
 {
 public:
-    const static Word PUSH_AF     = 0xF5;
-    const static Word PUSH_BC     = 0xC5;
-    const static Word PUSH_DE     = 0xD5;
-    const static Word PUSH_HL     = 0xE5;
-    const static Word PUSH_DD_IX  = 0xE5; //Prefix: DD
-    const static Word PUSH__FD_IY = 0xE5; // Prefix: FD
+    const static Word PUSH_AF    = 0xF5;
+    const static Word PUSH_BC    = 0xC5;
+    const static Word PUSH_DE    = 0xD5;
+    const static Word PUSH_HL    = 0xE5;
+    const static Word PUSH_DD_IX = 0xDDE5; //Prefix: DD
+    const static Word PUSH_FD_IY = 0xFDE5; // Prefix: FD
 };
