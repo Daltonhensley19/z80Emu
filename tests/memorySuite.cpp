@@ -30,7 +30,7 @@ TEST_CASE("testing the writeByte function")
     GIVEN("A byte to write to RAM...")
     {
 
-        Word location = 0xA;
+        Word location    = 0xA;
         Byte byteToWrite = 0xC;
         WHEN("User chooses a location of memory to write to...")
         {
@@ -71,7 +71,7 @@ TEST_CASE("testing the writeWord function")
     GIVEN("A word to write to RAM...")
     {
 
-        Word location = 0xA;
+        Word location    = 0xA;
         Word wordToWrite = 300;
 
         WHEN("User chooses a location of memory to write word...")
@@ -95,7 +95,7 @@ TEST_CASE("testing the restMem function")
     GIVEN("A set of RAM")
     {
 
-        Word location = 0xA;
+        Word location    = 0xA;
         Word wordToWrite = 300;
 
         WHEN("writing data to RAM then testing reset mechanism..")

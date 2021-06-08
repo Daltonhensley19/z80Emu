@@ -22,6 +22,7 @@ struct FlagBitField
 
 struct ByteRegister
 {
+    // Main register set
     static Byte A_Reg_A;
     static Byte B_Reg_A;
     static Byte D_Reg_A;
@@ -32,6 +33,7 @@ struct ByteRegister
     static Byte E_Reg_A;
     static Byte L_Reg_A;
 
+    // Alternate register set
     static Byte A_Reg_B;
     static Byte B_Reg_B;
     static Byte D_Reg_B;
