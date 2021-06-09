@@ -166,6 +166,54 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/z80Emu.dir/build.make CMakeFiles/z80Emu.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/memory.o: src/memory.cpp.o
+.PHONY : src/memory.o
+
+# target to build an object file
+src/memory.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/z80Emu.dir/build.make CMakeFiles/z80Emu.dir/src/memory.cpp.o
+.PHONY : src/memory.cpp.o
+
+src/memory.i: src/memory.cpp.i
+.PHONY : src/memory.i
+
+# target to preprocess a source file
+src/memory.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/z80Emu.dir/build.make CMakeFiles/z80Emu.dir/src/memory.cpp.i
+.PHONY : src/memory.cpp.i
+
+src/memory.s: src/memory.cpp.s
+.PHONY : src/memory.s
+
+# target to generate assembly for a file
+src/memory.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/z80Emu.dir/build.make CMakeFiles/z80Emu.dir/src/memory.cpp.s
+.PHONY : src/memory.cpp.s
+
+src/registers.o: src/registers.cpp.o
+.PHONY : src/registers.o
+
+# target to build an object file
+src/registers.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/z80Emu.dir/build.make CMakeFiles/z80Emu.dir/src/registers.cpp.o
+.PHONY : src/registers.cpp.o
+
+src/registers.i: src/registers.cpp.i
+.PHONY : src/registers.i
+
+# target to preprocess a source file
+src/registers.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/z80Emu.dir/build.make CMakeFiles/z80Emu.dir/src/registers.cpp.i
+.PHONY : src/registers.cpp.i
+
+src/registers.s: src/registers.cpp.s
+.PHONY : src/registers.s
+
+# target to generate assembly for a file
+src/registers.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/z80Emu.dir/build.make CMakeFiles/z80Emu.dir/src/registers.cpp.s
+.PHONY : src/registers.cpp.s
+
 src/z80.o: src/z80.cpp.o
 .PHONY : src/z80.o
 
@@ -203,6 +251,12 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/memory.o"
+	@echo "... src/memory.i"
+	@echo "... src/memory.s"
+	@echo "... src/registers.o"
+	@echo "... src/registers.i"
+	@echo "... src/registers.s"
 	@echo "... src/z80.o"
 	@echo "... src/z80.i"
 	@echo "... src/z80.s"

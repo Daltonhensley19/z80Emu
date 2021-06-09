@@ -1,5 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/z80Emu.dir/src/main.cpp.o"
+  "CMakeFiles/z80Emu.dir/src/memory.cpp.o"
+  "CMakeFiles/z80Emu.dir/src/registers.cpp.o"
   "CMakeFiles/z80Emu.dir/src/z80.cpp.o"
   "z80Emu"
   "z80Emu.pdb"

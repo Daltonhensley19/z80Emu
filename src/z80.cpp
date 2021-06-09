@@ -2,8 +2,15 @@
 // Created by dalton on 5/29/21.
 //
 
-#include <z80.h>
+#include "../include/z80.h"
 #include "../include/opcodes.h"
+#include "../include/memory.h"
+#include "../include/registers.h"
+
+#define opcodeByte  ((currentOpcode & 0xFF00) >> BYTE_SHIFT_ALIGNMENT)
+#define opcodePair currentOpcode
+
+
 
 void Z80CPU::executeInstruction()
 {
@@ -11,8 +18,7 @@ void Z80CPU::executeInstruction()
     {
         // fetch current opcode
         currentOpcode = ram[pc] << 8 | ram[pc + 1];
-
-        switch (currentOpcode & 0xFF00)
+        switch (opcodeByte)
         {
             case LD8::A_A_LD:
             {
@@ -62,9 +68,26 @@ void Z80CPU::executeInstruction()
                 pc++;
             }
                 break;
+            case LD8::L_A_LD:
+            {
+                cycles                = 4;
+                ByteRegister::A_Reg_A = ByteRegister::L_Reg_A;
+                cycles--;
+                pc++;
+            }
+                break;
+            case LD8::HL_A_LD:
+            {
+                cycles                = 8;
+                ByteRegister::A_Reg_A = ram[HLasWord()];
+                cycles--;
+                pc++;
+            }
+                break;
 
 
         }
     }
 }
+
 

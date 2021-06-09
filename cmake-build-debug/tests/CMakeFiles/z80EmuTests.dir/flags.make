@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/dalton/Desktop/z80Emu/include -I/home/dalton/Desktop/z80Emu/tests/../include
+CXX_INCLUDES = -I/home/dalton/Desktop/z80Emu/z80Emu -I"/home/dalton/Desktop/z80Emu/include/*" -I/home/dalton/Desktop/z80Emu/tests/../include
 
 CXX_FLAGS = -g -std=gnu++20
 

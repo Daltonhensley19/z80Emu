@@ -98,12 +98,12 @@ tests/clean: tests/CMakeFiles/z80EmuTests.dir/clean
 CMakeFiles/z80Emu.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/z80Emu.dir/build.make CMakeFiles/z80Emu.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/z80Emu.dir/build.make CMakeFiles/z80Emu.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/dalton/Desktop/z80Emu/cmake-build-debug/CMakeFiles --progress-num=1,2,3 "Built target z80Emu"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/dalton/Desktop/z80Emu/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5 "Built target z80Emu"
 .PHONY : CMakeFiles/z80Emu.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/z80Emu.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dalton/Desktop/z80Emu/cmake-build-debug/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dalton/Desktop/z80Emu/cmake-build-debug/CMakeFiles 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/z80Emu.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/dalton/Desktop/z80Emu/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/z80Emu.dir/rule
@@ -124,7 +124,7 @@ CMakeFiles/z80Emu.dir/clean:
 tests/CMakeFiles/z80EmuTests.dir/all:
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/z80EmuTests.dir/build.make tests/CMakeFiles/z80EmuTests.dir/depend
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/z80EmuTests.dir/build.make tests/CMakeFiles/z80EmuTests.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/dalton/Desktop/z80Emu/cmake-build-debug/CMakeFiles --progress-num=4,5 "Built target z80EmuTests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/dalton/Desktop/z80Emu/cmake-build-debug/CMakeFiles --progress-num=6,7 "Built target z80EmuTests"
 .PHONY : tests/CMakeFiles/z80EmuTests.dir/all
 
 # Build rule for subdir invocation for target.

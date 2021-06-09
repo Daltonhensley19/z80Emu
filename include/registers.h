@@ -22,26 +22,38 @@ struct FlagBitField
 
 struct ByteRegister
 {
-    // Main register set
-    static Byte A_Reg_A;
-    static Byte B_Reg_A;
-    static Byte D_Reg_A;
-    static Byte H_Reg_A;
 
-    static Byte F_Reg_A;
-    static Byte C_Reg_A;
-    static Byte E_Reg_A;
-    static Byte L_Reg_A;
+    // Main register set
+    inline static Byte A_Reg_A;
+    inline static Byte B_Reg_A;
+    inline static Byte D_Reg_A;
+    inline static Byte H_Reg_A;
+
+    inline static Byte F_Reg_A;
+    inline static Byte C_Reg_A;
+    inline static Byte E_Reg_A;
+    inline static Byte L_Reg_A;
 
     // Alternate register set
-    static Byte A_Reg_B;
-    static Byte B_Reg_B;
-    static Byte D_Reg_B;
-    static Byte H_Reg_B;
+    inline static Byte A_Reg_B;
+    inline static Byte B_Reg_B;
+    inline static Byte D_Reg_B;
+    inline static Byte H_Reg_B;
 
-    static Byte F_Reg_B;
-    static Byte C_Reg_B;
-    static Byte E_Reg_B;
-    static Byte L_Reg_B;
+    inline static Byte F_Reg_B;
+    inline static Byte C_Reg_B;
+    inline static Byte E_Reg_B;
+    inline static Byte L_Reg_B;
 };
+
+Word BCasWord();
+
+
+Word AFasWord();
+
+
+Word DEasWord();
+
+
+Word HLasWord();
 

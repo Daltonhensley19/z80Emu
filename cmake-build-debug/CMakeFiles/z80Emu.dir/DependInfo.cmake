@@ -9,13 +9,16 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/dalton/Desktop/z80Emu/src/main.cpp" "/home/dalton/Desktop/z80Emu/cmake-build-debug/CMakeFiles/z80Emu.dir/src/main.cpp.o"
+  "/home/dalton/Desktop/z80Emu/src/memory.cpp" "/home/dalton/Desktop/z80Emu/cmake-build-debug/CMakeFiles/z80Emu.dir/src/memory.cpp.o"
+  "/home/dalton/Desktop/z80Emu/src/registers.cpp" "/home/dalton/Desktop/z80Emu/cmake-build-debug/CMakeFiles/z80Emu.dir/src/registers.cpp.o"
   "/home/dalton/Desktop/z80Emu/src/z80.cpp" "/home/dalton/Desktop/z80Emu/cmake-build-debug/CMakeFiles/z80Emu.dir/src/z80.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "../include"
+  "../z80Emu"
+  "../include/*"
   )
 
 # The set of dependency files which are needed:
