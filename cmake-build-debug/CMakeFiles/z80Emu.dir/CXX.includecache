@@ -23,6 +23,8 @@ emuTypes.h
 /home/dalton/Desktop/z80Emu/include/registers.h
 emuTypes.h
 /home/dalton/Desktop/z80Emu/include/emuTypes.h
+memory.h
+/home/dalton/Desktop/z80Emu/include/memory.h
 
 /home/dalton/Desktop/z80Emu/include/z80.h
 emuTypes.h
@@ -32,13 +34,15 @@ registers.h
 memory.h
 /home/dalton/Desktop/z80Emu/include/memory.h
 
+/home/dalton/Desktop/z80Emu/src/registers.cpp
+../include/registers.h
+/home/dalton/Desktop/z80Emu/include/registers.h
+../include/memory.h
+/home/dalton/Desktop/z80Emu/include/memory.h
+
 /home/dalton/Desktop/z80Emu/src/z80.cpp
 ../include/z80.h
 /home/dalton/Desktop/z80Emu/include/z80.h
 ../include/opcodes.h
 /home/dalton/Desktop/z80Emu/include/opcodes.h
-../include/memory.h
-/home/dalton/Desktop/z80Emu/include/memory.h
-../include/registers.h
-/home/dalton/Desktop/z80Emu/include/registers.h
 

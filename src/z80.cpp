@@ -4,12 +4,10 @@
 
 #include "../include/z80.h"
 #include "../include/opcodes.h"
-#include "../include/memory.h"
-#include "../include/registers.h"
+
 
 #define opcodeByte  ((currentOpcode & 0xFF00) >> BYTE_SHIFT_ALIGNMENT)
 #define opcodePair currentOpcode
-
 
 
 void Z80CPU::executeInstruction()
@@ -84,6 +82,53 @@ void Z80CPU::executeInstruction()
                 pc++;
             }
                 break;
+            case LD8::B_B_LD:
+            {
+                cycles                = 4;
+                ByteRegister::B_Reg_A = ByteRegister::B_Reg_A;
+                cycles--;
+                pc++;
+            }
+                break;
+            case LD8::C_B_LD:
+            {
+                cycles                = 4;
+                ByteRegister::B_Reg_A = ByteRegister::C_Reg_A;
+                cycles--;
+                pc++;
+            }
+                break;
+            case LD8::D_B_LD:
+            {
+                cycles                = 4;
+                ByteRegister::B_Reg_A = ByteRegister::D_Reg_A;
+                cycles--;
+                pc++;
+            }
+                break;
+            case LD8::E_B_LD:
+            {
+                cycles                = 4;
+                ByteRegister::B_Reg_A = ByteRegister::E_Reg_A;
+                cycles--;
+                pc++;
+            }
+                break;
+            case LD8::H_B_LD:
+            {
+                cycles                = 4;
+                ByteRegister::B_Reg_A = ByteRegister::H_Reg_A;
+                cycles--;
+                pc++;
+            }
+                break;
+            case LD8::L_B_LD:
+            {
+                cycles = 4;
+                ByteRegister::B_Reg_A = ByteRegister::L_Reg_A;
+                cycles--;
+                pc++;
+            } break;
 
 
         }
