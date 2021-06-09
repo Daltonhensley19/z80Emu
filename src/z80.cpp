@@ -124,11 +124,92 @@ void Z80CPU::executeInstruction()
                 break;
             case LD8::L_B_LD:
             {
-                cycles = 4;
+                cycles                = 4;
                 ByteRegister::B_Reg_A = ByteRegister::L_Reg_A;
                 cycles--;
                 pc++;
-            } break;
+            }
+                break;
+            case LD8::HL_B_LD:
+            {
+                cycles                = 8;
+                ByteRegister::B_Reg_A = ram[HLasWord()];
+                cycles--;
+                pc++;
+            }
+                break;
+            case LD8::B_C_LD:
+            {
+                cycles                = 4;
+                ByteRegister::C_Reg_A = ByteRegister::B_Reg_A;
+                cycles--;
+                pc++;
+            }
+                break;
+            case LD8::C_C_LD:
+            {
+                cycles                = 4;
+                ByteRegister::C_Reg_A = ByteRegister::C_Reg_A;
+                cycles--;
+                pc++;
+            }
+                break;
+            case LD8::D_C_LD:
+            {
+                cycles                = 4;
+                ByteRegister::C_Reg_A = ByteRegister::D_Reg_A;
+                cycles--;
+                pc++;
+            }
+                break;
+            case LD8::E_C_LD:
+            {
+                cycles                = 4;
+                ByteRegister::C_Reg_A = ByteRegister::E_Reg_A;
+                cycles--;
+                pc++;
+            }
+                break;
+            case LD8::H_C_LD:
+            {
+                cycles                = 4;
+                ByteRegister::C_Reg_A = ByteRegister::H_Reg_A;
+                cycles--;
+                pc++;
+            }
+                break;
+            case LD8::L_C_LD:
+            {
+                cycles                = 4;
+                ByteRegister::C_Reg_A = ByteRegister::L_Reg_A;
+                cycles--;
+                pc++;
+            }
+                break;
+            case LD8::HL_C_LD:
+            {
+                cycles                = 8;
+                ByteRegister::B_Reg_A = ram[HLasWord()];
+                cycles--;
+                pc++;
+            }
+                break;
+            case LD8::B_D_LD:
+            {
+                cycles                = 4;
+                ByteRegister::D_Reg_A = ByteRegister::B_Reg_A;
+                cycles--;
+                pc++;
+            }
+                break;
+            case LD8::C_D_LD:
+            {
+                cycles                = 4;
+                ByteRegister::D_Reg_A = ByteRegister::C_Reg_A;
+                cycles--;
+                pc++;
+            }
+                break;
 
 
         }

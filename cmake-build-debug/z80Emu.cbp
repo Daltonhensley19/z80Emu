@@ -94,7 +94,7 @@
 				<Compiler>
 					<Add directory="/home/dalton/Desktop/z80Emu/z80Emu"/>
 					<Add directory="/home/dalton/Desktop/z80Emu/include/*"/>
-					<Add directory="/home/dalton/Desktop/z80Emu/tests/../include"/>
+					<Add directory="/home/dalton/Desktop/z80Emu/tests/../include/*"/>
 					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/../../../../include/c++/11.1.0"/>
 					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/../../../../include/c++/11.1.0/x86_64-pc-linux-gnu"/>
 					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/../../../../include/c++/11.1.0/backward"/>
@@ -119,7 +119,7 @@
 				<Compiler>
 					<Add directory="/home/dalton/Desktop/z80Emu/z80Emu"/>
 					<Add directory="/home/dalton/Desktop/z80Emu/include/*"/>
-					<Add directory="/home/dalton/Desktop/z80Emu/tests/../include"/>
+					<Add directory="/home/dalton/Desktop/z80Emu/tests/../include/*"/>
 					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/../../../../include/c++/11.1.0"/>
 					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/../../../../include/c++/11.1.0/x86_64-pc-linux-gnu"/>
 					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/../../../../include/c++/11.1.0/backward"/>
@@ -153,6 +153,7 @@
 		</Unit>
 		<Unit filename="/home/dalton/Desktop/z80Emu/src/memory.cpp">
 			<Option target="z80Emu"/>
+			<Option target="z80EmuTests"/>
 		</Unit>
 		<Unit filename="/home/dalton/Desktop/z80Emu/src/registers.cpp">
 			<Option target="z80Emu"/>

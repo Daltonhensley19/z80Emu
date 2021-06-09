@@ -130,6 +130,30 @@ z80EmuTests/fast:
 	cd /home/dalton/Desktop/z80Emu/cmake-build-debug && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/z80EmuTests.dir/build.make tests/CMakeFiles/z80EmuTests.dir/build
 .PHONY : z80EmuTests/fast
 
+__/src/memory.o: __/src/memory.cpp.o
+.PHONY : __/src/memory.o
+
+# target to build an object file
+__/src/memory.cpp.o:
+	cd /home/dalton/Desktop/z80Emu/cmake-build-debug && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/z80EmuTests.dir/build.make tests/CMakeFiles/z80EmuTests.dir/__/src/memory.cpp.o
+.PHONY : __/src/memory.cpp.o
+
+__/src/memory.i: __/src/memory.cpp.i
+.PHONY : __/src/memory.i
+
+# target to preprocess a source file
+__/src/memory.cpp.i:
+	cd /home/dalton/Desktop/z80Emu/cmake-build-debug && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/z80EmuTests.dir/build.make tests/CMakeFiles/z80EmuTests.dir/__/src/memory.cpp.i
+.PHONY : __/src/memory.cpp.i
+
+__/src/memory.s: __/src/memory.cpp.s
+.PHONY : __/src/memory.s
+
+# target to generate assembly for a file
+__/src/memory.cpp.s:
+	cd /home/dalton/Desktop/z80Emu/cmake-build-debug && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/z80EmuTests.dir/build.make tests/CMakeFiles/z80EmuTests.dir/__/src/memory.cpp.s
+.PHONY : __/src/memory.cpp.s
+
 memorySuite.o: memorySuite.cpp.o
 .PHONY : memorySuite.o
 
@@ -163,6 +187,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... z80EmuTests"
+	@echo "... __/src/memory.o"
+	@echo "... __/src/memory.i"
+	@echo "... __/src/memory.s"
 	@echo "... memorySuite.o"
 	@echo "... memorySuite.i"
 	@echo "... memorySuite.s"

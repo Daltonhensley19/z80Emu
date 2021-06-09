@@ -1,7 +1,8 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN 1
 
-#include "doctest.h"
+#include "../include/doctest.h"
 #include "../include/memory.h"
+
 
 
 TEST_CASE("testing the readByte function")

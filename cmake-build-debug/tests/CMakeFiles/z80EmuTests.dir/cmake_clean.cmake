@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/z80EmuTests.dir/__/src/memory.cpp.o"
   "CMakeFiles/z80EmuTests.dir/memorySuite.cpp.o"
   "z80EmuTests"
   "z80EmuTests.pdb"

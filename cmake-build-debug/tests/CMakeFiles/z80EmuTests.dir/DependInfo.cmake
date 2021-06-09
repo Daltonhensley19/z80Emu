@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/dalton/Desktop/z80Emu/src/memory.cpp" "/home/dalton/Desktop/z80Emu/cmake-build-debug/tests/CMakeFiles/z80EmuTests.dir/__/src/memory.cpp.o"
   "/home/dalton/Desktop/z80Emu/tests/memorySuite.cpp" "/home/dalton/Desktop/z80Emu/cmake-build-debug/tests/CMakeFiles/z80EmuTests.dir/memorySuite.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
@@ -16,7 +17,7 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../z80Emu"
   "../include/*"
-  "../tests/../include"
+  "../tests/../include/*"
   )
 
 # The set of dependency files which are needed:

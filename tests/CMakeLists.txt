@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 20)
 
 
 
-include_directories(../include/)
 
 add_executable(z80EmuTests
-        memorySuite.cpp )
+        ../src/memory.cpp memorySuite.cpp )
+include_directories(../include/*)

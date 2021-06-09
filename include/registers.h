@@ -45,16 +45,16 @@ struct ByteRegister
     static Byte E_Reg_B;
     static Byte L_Reg_B;
 };
-
+// Used for register indirect addressing
 Word BCasWord();
 
-
+// Used for register indirect addressing
 Word AFasWord();
 
-
+// Used for register indirect addressing
 Word DEasWord();
 
-
+// Used for register indirect addressing
 Word HLasWord();
 
 
