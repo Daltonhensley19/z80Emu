@@ -10,33 +10,18 @@ const Byte        MAX_BYTE_SIZE        = 0xff; // 255
 const Word        MAX_WORD_SIZE        = 0xffff; // 65535
 const std::size_t BYTE_SHIFT_ALIGNMENT = 8;
 
-inline Byte readByte(const Word& address)
-{
-    return ram[address];
-}
+Byte readByte(const Word& address);
 
-inline void writeByte(const Byte& byte, Word& address)
-{
-    ram[address] = byte;
-}
 
-inline Word readWord(const Word& address)
-{
-    return (ram[address] | ram[address + 1] << BYTE_SHIFT_ALIGNMENT);
-}
+void writeByte(const Byte& byte, Word& address);
 
-inline void writeWord(Word& word, Word& address)
-{
-    ram[address]     = word & MAX_BYTE_SIZE;
-    ram[address + 1] = (word >> BYTE_SHIFT_ALIGNMENT) & MAX_BYTE_SIZE;
-}
 
-inline void resetMem(std::array<Byte, RAM_SIZE>& p_ram)
-{
+Word readWord(const Word& address);
 
-    for (auto& byte: p_ram)
-    {
-        byte = 0;
-    }
-}
+
+void writeWord(Word& word, Word& address);
+
+
+void resetMem(std::array<Byte, RAM_SIZE>& p_ram);
+
 

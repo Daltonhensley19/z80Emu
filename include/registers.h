@@ -24,45 +24,37 @@ struct ByteRegister
 {
 
     // Main register set
-    inline static Byte A_Reg_A;
-    inline static Byte B_Reg_A;
-    inline static Byte D_Reg_A;
-    inline static Byte H_Reg_A;
+    static Byte A_Reg_A;
+    static Byte B_Reg_A;
+    static Byte D_Reg_A;
+    static Byte H_Reg_A;
 
-    inline static Byte F_Reg_A;
-    inline static Byte C_Reg_A;
-    inline static Byte E_Reg_A;
-    inline static Byte L_Reg_A;
+    static Byte F_Reg_A;
+    static Byte C_Reg_A;
+    static Byte E_Reg_A;
+    static Byte L_Reg_A;
 
     // Alternate register set
-    inline static Byte A_Reg_B;
-    inline static Byte B_Reg_B;
-    inline static Byte D_Reg_B;
-    inline static Byte H_Reg_B;
+    static Byte A_Reg_B;
+    static Byte B_Reg_B;
+    static Byte D_Reg_B;
+    static Byte H_Reg_B;
 
-    inline static Byte F_Reg_B;
-    inline static Byte C_Reg_B;
-    inline static Byte E_Reg_B;
-    inline static Byte L_Reg_B;
+    static Byte F_Reg_B;
+    static Byte C_Reg_B;
+    static Byte E_Reg_B;
+    static Byte L_Reg_B;
 };
 
-inline Word BCasWord()
-{
-    return ByteRegister::B_Reg_A << BYTE_SHIFT_ALIGNMENT | ByteRegister::C_Reg_A;
-}
+Word BCasWord();
 
-inline Word AFasWord()
-{
-    return ByteRegister::A_Reg_A << BYTE_SHIFT_ALIGNMENT | ByteRegister::F_Reg_A;
-}
 
-inline Word DEasWord()
-{
-    return ByteRegister::D_Reg_A << BYTE_SHIFT_ALIGNMENT | ByteRegister::E_Reg_A;
-}
+Word AFasWord();
 
-inline Word HLasWord()
-{
-    return ByteRegister::H_Reg_A << BYTE_SHIFT_ALIGNMENT | ByteRegister::L_Reg_A;
-}
+
+Word DEasWord();
+
+
+Word HLasWord();
+
 

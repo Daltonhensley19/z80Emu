@@ -34,6 +34,14 @@ registers.h
 memory.h
 /home/dalton/Desktop/z80Emu/include/memory.h
 
+/home/dalton/Desktop/z80Emu/src/memory.cpp
+../include/emuTypes.h
+/home/dalton/Desktop/z80Emu/include/emuTypes.h
+../include/memory.h
+/home/dalton/Desktop/z80Emu/include/memory.h
+array
+-
+
 /home/dalton/Desktop/z80Emu/src/registers.cpp
 ../include/registers.h
 /home/dalton/Desktop/z80Emu/include/registers.h
