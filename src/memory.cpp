@@ -9,22 +9,22 @@
 #include <array>
 
 
-Byte readByte(const Word& address)
+Byte readByte(const Word address)
 {
     return ram[address];
 }
 
-void writeByte(const Byte& byte, Word& address)
+void writeByte(const Byte byte, Word address)
 {
     ram[address] = byte;
 }
 
-Word readWord(const Word& address)
+Word readWord(const Word address)
 {
     return (ram[address] | ram[address + 1] << BYTE_SHIFT_ALIGNMENT);
 }
 
-void writeWord(Word& word, Word& address)
+void writeWord(Word word, Word address)
 {
     ram[address]     = word & MAX_BYTE_SIZE;
     ram[address + 1] = (word >> BYTE_SHIFT_ALIGNMENT) & MAX_BYTE_SIZE;
@@ -39,3 +39,7 @@ void resetMem(std::array<Byte, RAM_SIZE>& p_ram)
     }
 }
 
+Word bytesToWord(const Byte highByte, const Byte lowByte)
+{
+    return highByte << BYTE_SHIFT_ALIGNMENT | lowByte;
+}
