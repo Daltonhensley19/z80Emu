@@ -6,17 +6,18 @@
 #include "../include/opcodes.h"
 
 
-#define opcodeByte  ((currentOpcode & 0xFF00) >> BYTE_SHIFT_ALIGNMENT)
-
 
 // I must apologize for the very long switch table.
 // This is the quickest (yet dirtiest) way to implement the Z80 opcodes.
 void Z80CPU::executeInstruction()
 {
+
+
     while (cycles > 0)
     {
         // fetch current opcode
         currentOpcode = ram[pc] << 8 | ram[pc + 1];
+        Byte opcodeByte = ((currentOpcode & 0xFF00) >> BYTE_SHIFT_ALIGNMENT);
         switch (opcodeByte)
         {
             case LD8::A_A_LD:
@@ -942,9 +943,16 @@ void Z80CPU::executeInstruction()
                 }
             }
                 break;
+            case LD16::nn_BC_LD:
+            {
+                ByteRegister::B_Reg_A = ram[pc + 2];
+                ByteRegister::C_Reg_A = ram[pc + 1];
+            }
+                break;
 
 
         }
+
     }
 }
 

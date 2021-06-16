@@ -7,6 +7,10 @@ tests/CMakeFiles/z80EmuTests.dir/__/src/memory.cpp.o: \
  ../src/memory.cpp
 tests/CMakeFiles/z80EmuTests.dir/__/src/registers.cpp.o: \
  ../include/emuTypes.h \
+ ../include/fmt/core.h \
+ ../include/fmt/format-inl.h \
+ ../include/fmt/format.h \
+ ../include/fmt/xchar.h \
  ../include/memory.h \
  ../include/registers.h \
  ../src/registers.cpp

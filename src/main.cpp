@@ -3,14 +3,16 @@
 
 #include "../include/fmt/core.h"
 #include "../include/registers.h"
+#include "../include/z80.h"
+#include "../include/memory.h"
 
 
 int main()
 {
 
+    Z80CPU z80Cpu{};
 
 
-    fmt::print("Hello World!");
 
 
     return 0;

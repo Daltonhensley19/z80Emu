@@ -2,7 +2,7 @@
 
 #include "emuTypes.h"
 #include "memory.h"
-#include "fmt/core.h"
+
 
 struct FlagBitField
 {

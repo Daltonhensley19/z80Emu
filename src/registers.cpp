@@ -1,8 +1,9 @@
 //
 // Created by dalton on 6/8/21.
 //
+#define FMT_HEADER_ONLY 1
 #include "../include/registers.h"
-
+#include "../include/fmt/core.h"
 
 Word BCasWord()
 {

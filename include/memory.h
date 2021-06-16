@@ -2,8 +2,10 @@
 
 #include "emuTypes.h"
 #include <array>
+#include <limits>
 
-const std::uint16_t               RAM_SIZE = sizeof(std::uint16_t) - 1; // (2^16) - 1
+const auto RAM_SIZE = std::numeric_limits<std::uint16_t>::max(); // (2^16) - 1
+
 inline std::array<Byte, RAM_SIZE> ram;
 
 const Byte        MAX_BYTE_SIZE        = 0xff; // 255

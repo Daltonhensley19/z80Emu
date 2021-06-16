@@ -1,9 +1,9 @@
 1. [x] Work on implied addressing of 8-bit loads
 
-2. [] Add debug functionality to registers (and maybe memory functions?)
+2. [x] Add debug functionality to registers (and maybe memory functions?)
 
-3. [] Code refactor
+3. [x] Code refactor
 
-4. []
+4. [x] test code
 
 5. []
