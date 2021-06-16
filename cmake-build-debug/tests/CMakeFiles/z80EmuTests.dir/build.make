@@ -66,9 +66,22 @@ include tests/CMakeFiles/z80EmuTests.dir/progress.make
 # Include the compile flags for this target's objects.
 include tests/CMakeFiles/z80EmuTests.dir/flags.make
 
+tests/CMakeFiles/z80EmuTests.dir/__/src/registers.cpp.o: tests/CMakeFiles/z80EmuTests.dir/flags.make
+tests/CMakeFiles/z80EmuTests.dir/__/src/registers.cpp.o: ../src/registers.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dalton/Desktop/z80Emu/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object tests/CMakeFiles/z80EmuTests.dir/__/src/registers.cpp.o"
+	cd /home/dalton/Desktop/z80Emu/cmake-build-debug/tests && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/z80EmuTests.dir/__/src/registers.cpp.o -c /home/dalton/Desktop/z80Emu/src/registers.cpp
+
+tests/CMakeFiles/z80EmuTests.dir/__/src/registers.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/z80EmuTests.dir/__/src/registers.cpp.i"
+	cd /home/dalton/Desktop/z80Emu/cmake-build-debug/tests && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dalton/Desktop/z80Emu/src/registers.cpp > CMakeFiles/z80EmuTests.dir/__/src/registers.cpp.i
+
+tests/CMakeFiles/z80EmuTests.dir/__/src/registers.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/z80EmuTests.dir/__/src/registers.cpp.s"
+	cd /home/dalton/Desktop/z80Emu/cmake-build-debug/tests && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dalton/Desktop/z80Emu/src/registers.cpp -o CMakeFiles/z80EmuTests.dir/__/src/registers.cpp.s
+
 tests/CMakeFiles/z80EmuTests.dir/__/src/memory.cpp.o: tests/CMakeFiles/z80EmuTests.dir/flags.make
 tests/CMakeFiles/z80EmuTests.dir/__/src/memory.cpp.o: ../src/memory.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dalton/Desktop/z80Emu/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object tests/CMakeFiles/z80EmuTests.dir/__/src/memory.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dalton/Desktop/z80Emu/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object tests/CMakeFiles/z80EmuTests.dir/__/src/memory.cpp.o"
 	cd /home/dalton/Desktop/z80Emu/cmake-build-debug/tests && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/z80EmuTests.dir/__/src/memory.cpp.o -c /home/dalton/Desktop/z80Emu/src/memory.cpp
 
 tests/CMakeFiles/z80EmuTests.dir/__/src/memory.cpp.i: cmake_force
@@ -81,7 +94,7 @@ tests/CMakeFiles/z80EmuTests.dir/__/src/memory.cpp.s: cmake_force
 
 tests/CMakeFiles/z80EmuTests.dir/memorySuite.cpp.o: tests/CMakeFiles/z80EmuTests.dir/flags.make
 tests/CMakeFiles/z80EmuTests.dir/memorySuite.cpp.o: ../tests/memorySuite.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dalton/Desktop/z80Emu/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object tests/CMakeFiles/z80EmuTests.dir/memorySuite.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dalton/Desktop/z80Emu/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object tests/CMakeFiles/z80EmuTests.dir/memorySuite.cpp.o"
 	cd /home/dalton/Desktop/z80Emu/cmake-build-debug/tests && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/z80EmuTests.dir/memorySuite.cpp.o -c /home/dalton/Desktop/z80Emu/tests/memorySuite.cpp
 
 tests/CMakeFiles/z80EmuTests.dir/memorySuite.cpp.i: cmake_force
@@ -92,19 +105,36 @@ tests/CMakeFiles/z80EmuTests.dir/memorySuite.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/z80EmuTests.dir/memorySuite.cpp.s"
 	cd /home/dalton/Desktop/z80Emu/cmake-build-debug/tests && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dalton/Desktop/z80Emu/tests/memorySuite.cpp -o CMakeFiles/z80EmuTests.dir/memorySuite.cpp.s
 
+tests/CMakeFiles/z80EmuTests.dir/registerSuite.cpp.o: tests/CMakeFiles/z80EmuTests.dir/flags.make
+tests/CMakeFiles/z80EmuTests.dir/registerSuite.cpp.o: ../tests/registerSuite.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dalton/Desktop/z80Emu/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object tests/CMakeFiles/z80EmuTests.dir/registerSuite.cpp.o"
+	cd /home/dalton/Desktop/z80Emu/cmake-build-debug/tests && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/z80EmuTests.dir/registerSuite.cpp.o -c /home/dalton/Desktop/z80Emu/tests/registerSuite.cpp
+
+tests/CMakeFiles/z80EmuTests.dir/registerSuite.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/z80EmuTests.dir/registerSuite.cpp.i"
+	cd /home/dalton/Desktop/z80Emu/cmake-build-debug/tests && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dalton/Desktop/z80Emu/tests/registerSuite.cpp > CMakeFiles/z80EmuTests.dir/registerSuite.cpp.i
+
+tests/CMakeFiles/z80EmuTests.dir/registerSuite.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/z80EmuTests.dir/registerSuite.cpp.s"
+	cd /home/dalton/Desktop/z80Emu/cmake-build-debug/tests && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dalton/Desktop/z80Emu/tests/registerSuite.cpp -o CMakeFiles/z80EmuTests.dir/registerSuite.cpp.s
+
 # Object files for target z80EmuTests
 z80EmuTests_OBJECTS = \
+"CMakeFiles/z80EmuTests.dir/__/src/registers.cpp.o" \
 "CMakeFiles/z80EmuTests.dir/__/src/memory.cpp.o" \
-"CMakeFiles/z80EmuTests.dir/memorySuite.cpp.o"
+"CMakeFiles/z80EmuTests.dir/memorySuite.cpp.o" \
+"CMakeFiles/z80EmuTests.dir/registerSuite.cpp.o"
 
 # External object files for target z80EmuTests
 z80EmuTests_EXTERNAL_OBJECTS =
 
+tests/z80EmuTests: tests/CMakeFiles/z80EmuTests.dir/__/src/registers.cpp.o
 tests/z80EmuTests: tests/CMakeFiles/z80EmuTests.dir/__/src/memory.cpp.o
 tests/z80EmuTests: tests/CMakeFiles/z80EmuTests.dir/memorySuite.cpp.o
+tests/z80EmuTests: tests/CMakeFiles/z80EmuTests.dir/registerSuite.cpp.o
 tests/z80EmuTests: tests/CMakeFiles/z80EmuTests.dir/build.make
 tests/z80EmuTests: tests/CMakeFiles/z80EmuTests.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dalton/Desktop/z80Emu/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable z80EmuTests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dalton/Desktop/z80Emu/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable z80EmuTests"
 	cd /home/dalton/Desktop/z80Emu/cmake-build-debug/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/z80EmuTests.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

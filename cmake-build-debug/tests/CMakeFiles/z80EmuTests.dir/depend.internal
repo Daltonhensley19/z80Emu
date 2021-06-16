@@ -5,8 +5,19 @@ tests/CMakeFiles/z80EmuTests.dir/__/src/memory.cpp.o
  /home/dalton/Desktop/z80Emu/include/emuTypes.h
  /home/dalton/Desktop/z80Emu/include/memory.h
  /home/dalton/Desktop/z80Emu/src/memory.cpp
+tests/CMakeFiles/z80EmuTests.dir/__/src/registers.cpp.o
+ /home/dalton/Desktop/z80Emu/include/emuTypes.h
+ /home/dalton/Desktop/z80Emu/include/memory.h
+ /home/dalton/Desktop/z80Emu/include/registers.h
+ /home/dalton/Desktop/z80Emu/src/registers.cpp
 tests/CMakeFiles/z80EmuTests.dir/memorySuite.cpp.o
  /home/dalton/Desktop/z80Emu/include/doctest.h
  /home/dalton/Desktop/z80Emu/include/emuTypes.h
  /home/dalton/Desktop/z80Emu/include/memory.h
  /home/dalton/Desktop/z80Emu/tests/memorySuite.cpp
+tests/CMakeFiles/z80EmuTests.dir/registerSuite.cpp.o
+ /home/dalton/Desktop/z80Emu/include/doctest.h
+ /home/dalton/Desktop/z80Emu/include/emuTypes.h
+ /home/dalton/Desktop/z80Emu/include/memory.h
+ /home/dalton/Desktop/z80Emu/include/registers.h
+ /home/dalton/Desktop/z80Emu/tests/registerSuite.cpp

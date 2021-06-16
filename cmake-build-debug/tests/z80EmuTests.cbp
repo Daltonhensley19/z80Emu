@@ -71,7 +71,13 @@
 		<Unit filename="/home/dalton/Desktop/z80Emu/src/memory.cpp">
 			<Option target="z80EmuTests"/>
 		</Unit>
+		<Unit filename="/home/dalton/Desktop/z80Emu/src/registers.cpp">
+			<Option target="z80EmuTests"/>
+		</Unit>
 		<Unit filename="/home/dalton/Desktop/z80Emu/tests/memorySuite.cpp">
+			<Option target="z80EmuTests"/>
+		</Unit>
+		<Unit filename="/home/dalton/Desktop/z80Emu/tests/registerSuite.cpp">
 			<Option target="z80EmuTests"/>
 		</Unit>
 		<Unit filename="/home/dalton/Desktop/z80Emu/CMakeLists.txt">

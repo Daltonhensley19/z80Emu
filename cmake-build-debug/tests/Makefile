@@ -154,6 +154,30 @@ __/src/memory.cpp.s:
 	cd /home/dalton/Desktop/z80Emu/cmake-build-debug && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/z80EmuTests.dir/build.make tests/CMakeFiles/z80EmuTests.dir/__/src/memory.cpp.s
 .PHONY : __/src/memory.cpp.s
 
+__/src/registers.o: __/src/registers.cpp.o
+.PHONY : __/src/registers.o
+
+# target to build an object file
+__/src/registers.cpp.o:
+	cd /home/dalton/Desktop/z80Emu/cmake-build-debug && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/z80EmuTests.dir/build.make tests/CMakeFiles/z80EmuTests.dir/__/src/registers.cpp.o
+.PHONY : __/src/registers.cpp.o
+
+__/src/registers.i: __/src/registers.cpp.i
+.PHONY : __/src/registers.i
+
+# target to preprocess a source file
+__/src/registers.cpp.i:
+	cd /home/dalton/Desktop/z80Emu/cmake-build-debug && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/z80EmuTests.dir/build.make tests/CMakeFiles/z80EmuTests.dir/__/src/registers.cpp.i
+.PHONY : __/src/registers.cpp.i
+
+__/src/registers.s: __/src/registers.cpp.s
+.PHONY : __/src/registers.s
+
+# target to generate assembly for a file
+__/src/registers.cpp.s:
+	cd /home/dalton/Desktop/z80Emu/cmake-build-debug && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/z80EmuTests.dir/build.make tests/CMakeFiles/z80EmuTests.dir/__/src/registers.cpp.s
+.PHONY : __/src/registers.cpp.s
+
 memorySuite.o: memorySuite.cpp.o
 .PHONY : memorySuite.o
 
@@ -178,6 +202,30 @@ memorySuite.cpp.s:
 	cd /home/dalton/Desktop/z80Emu/cmake-build-debug && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/z80EmuTests.dir/build.make tests/CMakeFiles/z80EmuTests.dir/memorySuite.cpp.s
 .PHONY : memorySuite.cpp.s
 
+registerSuite.o: registerSuite.cpp.o
+.PHONY : registerSuite.o
+
+# target to build an object file
+registerSuite.cpp.o:
+	cd /home/dalton/Desktop/z80Emu/cmake-build-debug && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/z80EmuTests.dir/build.make tests/CMakeFiles/z80EmuTests.dir/registerSuite.cpp.o
+.PHONY : registerSuite.cpp.o
+
+registerSuite.i: registerSuite.cpp.i
+.PHONY : registerSuite.i
+
+# target to preprocess a source file
+registerSuite.cpp.i:
+	cd /home/dalton/Desktop/z80Emu/cmake-build-debug && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/z80EmuTests.dir/build.make tests/CMakeFiles/z80EmuTests.dir/registerSuite.cpp.i
+.PHONY : registerSuite.cpp.i
+
+registerSuite.s: registerSuite.cpp.s
+.PHONY : registerSuite.s
+
+# target to generate assembly for a file
+registerSuite.cpp.s:
+	cd /home/dalton/Desktop/z80Emu/cmake-build-debug && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/z80EmuTests.dir/build.make tests/CMakeFiles/z80EmuTests.dir/registerSuite.cpp.s
+.PHONY : registerSuite.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -190,9 +238,15 @@ help:
 	@echo "... __/src/memory.o"
 	@echo "... __/src/memory.i"
 	@echo "... __/src/memory.s"
+	@echo "... __/src/registers.o"
+	@echo "... __/src/registers.i"
+	@echo "... __/src/registers.s"
 	@echo "... memorySuite.o"
 	@echo "... memorySuite.i"
 	@echo "... memorySuite.s"
+	@echo "... registerSuite.o"
+	@echo "... registerSuite.i"
+	@echo "... registerSuite.s"
 .PHONY : help
 
 

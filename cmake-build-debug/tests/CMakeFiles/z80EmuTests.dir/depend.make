@@ -5,8 +5,19 @@ tests/CMakeFiles/z80EmuTests.dir/__/src/memory.cpp.o: \
  ../include/emuTypes.h \
  ../include/memory.h \
  ../src/memory.cpp
+tests/CMakeFiles/z80EmuTests.dir/__/src/registers.cpp.o: \
+ ../include/emuTypes.h \
+ ../include/memory.h \
+ ../include/registers.h \
+ ../src/registers.cpp
 tests/CMakeFiles/z80EmuTests.dir/memorySuite.cpp.o: \
  ../include/doctest.h \
  ../include/emuTypes.h \
  ../include/memory.h \
  ../tests/memorySuite.cpp
+tests/CMakeFiles/z80EmuTests.dir/registerSuite.cpp.o: \
+ ../include/doctest.h \
+ ../include/emuTypes.h \
+ ../include/memory.h \
+ ../include/registers.h \
+ ../tests/registerSuite.cpp

@@ -100,9 +100,15 @@ emuTypes.h
 array
 -
 
-/home/dalton/Desktop/z80Emu/tests/memorySuite.cpp
+/home/dalton/Desktop/z80Emu/include/registers.h
+emuTypes.h
+/home/dalton/Desktop/z80Emu/include/emuTypes.h
+memory.h
+/home/dalton/Desktop/z80Emu/include/memory.h
+
+/home/dalton/Desktop/z80Emu/tests/registerSuite.cpp
 ../include/doctest.h
 /home/dalton/Desktop/z80Emu/include/doctest.h
-../include/memory.h
-/home/dalton/Desktop/z80Emu/include/memory.h
+../include/registers.h
+/home/dalton/Desktop/z80Emu/include/registers.h
 
