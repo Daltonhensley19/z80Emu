@@ -97,8 +97,10 @@ public:
     const static Word nn_A_LD = 0x3A;
 
     // Implied to register
-    const static Word I_A_LD = 0x57;
-    const static Word R_A_LD = 0x5F;
+    const static Word I_A_LD = 0x57; // Prefixed with ED
+    const static Word R_A_LD = 0x5F; // Prefixed with ED
+
+    const static Word ED_PREFIX = 0xED;
 
 
     // Register to HL
@@ -118,10 +120,10 @@ public:
     const static Word A_nn_LD = 0x32;
 
     // Register to implied
-    const static Word A_I_LD = 0x47;
-    const static Word A_R_LD = 0x4F;
+    const static Word A_I_LD = 0x47; // Prefixed with ED
+    const static Word A_R_LD = 0x4F; // Prefixed with ED
 
-    const static Word FD_nn_IY_ = 0xFD21; // Prefix: FD
+
 
     // Imm. to register indirect
     const static Word n_HL_LD = 0x36;
@@ -189,6 +191,6 @@ public:
     const static Word PUSH_BC    = 0xC5;
     const static Word PUSH_DE    = 0xD5;
     const static Word PUSH_HL    = 0xE5;
-    const static Word PUSH_DD_IX = 0xDDE5; //Prefix: DD
+    const static Word PUSH_DD_IX = 0xDDE5; // Prefix: DD
     const static Word PUSH_FD_IY = 0xFDE5; // Prefix: FD
 };

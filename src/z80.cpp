@@ -9,6 +9,8 @@
 #define opcodeByte  ((currentOpcode & 0xFF00) >> BYTE_SHIFT_ALIGNMENT)
 
 
+// I must apologize for the very long switch table.
+// This is the quickest (yet dirtiest) way to implement the Z80 opcodes.
 void Z80CPU::executeInstruction()
 {
     while (cycles > 0)
@@ -884,10 +886,68 @@ void Z80CPU::executeInstruction()
                 }
             }
                 break;
+                // ED Prefixed Opcodes
+            case LD8::ED_PREFIX:
+            {
+                switch (ram[pc + 1])
+                {
+                    case LD8::I_A_LD:
+                    {
+                        cycles                = 9;
+                        ByteRegister::A_Reg_A = I;
+
+                        (I & 0x80) != 0 ? flag.S = 1 : flag.S = 0; // Two's complement, S
+                        (I == 0) ? flag.Z = 1 : flag.Z = 0; // Z
+                        flag.H = 0; // H
+                        flag.P = IFF2; // P
+                        flag.N = 0; // N
+                        // C flag not affected
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+                    case LD8::R_A_LD:
+                    {
+                        cycles                = 9;
+                        ByteRegister::A_Reg_A = R;
+
+                        (R & 0x80) != 0 ? flag.S = 1 : flag.S = 0; // Two's complement, S
+                        (R == 0) ? flag.Z = 1 : flag.Z = 0; // Z
+                        flag.H = 0; // H
+                        flag.P = IFF2; // P
+                        flag.N = 0; // N
+                        // C is not affected
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+                    case LD8::A_I_LD:
+                    {
+                        cycles = 9;
+                        I      = ByteRegister::A_Reg_A;
+
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+                    case LD8::A_R_LD:
+                    {
+                        cycles = 9;
+                        R      = ByteRegister::A_Reg_A;
+
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+                }
+            }
+                break;
 
 
         }
     }
 }
+
+
 
 

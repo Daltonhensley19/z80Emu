@@ -7,18 +7,28 @@
 class Z80CPU
 {
 private:
-    Word pc;
+     Word pc;
     // Program Counter
-    Word sp;
+     Word sp;
     // Stack Pointer
-    Word ix;
+     Word ix;
     // Index Register
-    Word iy;
+     Word iy;
     // Index Register
-    Byte I;
+     Byte I;
     // Interrupt Page Register
-    Byte R;
+     Byte R;
+
     // Memory Refresh Register
+
+
+/*
+    During the LD A, I and LD A, R instructions, the P/V Flag is
+    set with the value of the
+    interrupt enable flip-flop (IFF2) for storage or testing.
+*/
+    bool IFF1;
+    bool IFF2;
 
     FlagBitField flag;
     // Bit Field for common Z80 Flags
@@ -28,12 +38,12 @@ private:
     // CPU clock cycle counter
 
     Word currentOpcode;
-    // Usually 8-bits (currentOpcode & 0xFF00),
+    // Usually 8-bits (currentOpcode & 0xFF00 >> 8),
     // but sometimes 16-bits due to prefixes (DD, ED, FD, CB).
 
 public:
     void executeInstruction();
 
-    Z80CPU() : pc(0), sp(0), ix(0), iy(0), I(0), R(0), flag{0, 0, 0, 0, 0, 0, 0}
+    Z80CPU() : flag{0, 0, 0, 0, 0, 0, 0}
     {}
 };
