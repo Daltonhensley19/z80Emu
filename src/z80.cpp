@@ -554,6 +554,85 @@ void Z80CPU::executeInstruction()
                 pc += 2;
             }
                 break;
+            case LD8::n_A_LD:
+            {
+                cycles                = 8;
+                ByteRegister::A_Reg_A = ram[pc + 1]; // LD imm to register
+                cycles--;
+                pc += 2;
+            }
+                break;
+            case LD8::n_B_LD:
+            {
+                cycles                = 8;
+                ByteRegister::B_Reg_A = ram[pc + 1]; // LD imm to register
+                cycles--;
+                pc += 2;
+            }
+                break;
+            case LD8::n_C_LD:
+            {
+                cycles                = 8;
+                ByteRegister::C_Reg_A = ram[pc + 1]; // LD imm to register
+                cycles--;
+                pc += 2;
+            }
+                break;
+            case LD8::n_D_LD:
+            {
+                cycles                = 8;
+                ByteRegister::D_Reg_A = ram[pc + 1]; // LD imm to register
+                cycles--;
+                pc += 2;
+            }
+                break;
+            case LD8::n_E_LD:
+            {
+                cycles                = 8;
+                ByteRegister::E_Reg_A = ram[pc + 1]; // LD imm to register
+                cycles--;
+                pc += 2;
+            }
+                break;
+            case LD8::n_H_LD:
+            {
+                cycles                = 8;
+                ByteRegister::H_Reg_A = ram[pc + 1]; // LD imm to register
+                cycles--;
+                pc += 2;
+            }
+                break;
+            case LD8::n_L_LD:
+            {
+                cycles                = 8;
+                ByteRegister::L_Reg_A = ram[pc + 1]; // LD imm to register
+                cycles--;
+                pc += 2;
+            }
+                break;
+            case LD8::BC_A_LD:
+            {
+                cycles                = 8;
+                ByteRegister::A_Reg_A = ram[BCasWord()]; // LD indirect address to reg.
+                cycles--;
+                pc += 2;
+            }
+                break;
+            case LD8::DE_A_LD:
+            {
+                cycles                = 8;
+                ByteRegister::A_Reg_A = ram[DEasWord()]; // LD indirect address to reg.
+                cycles--;
+                pc += 2;
+            }
+                break;
+            case LD8::nn_A_LD:
+            {
+                cycles                = 13; //TODO(Dalton): possible mistake in cycles?
+                ByteRegister::A_Reg_A = readByte(bytesToWord(ram[pc + 2], ram[pc + 1]));
+                cycles--;
+                pc+=2;
+            }
 
 
         }
