@@ -2,6 +2,7 @@
 
 #include "emuTypes.h"
 #include "memory.h"
+#include "fmt/core.h"
 
 struct FlagBitField
 {
@@ -47,7 +48,6 @@ struct ByteRegister
 };
 
 
-
 // Used for register indirect addressing
 Word BCasWord();
 
@@ -60,4 +60,11 @@ Word DEasWord();
 // Used for register indirect addressing
 Word HLasWord();
 
+
+namespace debugRegisters
+{
+    void displayRegisterTable();
+    void displaySingleRegister(char reg);
+
+}
 

@@ -2,12 +2,16 @@
 
 
 #include "../include/fmt/core.h"
+#include "../include/registers.h"
 
 
 int main()
 {
 
+
+
     fmt::print("Hello World!");
+
 
     return 0;
 }

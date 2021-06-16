@@ -4,22 +4,23 @@
 #include "registers.h"
 #include "memory.h"
 
-class Z80CPU
+struct Z80CPU
 {
-private:
-     Word pc;
+
     // Program Counter
-     Word sp;
+     Word pc;
     // Stack Pointer
+     Word sp;
+    // Index Register
      Word ix;
     // Index Register
      Word iy;
-    // Index Register
-     Byte I;
     // Interrupt Page Register
+     Byte I;
+    // Memory Refresh Register
      Byte R;
 
-    // Memory Refresh Register
+
 
 
 /*
@@ -30,18 +31,21 @@ private:
     bool IFF1;
     bool IFF2;
 
-    FlagBitField flag;
     // Bit Field for common Z80 Flags
-    ByteRegister byteRegister;
+    FlagBitField flag;
 
-    std::size_t cycles;
+
+    ByteRegister byteRegister{};
+
     // CPU clock cycle counter
+    std::size_t cycles;
 
-    Word currentOpcode;
     // Usually 8-bits (currentOpcode & 0xFF00 >> 8),
     // but sometimes 16-bits due to prefixes (DD, ED, FD, CB).
+    Word currentOpcode;
 
-public:
+
+
     void executeInstruction();
 
     Z80CPU() : flag{0, 0, 0, 0, 0, 0, 0}

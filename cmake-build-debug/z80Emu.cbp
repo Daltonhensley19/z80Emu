@@ -136,18 +136,6 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/dalton/Desktop/z80Emu/include/memory.h">
-			<Option target="z80Emu"/>
-		</Unit>
-		<Unit filename="/home/dalton/Desktop/z80Emu/include/opcodes.h">
-			<Option target="z80Emu"/>
-		</Unit>
-		<Unit filename="/home/dalton/Desktop/z80Emu/include/registers.h">
-			<Option target="z80Emu"/>
-		</Unit>
-		<Unit filename="/home/dalton/Desktop/z80Emu/include/z80.h">
-			<Option target="z80Emu"/>
-		</Unit>
 		<Unit filename="/home/dalton/Desktop/z80Emu/src/main.cpp">
 			<Option target="z80Emu"/>
 		</Unit>
