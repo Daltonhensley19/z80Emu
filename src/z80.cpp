@@ -7,7 +7,6 @@
 
 
 #define opcodeByte  ((currentOpcode & 0xFF00) >> BYTE_SHIFT_ALIGNMENT)
-#define opcodePair currentOpcode
 
 
 void Z80CPU::executeInstruction()
@@ -631,8 +630,260 @@ void Z80CPU::executeInstruction()
                 cycles                = 13; //TODO(Dalton): possible mistake in cycles?
                 ByteRegister::A_Reg_A = readByte(bytesToWord(ram[pc + 2], ram[pc + 1]));
                 cycles--;
-                pc+=2;
+                pc += 2;
             }
+                break;
+                // DD Prefixed Opcodes
+            case LD8::IDX_R_LD:
+            {
+                Byte d = ram[pc + 2];
+                switch (ram[pc + 1])
+                {
+                    case LD8::HL_A_LD:
+                    {
+                        cycles                = 19;
+                        ByteRegister::A_Reg_A = ram[ix + d];
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+                    case LD8::HL_B_LD:
+                    {
+                        cycles                = 19;
+                        ByteRegister::B_Reg_A = ram[ix + d];
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+                    case LD8::HL_C_LD:
+                    {
+                        cycles                = 19;
+                        ByteRegister::C_Reg_A = ram[ix + d];
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+                    case LD8::HL_D_LD:
+                    {
+                        cycles                = 19;
+                        ByteRegister::D_Reg_A = ram[ix + d];
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+                    case LD8::HL_E_LD:
+                    {
+                        cycles                = 19;
+                        ByteRegister::E_Reg_A = ram[ix + d];
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+                    case LD8::HL_H_LD:
+                    {
+                        cycles                = 19;
+                        ByteRegister::H_Reg_A = ram[ix + d];
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+                    case LD8::HL_L_LD:
+                    {
+                        cycles                = 19;
+                        ByteRegister::L_Reg_A = ram[ix + d];
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+                    case LD8::A_HL_LD:
+                    {
+                        cycles = 19;
+                        ram[ix + d] = ByteRegister::A_Reg_A;
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+                    case LD8::B_HL_LD:
+                    {
+                        cycles = 19;
+                        ram[ix + d] = ByteRegister::B_Reg_A;
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+                    case LD8::C_HL_LD:
+                    {
+                        cycles = 19;
+                        ram[ix + d] = ByteRegister::C_Reg_A;
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+                    case LD8::D_HL_LD:
+                    {
+                        cycles = 19;
+                        ram[ix + d] = ByteRegister::D_Reg_A;
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+                    case LD8::E_HL_LD:
+                    {
+                        cycles = 19;
+                        ram[ix + d] = ByteRegister::E_Reg_A;
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+                    case LD8::H_HL_LD:
+                    {
+                        cycles = 19;
+                        ram[ix + d] = ByteRegister::H_Reg_A;
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+                    case LD8::L_HL_LD:
+                    {
+                        cycles = 19;
+                        ram[ix + d] = ByteRegister::L_Reg_A;
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+                    case LD8::n_HL_LD:
+                    {
+                        cycles = 19;
+                        ram[ix + d] = ram[pc + 3];
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+
+                }
+            }
+                break;
+                // FD Prefixed Opcodes
+            case LD8::IDY_R_LD:
+            {
+                Byte d = ram[pc + 2];
+                switch (ram[pc + 1])
+                {
+                    case LD8::HL_A_LD:
+                    {
+                        cycles                = 19;
+                        ByteRegister::A_Reg_A = ram[iy + d];
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+                    case LD8::HL_B_LD:
+                    {
+                        cycles                = 19;
+                        ByteRegister::B_Reg_A = ram[iy + d];
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+                    case LD8::HL_C_LD:
+                    {
+                        cycles                = 19;
+                        ByteRegister::C_Reg_A = ram[iy + d];
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+                    case LD8::HL_D_LD:
+                    {
+                        cycles                = 19;
+                        ByteRegister::D_Reg_A = ram[iy + d];
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+                    case LD8::HL_E_LD:
+                    {
+                        cycles                = 19;
+                        ByteRegister::E_Reg_A = ram[iy + d];
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+                    case LD8::HL_H_LD:
+                    {
+                        cycles                = 19;
+                        ByteRegister::H_Reg_A = ram[iy + d];
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+                    case LD8::HL_L_LD:
+                    {
+                        cycles                = 19;
+                        ByteRegister::L_Reg_A = ram[iy + d];
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+                    case LD8::A_HL_LD:
+                    {
+                        cycles = 19;
+                        ram[iy + d] = ByteRegister::A_Reg_A;
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+                    case LD8::B_HL_LD:
+                    {
+                        cycles = 19;
+                        ram[iy + d] = ByteRegister::B_Reg_A;
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+                    case LD8::C_HL_LD:
+                    {
+                        cycles = 19;
+                        ram[iy + d] = ByteRegister::C_Reg_A;
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+                    case LD8::D_HL_LD:
+                    {
+                        cycles = 19;
+                        ram[iy + d] = ByteRegister::D_Reg_A;
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+                    case LD8::E_HL_LD:
+                    {
+                        cycles = 19;
+                        ram[iy + d] = ByteRegister::E_Reg_A;
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+                    case LD8::H_HL_LD:
+                    {
+                        cycles = 19;
+                        ram[iy + d] = ByteRegister::H_Reg_A;
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+                    case LD8::L_HL_LD:
+                    {
+                        cycles = 19;
+                        ram[iy + d] = ByteRegister::L_Reg_A;
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+                }
+            }
+                break;
 
 
         }
