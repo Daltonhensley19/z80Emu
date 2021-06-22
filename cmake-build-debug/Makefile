@@ -214,6 +214,30 @@ src/registers.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/z80Emu.dir/build.make CMakeFiles/z80Emu.dir/src/registers.cpp.s
 .PHONY : src/registers.cpp.s
 
+src/stack.o: src/stack.cpp.o
+.PHONY : src/stack.o
+
+# target to build an object file
+src/stack.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/z80Emu.dir/build.make CMakeFiles/z80Emu.dir/src/stack.cpp.o
+.PHONY : src/stack.cpp.o
+
+src/stack.i: src/stack.cpp.i
+.PHONY : src/stack.i
+
+# target to preprocess a source file
+src/stack.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/z80Emu.dir/build.make CMakeFiles/z80Emu.dir/src/stack.cpp.i
+.PHONY : src/stack.cpp.i
+
+src/stack.s: src/stack.cpp.s
+.PHONY : src/stack.s
+
+# target to generate assembly for a file
+src/stack.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/z80Emu.dir/build.make CMakeFiles/z80Emu.dir/src/stack.cpp.s
+.PHONY : src/stack.cpp.s
+
 src/z80.o: src/z80.cpp.o
 .PHONY : src/z80.o
 
@@ -257,6 +281,9 @@ help:
 	@echo "... src/registers.o"
 	@echo "... src/registers.i"
 	@echo "... src/registers.s"
+	@echo "... src/stack.o"
+	@echo "... src/stack.i"
+	@echo "... src/stack.s"
 	@echo "... src/z80.o"
 	@echo "... src/z80.i"
 	@echo "... src/z80.s"

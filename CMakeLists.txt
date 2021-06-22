@@ -9,6 +9,6 @@ set(CMAKE_CXX_STANDARD 20)
 
 include_directories(z80Emu include/*)
 add_executable(z80Emu
-        src/main.cpp src/z80.cpp src/registers.cpp src/memory.cpp )
+        src/main.cpp src/z80.cpp src/registers.cpp src/memory.cpp src/stack.cpp)
 
 add_subdirectory(tests)

@@ -6,7 +6,6 @@
 #include "../include/opcodes.h"
 
 
-
 // I must apologize for the very long switch table.
 // This is the quickest (yet dirtiest) way to implement the Z80 opcodes.
 void Z80CPU::executeInstruction()
@@ -762,6 +761,63 @@ void Z80CPU::executeInstruction()
                         pc += 2;
                     }
                         break;
+                    case LD16::nn_HL_LD:
+                    {
+                        cycles = 14;
+
+                        ix = readWord(pc + 2);
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+                    case LD16::nn_HL_LD_EXT:
+                    {
+                        cycles = 20;
+
+                        Word position = readWord(pc + 2);
+                        ix = ram[position + 1] << BYTE_SHIFT_ALIGNMENT | ram[position];
+
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+                    case Pop::POP_HL:
+                    {
+                        cycles = 14;
+
+                        ix = popWord();
+
+                        cycles--;
+                        pc += 2;
+
+                    }
+                        break;
+                    case LD16::HL_SP_LD:
+                    {
+                        cycles = 10;
+
+                        sp = ix;
+
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+                    case LD16::HL_nn_LD:
+                    {
+                        cycles = 20;
+
+                        std::uint32_t location = readWord(pc + 2);
+
+                        Byte highByte = (ix >> BYTE_SHIFT_ALIGNMENT) & MAX_BYTE_SIZE;
+                        Byte lowByte  = ix & MAX_BYTE_SIZE;
+
+                        ram[location + 1] = highByte;
+                        ram[location]     = lowByte;
+
+                        cycles--;
+                        pc += 2;
+                    }
+
 
                 }
             }
@@ -884,6 +940,24 @@ void Z80CPU::executeInstruction()
                         pc += 2;
                     }
                         break;
+                    case LD16::HL_nn_LD:
+                    {
+                        cycles = 20;
+
+                        std::uint32_t location = readWord(pc + 2);
+
+                        Byte highByte = (iy >> BYTE_SHIFT_ALIGNMENT) & MAX_BYTE_SIZE;
+                        Byte lowByte  = iy & MAX_BYTE_SIZE;
+
+                        ram[location + 1] = highByte;
+                        ram[location]     = lowByte;
+
+                        cycles--;
+                        pc += 2;
+
+                    }
+                        break;
+
                 }
             }
                 break;
@@ -940,16 +1014,211 @@ void Z80CPU::executeInstruction()
                         pc += 2;
                     }
                         break;
+                    case LD16::ED_BC_nn_LD:
+                    {
+                        cycles = 20;
+
+                        std::uint32_t location = readWord(pc + 2);
+
+                        ram[location + 1] = ByteRegister::B_Reg_A;
+                        ram[location]     = ByteRegister::C_Reg_A;
+
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+                    case LD16::ED_DE_nn_LD:
+                    {
+                        cycles = 20;
+
+                        std::uint32_t location = readWord(pc + 2);
+
+                        ram[location + 1] = ByteRegister::D_Reg_A;
+                        ram[location]     = ByteRegister::E_Reg_A;
+
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+                    case LD16::ED_SP_nn_LD:
+                    {
+                        cycles = 20;
+
+                        std::uint32_t location = readWord(pc + 2);
+
+                        Byte S = (sp >> BYTE_SHIFT_ALIGNMENT) & MAX_BYTE_SIZE;
+                        Byte P = sp & MAX_BYTE_SIZE;
+
+                        ram[location + 1] = S;
+                        ram[location]     = P;
+
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+
                 }
             }
                 break;
             case LD16::nn_BC_LD:
             {
+                cycles                = 10;
                 ByteRegister::B_Reg_A = ram[pc + 2];
                 ByteRegister::C_Reg_A = ram[pc + 1];
+
+                cycles--;
+                pc += 2;
+
             }
                 break;
+            case LD16::nn_DE_LD:
+            {
+                cycles                = 10;
+                ByteRegister::D_Reg_A = ram[pc + 2];
+                ByteRegister::E_Reg_A = ram[pc + 1];
 
+                cycles--;
+                pc += 2;
+            }
+                break;
+            case LD16::nn_HL_LD:
+            {
+                cycles                = 10;
+                ByteRegister::H_Reg_A = ram[pc + 2];
+                ByteRegister::L_Reg_A = ram[pc + 1];
+
+                cycles--;
+                pc += 2;
+            }
+                break;
+            case LD16::nn_SP_LD:
+            {
+                cycles = 10;
+                sp     = readWord(pc + 1);
+
+                cycles--;
+                pc += 2;
+            }
+                break;
+            case Pop::POP_BC:
+            {
+                cycles = 10;
+
+                ByteRegister::C_Reg_A = ram[Z80CPU::sp++];
+                ByteRegister::B_Reg_A = ram[Z80CPU::sp++];
+
+                cycles--;
+                pc += 2;
+            }
+                break;
+            case Pop::POP_DE:
+            {
+                cycles = 10;
+
+                ByteRegister::E_Reg_A = ram[Z80CPU::sp++];
+                ByteRegister::D_Reg_A = ram[Z80CPU::sp++];
+
+                cycles--;
+                pc += 2;
+            }
+                break;
+            case Pop::POP_HL:
+            {
+                cycles = 10;
+
+                ByteRegister::L_Reg_A = ram[Z80CPU::sp++];
+                ByteRegister::H_Reg_A = ram[Z80CPU::sp++];
+
+                cycles--;
+                pc += 2;
+            }
+                break;
+            case Pop::POP_AF:
+            {
+                cycles = 10;
+
+                ByteRegister::F_Reg_A = ram[Z80CPU::sp++];
+                ByteRegister::A_Reg_A = ram[Z80CPU::sp++];
+
+                cycles--;
+                pc += 2;
+            }
+                break;
+            case LD16::HL_SP_LD:
+            {
+                cycles = 6;
+
+                sp = HLasWord();
+
+                cycles--;
+                pc += 2;
+            }
+                break;
+            case Push::PUSH_BC:
+            {
+                cycles = 11;
+
+                pushWord(BCasWord());
+
+                cycles--;
+                pc += 2;
+            }
+                break;
+            case Push::PUSH_DE:
+            {
+                cycles = 11;
+
+                pushWord(DEasWord());
+
+                cycles--;
+                pc += 2;
+            }
+                break;
+            case Push::PUSH_HL:
+            {
+                cycles = 11;
+
+                pushWord(HLasWord());
+
+                cycles--;
+                pc += 2;
+            }
+                break;
+            case Push::PUSH_AF:
+            {
+                cycles = 11;
+
+                pushWord(AFasWord());
+
+                cycles--;
+                pc += 2;
+            }
+                break;
+            case LD16::nn_HL_LD_EXT:
+            {
+                cycles = 16;
+                std::uint32_t location = readWord(pc + 1);
+
+                ByteRegister::H_Reg_A = ram[location + 1];
+                ByteRegister::L_Reg_A = ram[location];
+
+                cycles--;
+                pc += 2;
+            }
+                break;
+            case LD16::HL_nn_LD:
+            {
+                cycles = 16;
+
+                std::uint32_t location = readWord(pc + 1);
+
+                ram[location + 1] = ByteRegister::H_Reg_A;
+                ram[location]     = ByteRegister::L_Reg_A;
+
+                cycles--;
+                pc += 2;
+            }
+                break;
 
         }
 

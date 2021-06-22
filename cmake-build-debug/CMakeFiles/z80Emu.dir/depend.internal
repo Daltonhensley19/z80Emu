@@ -9,6 +9,7 @@ CMakeFiles/z80Emu.dir/src/main.cpp.o
  /home/dalton/Desktop/z80Emu/include/fmt/xchar.h
  /home/dalton/Desktop/z80Emu/include/memory.h
  /home/dalton/Desktop/z80Emu/include/registers.h
+ /home/dalton/Desktop/z80Emu/include/stack.h
  /home/dalton/Desktop/z80Emu/include/z80.h
  /home/dalton/Desktop/z80Emu/src/main.cpp
 CMakeFiles/z80Emu.dir/src/memory.cpp.o
@@ -24,10 +25,18 @@ CMakeFiles/z80Emu.dir/src/registers.cpp.o
  /home/dalton/Desktop/z80Emu/include/memory.h
  /home/dalton/Desktop/z80Emu/include/registers.h
  /home/dalton/Desktop/z80Emu/src/registers.cpp
+CMakeFiles/z80Emu.dir/src/stack.cpp.o
+ /home/dalton/Desktop/z80Emu/include/emuTypes.h
+ /home/dalton/Desktop/z80Emu/include/memory.h
+ /home/dalton/Desktop/z80Emu/include/registers.h
+ /home/dalton/Desktop/z80Emu/include/stack.h
+ /home/dalton/Desktop/z80Emu/include/z80.h
+ /home/dalton/Desktop/z80Emu/src/stack.cpp
 CMakeFiles/z80Emu.dir/src/z80.cpp.o
  /home/dalton/Desktop/z80Emu/include/emuTypes.h
  /home/dalton/Desktop/z80Emu/include/memory.h
  /home/dalton/Desktop/z80Emu/include/opcodes.h
  /home/dalton/Desktop/z80Emu/include/registers.h
+ /home/dalton/Desktop/z80Emu/include/stack.h
  /home/dalton/Desktop/z80Emu/include/z80.h
  /home/dalton/Desktop/z80Emu/src/z80.cpp

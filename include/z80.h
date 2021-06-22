@@ -3,24 +3,23 @@
 #include "emuTypes.h"
 #include "registers.h"
 #include "memory.h"
+#include "stack.h"
 
-struct Z80CPU
+struct Z80CPU : public Stack
 {
 
     // Program Counter
-     Word pc;
+    Word        pc;
     // Stack Pointer
-     Word sp;
+   inline static Word sp;
     // Index Register
-     Word ix;
+    Word        ix;
     // Index Register
-     Word iy;
+    Word        iy;
     // Interrupt Page Register
-     Byte I;
+    Byte        I;
     // Memory Refresh Register
-     Byte R;
-
-
+    Byte        R;
 
 
 /*
@@ -43,7 +42,6 @@ struct Z80CPU
     // Usually 8-bits (currentOpcode & 0xFF00 >> 8),
     // but sometimes 16-bits due to prefixes (DD, ED, FD, CB).
     Word currentOpcode;
-
 
 
     void executeInstruction();

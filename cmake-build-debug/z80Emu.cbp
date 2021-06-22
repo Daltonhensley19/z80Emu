@@ -147,6 +147,9 @@
 			<Option target="z80Emu"/>
 			<Option target="z80EmuTests"/>
 		</Unit>
+		<Unit filename="/home/dalton/Desktop/z80Emu/src/stack.cpp">
+			<Option target="z80Emu"/>
+		</Unit>
 		<Unit filename="/home/dalton/Desktop/z80Emu/src/z80.cpp">
 			<Option target="z80Emu"/>
 		</Unit>
