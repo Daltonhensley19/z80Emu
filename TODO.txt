@@ -1,9 +1,8 @@
-1. [x] Work on implied addressing of 8-bit loads
+[1]: Think about adding Dear imgui support.
 
-2. [x] Add debug functionality to registers (and maybe memory functions?)
+[2]: Finish 16-bit load table
 
-3. [x] Code refactor
+[3]: Look into math opcode table
 
-4. [x] test code
+[4]: refactor?
 
-5. []

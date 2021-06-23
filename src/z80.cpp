@@ -957,6 +957,24 @@ void Z80CPU::executeInstruction()
 
                     }
                         break;
+                    case LD16::nn_HL_LD_EXT:
+                    {
+                        cycles = 20;
+
+                        std::uint32_t location = readWord(pc + 2);
+
+                        Byte IByte = (iy >> BYTE_SHIFT_ALIGNMENT) & MAX_BYTE_SIZE;
+                        Byte YByte = iy & MAX_BYTE_SIZE;
+
+                        IByte = ram[location + 1];
+                        YByte = ram[location];
+
+                        iy = bytesToWord(IByte, YByte);
+
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
 
                 }
             }
@@ -1051,6 +1069,50 @@ void Z80CPU::executeInstruction()
 
                         ram[location + 1] = S;
                         ram[location]     = P;
+
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+                    case LD16::ED_nn_BC_LD:
+                    {
+                        cycles = 20;
+
+                        std::uint32_t location = readWord(pc + 2);
+
+                        ByteRegister::B_Reg_A = ram[location + 1];
+                        ByteRegister::C_Reg_A = ram[location];
+
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+                    case LD16::ED_nn_DE_LD:
+                    {
+                        cycles = 20;
+
+                        std::uint32_t location = readWord(pc + 2);
+
+                        ByteRegister::D_Reg_A = ram[location + 1];
+                        ByteRegister::E_Reg_A = ram[location];
+
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+                    case LD16::ED_nn_SP_LD:
+                    {
+                        cycles = 20;
+
+                        std::uint32_t location = readWord(pc + 2);
+
+                        Byte S = (sp >> BYTE_SHIFT_ALIGNMENT) & MAX_BYTE_SIZE;
+                        Byte P = sp & MAX_BYTE_SIZE;
+
+                        S = ram[location + 1];
+                        P = ram[location];
+
+                        sp = bytesToWord(S, P);
 
                         cycles--;
                         pc += 2;
