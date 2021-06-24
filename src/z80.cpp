@@ -784,7 +784,7 @@ void Z80CPU::executeInstruction()
                     {
                         cycles = 14;
 
-                        ix = popWord();
+                        ix = stack.popWord();
 
                         cycles--;
                         pc += 2;
@@ -816,11 +816,12 @@ void Z80CPU::executeInstruction()
                         cycles--;
                         pc += 2;
                     }
+                        break;
                     case Push::PUSH_HL:
                     {
                         cycles = 15;
 
-                        pushWord(ix);
+                        stack.pushWord(ix);
 
                         cycles--;
                         pc += 2;
@@ -1010,7 +1011,7 @@ void Z80CPU::executeInstruction()
                     {
                         cycles = 14;
 
-                        iy = popWord();
+                        iy = stack.popWord();
 
                         cycles--;
                         pc += 2;
@@ -1030,7 +1031,7 @@ void Z80CPU::executeInstruction()
                     {
                         cycles = 15;
 
-                        pushWord(iy);
+                        stack.pushWord(iy);
 
                         cycles--;
                         pc += 2;
@@ -1282,7 +1283,7 @@ void Z80CPU::executeInstruction()
             {
                 cycles = 11;
 
-                pushWord(BCasWord());
+                stack.pushWord(BCasWord());
 
                 cycles--;
                 pc += 2;
@@ -1292,7 +1293,7 @@ void Z80CPU::executeInstruction()
             {
                 cycles = 11;
 
-                pushWord(DEasWord());
+                stack.pushWord(DEasWord());
 
                 cycles--;
                 pc += 2;
@@ -1302,7 +1303,7 @@ void Z80CPU::executeInstruction()
             {
                 cycles = 11;
 
-                pushWord(HLasWord());
+                stack.pushWord(HLasWord());
 
                 cycles--;
                 pc += 2;
@@ -1312,7 +1313,7 @@ void Z80CPU::executeInstruction()
             {
                 cycles = 11;
 
-                pushWord(AFasWord());
+                stack.pushWord(AFasWord());
 
                 cycles--;
                 pc += 2;
@@ -1341,6 +1342,42 @@ void Z80CPU::executeInstruction()
 
                 cycles--;
                 pc += 2;
+            }
+                break;
+            case Ex::AFPRIME_AF:
+            {
+                cycles = 4;
+
+                ByteRegister::A_Reg_A = ByteRegister::A_Reg_B;
+                ByteRegister::F_Reg_A = ByteRegister::F_Reg_B;
+
+                cycles--;
+                pc += 2;
+
+            }
+                break;
+            case Ex::PAIRPRIME_PAIR:
+            {
+                cycles = 4;
+
+                ByteRegister::B_Reg_A = ByteRegister::B_Reg_B;
+                ByteRegister::C_Reg_A = ByteRegister::C_Reg_B;
+
+                ByteRegister::D_Reg_A = ByteRegister::D_Reg_B;
+                ByteRegister::E_Reg_A = ByteRegister::E_Reg_B;
+
+                ByteRegister::H_Reg_A = ByteRegister::H_Reg_B;
+                ByteRegister::L_Reg_A = ByteRegister::L_Reg_B;
+
+                cycles--;
+                pc += 2;
+
+
+            }
+                break;
+            case Ex::HL_SP:
+            {
+
             }
                 break;
 

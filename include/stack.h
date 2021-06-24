@@ -2,13 +2,14 @@
 
 #include "memory.h"
 
-class Stack
+struct Stack
 {
 public:
     void pushByte(Byte byte);
     void pushWord(Word word);
 
     Word popWord();
+
 
 };
 

@@ -1,6 +1,6 @@
 [1]: Think about adding Dear imgui support.
 
-[2]: Finish 16-bit load table
+[2]: remove inheritance, focus on composition
 
 [3]: Look into math opcode table
 

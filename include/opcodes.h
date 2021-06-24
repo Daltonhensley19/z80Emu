@@ -4,9 +4,9 @@
 
 
 // 8-Bit Load Group (LD)
-class LD8
+struct LD8
 {
-public:
+
     //TODO(Dalton): Add prefixes to opcodes in 8-bit table.
 
     // NOTE: Format is register (source) to register (destination).
@@ -135,9 +135,8 @@ public:
 
 };
 
-class LD16
+struct LD16
 {
-public:
     /* This starts the 16-bit load opcode table. */
 
 // Imm. Extended to Register pair
@@ -146,7 +145,6 @@ public:
     const static Word nn_DE_LD = 0x11;
     const static Word nn_HL_LD = 0x21;
     const static Word nn_SP_LD = 0x31;
-
 
 
 // Ext. to register
@@ -164,28 +162,39 @@ public:
 
 
     // Register to register
-    const static Word HL_SP_LD    = 0xF9;
+    const static Word HL_SP_LD = 0xF9;
 
 
 };
 
-class Pop
+struct Pop
 {
-public:
     // Push opcodes (found in the table with 16-bit load)
-    const static Word POP_AF    = 0xF1;
-    const static Word POP_BC    = 0xC1;
-    const static Word POP_DE    = 0xD1;
-    const static Word POP_HL    = 0xE1;
+    const static Word POP_AF = 0xF1;
+    const static Word POP_BC = 0xC1;
+    const static Word POP_DE = 0xD1;
+    const static Word POP_HL = 0xE1;
 
 };
 
-class Push
+struct Push
 {
-public:
-    const static Word PUSH_AF    = 0xF5;
-    const static Word PUSH_BC    = 0xC5;
-    const static Word PUSH_DE    = 0xD5;
-    const static Word PUSH_HL    = 0xE5;
+    const static Word PUSH_AF = 0xF5;
+    const static Word PUSH_BC = 0xC5;
+    const static Word PUSH_DE = 0xD5;
+    const static Word PUSH_HL = 0xE5;
+
+};
+
+
+// Exchange opcode group
+struct Ex
+{
+
+    const static Word AFPRIME_AF = 0x08;
+
+    const static Word PAIRPRIME_PAIR = 0xD9;
+
+    const static Word HL_SP = 0xE3;
 
 };

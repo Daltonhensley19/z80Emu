@@ -5,7 +5,7 @@
 #include "memory.h"
 #include "stack.h"
 
-struct Z80CPU : public Stack
+struct Z80CPU
 {
 
     // Program Counter
@@ -43,6 +43,8 @@ struct Z80CPU : public Stack
     // but sometimes 16-bits due to prefixes (DD, ED, FD, CB).
     Word currentOpcode;
 
+    // Stack operations
+    Stack stack;
 
     void executeInstruction();
 
