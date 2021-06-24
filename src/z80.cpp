@@ -1331,6 +1331,7 @@ void Z80CPU::executeInstruction()
                 pc += 2;
             }
                 break;
+            //TODO(Dalton) These exchange, use temp variable
             case LD16::HL_nn_LD:
             {
                 cycles = 16;
@@ -1347,7 +1348,6 @@ void Z80CPU::executeInstruction()
             case Ex::AFPRIME_AF:
             {
                 cycles = 4;
-
                 ByteRegister::A_Reg_A = ByteRegister::A_Reg_B;
                 ByteRegister::F_Reg_A = ByteRegister::F_Reg_B;
 
@@ -1377,7 +1377,20 @@ void Z80CPU::executeInstruction()
                 break;
             case Ex::HL_SP:
             {
+                cycles = 19;
 
+                ByteRegister::H_Reg_A = ram[sp + 1];
+                ByteRegister::L_Reg_A = ram[sp];
+
+                cycles--;
+                pc += 2;
+
+            }
+                break;
+            //TODO(dalton) implement opcode
+            case Ex::HL_DE:
+            {
+                cycles = 4;
             }
                 break;
 

@@ -197,4 +197,6 @@ struct Ex
 
     const static Word HL_SP = 0xE3;
 
+    const static Word HL_DE = 0xEB;
+
 };
