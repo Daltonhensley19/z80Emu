@@ -15,9 +15,8 @@ void Z80CPU::executeInstruction()
     while (cycles > 0)
     {
         // fetch current opcode
-        currentOpcode = ram[pc] << 8 | ram[pc + 1];
-        Byte opcodeByte = ((currentOpcode & 0xFF00) >> BYTE_SHIFT_ALIGNMENT);
-        switch (opcodeByte)
+        currentOpcode = ram[pc];
+        switch (currentOpcode)
         {
             case LD8::A_A_LD:
             {
@@ -817,6 +816,17 @@ void Z80CPU::executeInstruction()
                         cycles--;
                         pc += 2;
                     }
+                    case Push::PUSH_HL:
+                    {
+                        cycles = 15;
+
+                        pushWord(ix);
+
+                        cycles--;
+                        pc += 2;
+
+                    }
+                        break;
 
 
                 }
@@ -940,6 +950,17 @@ void Z80CPU::executeInstruction()
                         pc += 2;
                     }
                         break;
+                    case LD8::n_HL_LD:
+                    {
+                        cycles = 19;
+
+                        ram[iy + d] = ram[pc + 3];
+
+                        cycles--;
+                        pc += 2;
+
+                    }
+                        break;
                     case LD16::HL_nn_LD:
                     {
                         cycles = 20;
@@ -973,6 +994,47 @@ void Z80CPU::executeInstruction()
 
                         cycles--;
                         pc += 2;
+                    }
+                        break;
+                    case LD16::nn_HL_LD:
+                    {
+                        cycles = 14;
+
+                        iy = readWord(pc + 2);
+
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+                    case Pop::POP_HL:
+                    {
+                        cycles = 14;
+
+                        iy = popWord();
+
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+                    case LD16::HL_SP_LD:
+                    {
+                        cycles = 10;
+
+                        sp = iy;
+
+                        cycles--;
+                        pc += 2;
+                    }
+                        break;
+                    case Push::PUSH_HL:
+                    {
+                        cycles = 15;
+
+                        pushWord(iy);
+
+                        cycles--;
+                        pc += 2;
+
                     }
                         break;
 
