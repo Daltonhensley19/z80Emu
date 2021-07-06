@@ -828,7 +828,30 @@ void Z80CPU::executeInstruction()
 
                     }
                         break;
+                    case Ex::HL_SP:
+                    {
+                        cycles = 23;
 
+                        // SP and IX Exchange
+                        // Store temp values
+                        auto tempRegI = (ix >> BYTE_SHIFT_ALIGNMENT) & MAX_BYTE_SIZE;
+                        auto tempRegX = ix & MAX_BYTE_SIZE;
+
+                        // Set IX to SP indirect
+                        auto pIndir = ram[sp];
+                        auto sIndir = ram[sp + 1];
+
+                        ix = (sIndir << BYTE_SHIFT_ALIGNMENT) | (pIndir & MAX_BYTE_SIZE);
+
+                        // Set SP indirect to ix using temp
+                        ram[sp + 1] = tempRegI;
+                        ram[sp]     = tempRegX;
+
+                        cycles--;
+                        pc += 2;
+
+                    }
+                        break;
 
                 }
             }
@@ -1036,6 +1059,29 @@ void Z80CPU::executeInstruction()
                         cycles--;
                         pc += 2;
 
+                    }
+                        break;
+                    case Ex::HL_SP:
+                    {
+                        cycles = 23;
+
+                        // SP and IY Exchange
+                        // Store temp values
+                        auto tempRegI = (iy >> BYTE_SHIFT_ALIGNMENT) & MAX_BYTE_SIZE;
+                        auto tempRegY = iy & MAX_BYTE_SIZE;
+
+                        // Set IY to SP indirect
+                        auto pIndir = ram[sp];
+                        auto sIndir = ram[sp + 1];
+
+                        iy = (sIndir << BYTE_SHIFT_ALIGNMENT) | (pIndir & MAX_BYTE_SIZE);
+
+                        // Set SP indirect to iy using temp
+                        ram[sp + 1] = tempRegI;
+                        ram[sp]     = tempRegY;
+
+                        cycles--;
+                        pc += 2;
                     }
                         break;
 
@@ -1348,8 +1394,17 @@ void Z80CPU::executeInstruction()
             {
                 cycles = 4;
 
+                // Store temp values
+                auto tempReg1 = ByteRegister::A_Reg_A;
+                auto tempReg2 = ByteRegister::F_Reg_A;
+
+                // Set pair to prime pair
                 ByteRegister::A_Reg_A = ByteRegister::A_Reg_B;
                 ByteRegister::F_Reg_A = ByteRegister::F_Reg_B;
+
+                // Set prime pair to pair using temp
+                ByteRegister::A_Reg_B = tempReg1;
+                ByteRegister::F_Reg_B = tempReg2;
 
                 cycles--;
                 pc += 2;
@@ -1360,23 +1415,95 @@ void Z80CPU::executeInstruction()
             {
                 cycles = 4;
 
+                // BC and BC Prime Exchange
+                // Store temp values
+                auto tempRegB = ByteRegister::B_Reg_A;
+                auto tempRegC = ByteRegister::C_Reg_A;
+
+                // Set pair to prime pair
                 ByteRegister::B_Reg_A = ByteRegister::B_Reg_B;
                 ByteRegister::C_Reg_A = ByteRegister::C_Reg_B;
 
+                // Set prime pair to pair using temp
+                ByteRegister::B_Reg_B = tempRegB;
+                ByteRegister::C_Reg_B = tempRegC;
+
+
+                ////////////////////////////////////////////////
+
+                // DE and DE Prime Exchange
+                // Store temp values
+                auto tempRegD = ByteRegister::D_Reg_A;
+                auto tempRegE = ByteRegister::E_Reg_A;
+
+                // Set pair to prime pair
                 ByteRegister::D_Reg_A = ByteRegister::D_Reg_B;
                 ByteRegister::E_Reg_A = ByteRegister::E_Reg_B;
 
+                // Set prime pair to pair using temp
+                ByteRegister::D_Reg_B = tempRegD;
+                ByteRegister::E_Reg_B = tempRegE;
+
+
+                //////////////////////////////////////////////
+
+                // HL and HL Prime Exchange
+                // Store temp values
+                auto tempRegH = ByteRegister::H_Reg_A;
+                auto tempRegL = ByteRegister::L_Reg_A;
+
+                // Set pair to prime pair
                 ByteRegister::H_Reg_A = ByteRegister::H_Reg_B;
                 ByteRegister::L_Reg_A = ByteRegister::L_Reg_B;
 
+                // Set prime pair to pair using temp
+                ByteRegister::H_Reg_B = tempRegH;
+                ByteRegister::L_Reg_B = tempRegL;
+
                 cycles--;
                 pc += 2;
-
 
             }
                 break;
             case Ex::HL_SP:
             {
+                cycles = 19;
+
+                // Store temp values
+                auto tempRegH = ByteRegister::H_Reg_A;
+                auto tempRegL = ByteRegister::L_Reg_A;
+
+                // Set pair (HL) to stack pointer indirect
+
+                ByteRegister::H_Reg_A = ram[sp + 1];
+                ByteRegister::L_Reg_A = ram[sp];
+
+                // Set sp to pair using temp
+                ram[sp + 1] = tempRegH;
+                ram[sp]     = tempRegL;
+
+                cycles--;
+                pc += 2;
+            }
+                break;
+            case Ex::HL_DE:
+            {
+                cycles = 4;
+
+                // Store temp values
+                auto tempRegD = ByteRegister::D_Reg_A;
+                auto tempRegE = ByteRegister::E_Reg_A;
+
+                // Set pair to prime pair
+                ByteRegister::D_Reg_A = ByteRegister::H_Reg_A;
+                ByteRegister::E_Reg_A = ByteRegister::L_Reg_A;
+
+                // Set prime pair to pair using temp
+                ByteRegister::H_Reg_B = tempRegD;
+                ByteRegister::L_Reg_B = tempRegE;
+
+                cycles--;
+                pc += 2;
 
             }
                 break;

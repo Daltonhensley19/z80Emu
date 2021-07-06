@@ -191,10 +191,8 @@ struct Push
 struct Ex
 {
 
-    const static Word AFPRIME_AF = 0x08;
-
+    const static Word AFPRIME_AF     = 0x08;
     const static Word PAIRPRIME_PAIR = 0xD9;
-
-    const static Word HL_SP = 0xE3;
-
+    const static Word HL_SP          = 0xE3;
+    const static Word HL_DE          = 0xEB;
 };
