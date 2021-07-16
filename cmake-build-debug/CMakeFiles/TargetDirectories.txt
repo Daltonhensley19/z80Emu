@@ -1,6 +1,0 @@
-/home/dalton/Desktop/z80Emu/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/dalton/Desktop/z80Emu/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/dalton/Desktop/z80Emu/cmake-build-debug/CMakeFiles/z80Emu.dir
-/home/dalton/Desktop/z80Emu/cmake-build-debug/tests/CMakeFiles/rebuild_cache.dir
-/home/dalton/Desktop/z80Emu/cmake-build-debug/tests/CMakeFiles/edit_cache.dir
-/home/dalton/Desktop/z80Emu/cmake-build-debug/tests/CMakeFiles/z80EmuTests.dir

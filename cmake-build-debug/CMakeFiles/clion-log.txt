@@ -1,4 +1,0 @@
-/usr/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - Unix Makefiles" /home/dalton/Desktop/z80Emu
--- Configuring done
--- Generating done
--- Build files have been written to: /home/dalton/Desktop/z80Emu/cmake-build-debug
