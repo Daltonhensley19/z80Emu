@@ -7,8 +7,25 @@ set(CMAKE_CXX_FLAGS "-Wall -Wextra")
 
 
 
-include_directories(z80Emu include/*)
+
+
 add_executable(z80Emu
-        src/main.cpp src/z80.cpp src/registers.cpp src/memory.cpp src/stack.cpp)
+        src/main.cpp src/z80.cpp src/registers.cpp src/memory.cpp 
+        src/stack.cpp)
+
+
+
+
+
+
+
 
 add_subdirectory(tests)
+add_subdirectory(libs)
+
+
+
+
+
+target_include_directories(z80Emu PUBLIC libs/imgui/)
+target_link_libraries(z80Emu PUBLIC imgui glfw)

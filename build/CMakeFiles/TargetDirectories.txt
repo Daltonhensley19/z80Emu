@@ -4,3 +4,6 @@
 /home/dalton/desktop/z80Emu2/build/tests/CMakeFiles/rebuild_cache.dir
 /home/dalton/desktop/z80Emu2/build/tests/CMakeFiles/edit_cache.dir
 /home/dalton/desktop/z80Emu2/build/tests/CMakeFiles/z80EmuTests.dir
+/home/dalton/desktop/z80Emu2/build/libs/CMakeFiles/rebuild_cache.dir
+/home/dalton/desktop/z80Emu2/build/libs/CMakeFiles/edit_cache.dir
+/home/dalton/desktop/z80Emu2/build/libs/CMakeFiles/imgui.dir

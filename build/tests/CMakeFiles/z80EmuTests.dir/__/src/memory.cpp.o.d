@@ -1,5 +1,6 @@
 tests/CMakeFiles/z80EmuTests.dir/__/src/memory.cpp.o: \
  /home/dalton/desktop/z80Emu2/src/memory.cpp /usr/include/stdc-predef.h \
+ /home/dalton/desktop/z80Emu2/src/../include/memory.h \
  /home/dalton/desktop/z80Emu2/src/../include/emuTypes.h \
  /usr/include/c++/11.1.0/cstdint \
  /usr/include/c++/11.1.0/x86_64-pc-linux-gnu/bits/c++config.h \
@@ -14,9 +15,8 @@ tests/CMakeFiles/z80EmuTests.dir/__/src/memory.cpp.o: \
  /usr/include/bits/types.h /usr/include/bits/timesize.h \
  /usr/include/bits/typesizes.h /usr/include/bits/time64.h \
  /usr/include/bits/wchar.h /usr/include/bits/stdint-intn.h \
- /usr/include/bits/stdint-uintn.h \
- /home/dalton/desktop/z80Emu2/src/../include/memory.h \
- /usr/include/c++/11.1.0/array /usr/include/c++/11.1.0/utility \
+ /usr/include/bits/stdint-uintn.h /usr/include/c++/11.1.0/array \
+ /usr/include/c++/11.1.0/utility \
  /usr/include/c++/11.1.0/bits/stl_relops.h \
  /usr/include/c++/11.1.0/bits/stl_pair.h \
  /usr/include/c++/11.1.0/bits/move.h /usr/include/c++/11.1.0/type_traits \

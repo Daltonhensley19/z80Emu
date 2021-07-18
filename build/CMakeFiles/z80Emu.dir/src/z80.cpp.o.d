@@ -16,7 +16,6 @@ CMakeFiles/z80Emu.dir/src/z80.cpp.o: \
  /usr/include/bits/typesizes.h /usr/include/bits/time64.h \
  /usr/include/bits/wchar.h /usr/include/bits/stdint-intn.h \
  /usr/include/bits/stdint-uintn.h \
- /home/dalton/desktop/z80Emu2/src/../include/registers.h \
  /home/dalton/desktop/z80Emu2/src/../include/memory.h \
  /usr/include/c++/11.1.0/array /usr/include/c++/11.1.0/utility \
  /usr/include/c++/11.1.0/bits/stl_relops.h \
@@ -43,5 +42,6 @@ CMakeFiles/z80Emu.dir/src/z80.cpp.o: \
  /usr/include/c++/11.1.0/bits/predefined_ops.h \
  /usr/include/c++/11.1.0/bits/range_access.h \
  /usr/include/c++/11.1.0/limits \
+ /home/dalton/desktop/z80Emu2/src/../include/registers.h \
  /home/dalton/desktop/z80Emu2/src/../include/stack.h \
  /home/dalton/desktop/z80Emu2/src/../include/opcodes.h
