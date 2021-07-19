@@ -155,6 +155,30 @@ imgui/fast:
 	$(MAKE) $(MAKESILENT) -f libs/CMakeFiles/imgui.dir/build.make libs/CMakeFiles/imgui.dir/build
 .PHONY : imgui/fast
 
+src/debugger.o: src/debugger.cpp.o
+.PHONY : src/debugger.o
+
+# target to build an object file
+src/debugger.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/z80Emu.dir/build.make CMakeFiles/z80Emu.dir/src/debugger.cpp.o
+.PHONY : src/debugger.cpp.o
+
+src/debugger.i: src/debugger.cpp.i
+.PHONY : src/debugger.i
+
+# target to preprocess a source file
+src/debugger.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/z80Emu.dir/build.make CMakeFiles/z80Emu.dir/src/debugger.cpp.i
+.PHONY : src/debugger.cpp.i
+
+src/debugger.s: src/debugger.cpp.s
+.PHONY : src/debugger.s
+
+# target to generate assembly for a file
+src/debugger.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/z80Emu.dir/build.make CMakeFiles/z80Emu.dir/src/debugger.cpp.s
+.PHONY : src/debugger.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -286,6 +310,9 @@ help:
 	@echo "... imgui"
 	@echo "... z80Emu"
 	@echo "... z80EmuTests"
+	@echo "... src/debugger.o"
+	@echo "... src/debugger.i"
+	@echo "... src/debugger.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

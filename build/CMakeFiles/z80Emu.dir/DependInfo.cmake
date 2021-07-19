@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/dalton/desktop/z80Emu2/src/debugger.cpp" "CMakeFiles/z80Emu.dir/src/debugger.cpp.o" "gcc" "CMakeFiles/z80Emu.dir/src/debugger.cpp.o.d"
   "/home/dalton/desktop/z80Emu2/src/main.cpp" "CMakeFiles/z80Emu.dir/src/main.cpp.o" "gcc" "CMakeFiles/z80Emu.dir/src/main.cpp.o.d"
   "/home/dalton/desktop/z80Emu2/src/memory.cpp" "CMakeFiles/z80Emu.dir/src/memory.cpp.o" "gcc" "CMakeFiles/z80Emu.dir/src/memory.cpp.o.d"
   "/home/dalton/desktop/z80Emu2/src/registers.cpp" "CMakeFiles/z80Emu.dir/src/registers.cpp.o" "gcc" "CMakeFiles/z80Emu.dir/src/registers.cpp.o.d"

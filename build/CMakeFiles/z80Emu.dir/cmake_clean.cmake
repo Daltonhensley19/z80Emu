@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/z80Emu.dir/src/debugger.cpp.o"
+  "CMakeFiles/z80Emu.dir/src/debugger.cpp.o.d"
   "CMakeFiles/z80Emu.dir/src/main.cpp.o"
   "CMakeFiles/z80Emu.dir/src/main.cpp.o.d"
   "CMakeFiles/z80Emu.dir/src/memory.cpp.o"
