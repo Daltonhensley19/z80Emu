@@ -1,1 +1,0 @@
-/usr/bin/c++ -Wall -Wextra -pthread -lGLEW -lglfw -lGL CMakeFiles/z80Emu.dir/src/main.cpp.o CMakeFiles/z80Emu.dir/src/z80.cpp.o CMakeFiles/z80Emu.dir/src/registers.cpp.o CMakeFiles/z80Emu.dir/src/memory.cpp.o CMakeFiles/z80Emu.dir/src/stack.cpp.o CMakeFiles/z80Emu.dir/src/debugger.cpp.o -o z80Emu  libs/libimgui.a 
