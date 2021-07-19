@@ -139,29 +139,62 @@ libs/CMakeFiles/imgui.dir/imgui/imgui_widgets.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/imgui.dir/imgui/imgui_widgets.cpp.s"
 	cd /home/dalton/desktop/z80Emu2/build/libs && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dalton/desktop/z80Emu2/libs/imgui/imgui_widgets.cpp -o CMakeFiles/imgui.dir/imgui/imgui_widgets.cpp.s
 
+libs/CMakeFiles/imgui.dir/imgui/imgui_impl_glfw.cpp.o: libs/CMakeFiles/imgui.dir/flags.make
+libs/CMakeFiles/imgui.dir/imgui/imgui_impl_glfw.cpp.o: ../libs/imgui/imgui_impl_glfw.cpp
+libs/CMakeFiles/imgui.dir/imgui/imgui_impl_glfw.cpp.o: libs/CMakeFiles/imgui.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dalton/desktop/z80Emu2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object libs/CMakeFiles/imgui.dir/imgui/imgui_impl_glfw.cpp.o"
+	cd /home/dalton/desktop/z80Emu2/build/libs && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT libs/CMakeFiles/imgui.dir/imgui/imgui_impl_glfw.cpp.o -MF CMakeFiles/imgui.dir/imgui/imgui_impl_glfw.cpp.o.d -o CMakeFiles/imgui.dir/imgui/imgui_impl_glfw.cpp.o -c /home/dalton/desktop/z80Emu2/libs/imgui/imgui_impl_glfw.cpp
+
+libs/CMakeFiles/imgui.dir/imgui/imgui_impl_glfw.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/imgui.dir/imgui/imgui_impl_glfw.cpp.i"
+	cd /home/dalton/desktop/z80Emu2/build/libs && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dalton/desktop/z80Emu2/libs/imgui/imgui_impl_glfw.cpp > CMakeFiles/imgui.dir/imgui/imgui_impl_glfw.cpp.i
+
+libs/CMakeFiles/imgui.dir/imgui/imgui_impl_glfw.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/imgui.dir/imgui/imgui_impl_glfw.cpp.s"
+	cd /home/dalton/desktop/z80Emu2/build/libs && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dalton/desktop/z80Emu2/libs/imgui/imgui_impl_glfw.cpp -o CMakeFiles/imgui.dir/imgui/imgui_impl_glfw.cpp.s
+
+libs/CMakeFiles/imgui.dir/imgui/imgui_impl_opengl3.cpp.o: libs/CMakeFiles/imgui.dir/flags.make
+libs/CMakeFiles/imgui.dir/imgui/imgui_impl_opengl3.cpp.o: ../libs/imgui/imgui_impl_opengl3.cpp
+libs/CMakeFiles/imgui.dir/imgui/imgui_impl_opengl3.cpp.o: libs/CMakeFiles/imgui.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dalton/desktop/z80Emu2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object libs/CMakeFiles/imgui.dir/imgui/imgui_impl_opengl3.cpp.o"
+	cd /home/dalton/desktop/z80Emu2/build/libs && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT libs/CMakeFiles/imgui.dir/imgui/imgui_impl_opengl3.cpp.o -MF CMakeFiles/imgui.dir/imgui/imgui_impl_opengl3.cpp.o.d -o CMakeFiles/imgui.dir/imgui/imgui_impl_opengl3.cpp.o -c /home/dalton/desktop/z80Emu2/libs/imgui/imgui_impl_opengl3.cpp
+
+libs/CMakeFiles/imgui.dir/imgui/imgui_impl_opengl3.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/imgui.dir/imgui/imgui_impl_opengl3.cpp.i"
+	cd /home/dalton/desktop/z80Emu2/build/libs && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dalton/desktop/z80Emu2/libs/imgui/imgui_impl_opengl3.cpp > CMakeFiles/imgui.dir/imgui/imgui_impl_opengl3.cpp.i
+
+libs/CMakeFiles/imgui.dir/imgui/imgui_impl_opengl3.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/imgui.dir/imgui/imgui_impl_opengl3.cpp.s"
+	cd /home/dalton/desktop/z80Emu2/build/libs && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dalton/desktop/z80Emu2/libs/imgui/imgui_impl_opengl3.cpp -o CMakeFiles/imgui.dir/imgui/imgui_impl_opengl3.cpp.s
+
 # Object files for target imgui
 imgui_OBJECTS = \
 "CMakeFiles/imgui.dir/imgui/imgui.cpp.o" \
 "CMakeFiles/imgui.dir/imgui/imgui_demo.cpp.o" \
 "CMakeFiles/imgui.dir/imgui/imgui_draw.cpp.o" \
 "CMakeFiles/imgui.dir/imgui/imgui_tables.cpp.o" \
-"CMakeFiles/imgui.dir/imgui/imgui_widgets.cpp.o"
+"CMakeFiles/imgui.dir/imgui/imgui_widgets.cpp.o" \
+"CMakeFiles/imgui.dir/imgui/imgui_impl_glfw.cpp.o" \
+"CMakeFiles/imgui.dir/imgui/imgui_impl_opengl3.cpp.o"
 
 # External object files for target imgui
 imgui_EXTERNAL_OBJECTS =
 
-libs/libimgui.so: libs/CMakeFiles/imgui.dir/imgui/imgui.cpp.o
-libs/libimgui.so: libs/CMakeFiles/imgui.dir/imgui/imgui_demo.cpp.o
-libs/libimgui.so: libs/CMakeFiles/imgui.dir/imgui/imgui_draw.cpp.o
-libs/libimgui.so: libs/CMakeFiles/imgui.dir/imgui/imgui_tables.cpp.o
-libs/libimgui.so: libs/CMakeFiles/imgui.dir/imgui/imgui_widgets.cpp.o
-libs/libimgui.so: libs/CMakeFiles/imgui.dir/build.make
-libs/libimgui.so: libs/CMakeFiles/imgui.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dalton/desktop/z80Emu2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX shared library libimgui.so"
+libs/libimgui.a: libs/CMakeFiles/imgui.dir/imgui/imgui.cpp.o
+libs/libimgui.a: libs/CMakeFiles/imgui.dir/imgui/imgui_demo.cpp.o
+libs/libimgui.a: libs/CMakeFiles/imgui.dir/imgui/imgui_draw.cpp.o
+libs/libimgui.a: libs/CMakeFiles/imgui.dir/imgui/imgui_tables.cpp.o
+libs/libimgui.a: libs/CMakeFiles/imgui.dir/imgui/imgui_widgets.cpp.o
+libs/libimgui.a: libs/CMakeFiles/imgui.dir/imgui/imgui_impl_glfw.cpp.o
+libs/libimgui.a: libs/CMakeFiles/imgui.dir/imgui/imgui_impl_opengl3.cpp.o
+libs/libimgui.a: libs/CMakeFiles/imgui.dir/build.make
+libs/libimgui.a: libs/CMakeFiles/imgui.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dalton/desktop/z80Emu2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX static library libimgui.a"
+	cd /home/dalton/desktop/z80Emu2/build/libs && $(CMAKE_COMMAND) -P CMakeFiles/imgui.dir/cmake_clean_target.cmake
 	cd /home/dalton/desktop/z80Emu2/build/libs && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/imgui.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-libs/CMakeFiles/imgui.dir/build: libs/libimgui.so
+libs/CMakeFiles/imgui.dir/build: libs/libimgui.a
 .PHONY : libs/CMakeFiles/imgui.dir/build
 
 libs/CMakeFiles/imgui.dir/clean:

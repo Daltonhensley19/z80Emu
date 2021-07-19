@@ -305,15 +305,16 @@ CMakeFiles/z80Emu.dir/src/main.cpp.o: ../src/main.cpp \
   ../include/stack.h \
   /usr/include/c++/11.1.0/cassert \
   /usr/include/assert.h \
-  /usr/include/GLFW/glfw3.h \
+  /usr/include/GL/glew.h \
+  /usr/include/c++/11.1.0/cstddef \
+  /usr/include/GL/glu.h \
   /usr/include/GL/gl.h \
-  /usr/include/GL/glext.h \
-  /usr/include/KHR/khrplatform.h \
   ../libs/imgui/imgui.h \
   ../libs/imgui/imconfig.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/include/float.h \
-  ../libs/imgui/backends/imgui_impl_opengl3.h \
-  ../libs/imgui/backends/imgui_impl_glfw.h
+  ../libs/imgui/imgui_impl_glfw.h \
+  ../libs/imgui/imgui_impl_opengl3.h \
+  /usr/include/GLFW/glfw3.h
 
 CMakeFiles/z80Emu.dir/src/memory.cpp.o: ../src/memory.cpp \
   /usr/include/stdc-predef.h \
@@ -789,21 +790,23 @@ CMakeFiles/z80Emu.dir/src/z80.cpp.o: ../src/z80.cpp \
   ../include/opcodes.h
 
 
-../libs/imgui/backends/imgui_impl_glfw.h:
+/usr/include/GLFW/glfw3.h:
 
-../libs/imgui/backends/imgui_impl_opengl3.h:
+../libs/imgui/imgui_impl_opengl3.h:
+
+../libs/imgui/imgui_impl_glfw.h:
 
 ../libs/imgui/imconfig.h:
 
 ../libs/imgui/imgui.h:
 
-/usr/include/KHR/khrplatform.h:
-
 ../src/z80.cpp:
 
 /usr/include/GL/gl.h:
 
-/usr/include/GLFW/glfw3.h:
+/usr/include/c++/11.1.0/cstddef:
+
+/usr/include/GL/glew.h:
 
 /usr/include/assert.h:
 
@@ -852,6 +855,8 @@ CMakeFiles/z80Emu.dir/src/z80.cpp.o: ../src/z80.cpp \
 ../include/fmt/format-inl.h:
 
 /usr/include/c++/11.1.0/pstl/glue_memory_defs.h:
+
+/usr/include/GL/glu.h:
 
 /usr/include/c++/11.1.0/bits/uses_allocator_args.h:
 
@@ -968,8 +973,6 @@ CMakeFiles/z80Emu.dir/src/z80.cpp.o: ../src/z80.cpp \
 ../src/stack.cpp:
 
 /usr/include/c++/11.1.0/new:
-
-/usr/include/GL/glext.h:
 
 /usr/include/c++/11.1.0/ext/type_traits.h:
 

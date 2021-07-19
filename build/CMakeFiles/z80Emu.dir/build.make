@@ -156,7 +156,7 @@ z80Emu: CMakeFiles/z80Emu.dir/src/registers.cpp.o
 z80Emu: CMakeFiles/z80Emu.dir/src/memory.cpp.o
 z80Emu: CMakeFiles/z80Emu.dir/src/stack.cpp.o
 z80Emu: CMakeFiles/z80Emu.dir/build.make
-z80Emu: libs/libimgui.so
+z80Emu: libs/libimgui.a
 z80Emu: CMakeFiles/z80Emu.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dalton/desktop/z80Emu2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable z80Emu"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/z80Emu.dir/link.txt --verbose=$(VERBOSE)

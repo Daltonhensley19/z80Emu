@@ -116,12 +116,12 @@ tests/clean: tests/CMakeFiles/z80EmuTests.dir/clean
 CMakeFiles/z80Emu.dir/all: libs/CMakeFiles/imgui.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/z80Emu.dir/build.make CMakeFiles/z80Emu.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/z80Emu.dir/build.make CMakeFiles/z80Emu.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/dalton/desktop/z80Emu2/build/CMakeFiles --progress-num=7,8,9,10,11,12 "Built target z80Emu"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/dalton/desktop/z80Emu2/build/CMakeFiles --progress-num=9,10,11,12,13,14 "Built target z80Emu"
 .PHONY : CMakeFiles/z80Emu.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/z80Emu.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dalton/desktop/z80Emu2/build/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dalton/desktop/z80Emu2/build/CMakeFiles 14
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/z80Emu.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/dalton/desktop/z80Emu2/build/CMakeFiles 0
 .PHONY : CMakeFiles/z80Emu.dir/rule
@@ -142,7 +142,7 @@ CMakeFiles/z80Emu.dir/clean:
 tests/CMakeFiles/z80EmuTests.dir/all:
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/z80EmuTests.dir/build.make tests/CMakeFiles/z80EmuTests.dir/depend
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/z80EmuTests.dir/build.make tests/CMakeFiles/z80EmuTests.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/dalton/desktop/z80Emu2/build/CMakeFiles --progress-num=13,14,15,16,17 "Built target z80EmuTests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/dalton/desktop/z80Emu2/build/CMakeFiles --progress-num=15,16,17,18,19 "Built target z80EmuTests"
 .PHONY : tests/CMakeFiles/z80EmuTests.dir/all
 
 # Build rule for subdir invocation for target.
@@ -168,12 +168,12 @@ tests/CMakeFiles/z80EmuTests.dir/clean:
 libs/CMakeFiles/imgui.dir/all:
 	$(MAKE) $(MAKESILENT) -f libs/CMakeFiles/imgui.dir/build.make libs/CMakeFiles/imgui.dir/depend
 	$(MAKE) $(MAKESILENT) -f libs/CMakeFiles/imgui.dir/build.make libs/CMakeFiles/imgui.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/dalton/desktop/z80Emu2/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target imgui"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/dalton/desktop/z80Emu2/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target imgui"
 .PHONY : libs/CMakeFiles/imgui.dir/all
 
 # Build rule for subdir invocation for target.
 libs/CMakeFiles/imgui.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dalton/desktop/z80Emu2/build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dalton/desktop/z80Emu2/build/CMakeFiles 8
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libs/CMakeFiles/imgui.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/dalton/desktop/z80Emu2/build/CMakeFiles 0
 .PHONY : libs/CMakeFiles/imgui.dir/rule

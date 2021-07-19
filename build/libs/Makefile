@@ -202,6 +202,54 @@ imgui/imgui_draw.cpp.s:
 	cd /home/dalton/desktop/z80Emu2/build && $(MAKE) $(MAKESILENT) -f libs/CMakeFiles/imgui.dir/build.make libs/CMakeFiles/imgui.dir/imgui/imgui_draw.cpp.s
 .PHONY : imgui/imgui_draw.cpp.s
 
+imgui/imgui_impl_glfw.o: imgui/imgui_impl_glfw.cpp.o
+.PHONY : imgui/imgui_impl_glfw.o
+
+# target to build an object file
+imgui/imgui_impl_glfw.cpp.o:
+	cd /home/dalton/desktop/z80Emu2/build && $(MAKE) $(MAKESILENT) -f libs/CMakeFiles/imgui.dir/build.make libs/CMakeFiles/imgui.dir/imgui/imgui_impl_glfw.cpp.o
+.PHONY : imgui/imgui_impl_glfw.cpp.o
+
+imgui/imgui_impl_glfw.i: imgui/imgui_impl_glfw.cpp.i
+.PHONY : imgui/imgui_impl_glfw.i
+
+# target to preprocess a source file
+imgui/imgui_impl_glfw.cpp.i:
+	cd /home/dalton/desktop/z80Emu2/build && $(MAKE) $(MAKESILENT) -f libs/CMakeFiles/imgui.dir/build.make libs/CMakeFiles/imgui.dir/imgui/imgui_impl_glfw.cpp.i
+.PHONY : imgui/imgui_impl_glfw.cpp.i
+
+imgui/imgui_impl_glfw.s: imgui/imgui_impl_glfw.cpp.s
+.PHONY : imgui/imgui_impl_glfw.s
+
+# target to generate assembly for a file
+imgui/imgui_impl_glfw.cpp.s:
+	cd /home/dalton/desktop/z80Emu2/build && $(MAKE) $(MAKESILENT) -f libs/CMakeFiles/imgui.dir/build.make libs/CMakeFiles/imgui.dir/imgui/imgui_impl_glfw.cpp.s
+.PHONY : imgui/imgui_impl_glfw.cpp.s
+
+imgui/imgui_impl_opengl3.o: imgui/imgui_impl_opengl3.cpp.o
+.PHONY : imgui/imgui_impl_opengl3.o
+
+# target to build an object file
+imgui/imgui_impl_opengl3.cpp.o:
+	cd /home/dalton/desktop/z80Emu2/build && $(MAKE) $(MAKESILENT) -f libs/CMakeFiles/imgui.dir/build.make libs/CMakeFiles/imgui.dir/imgui/imgui_impl_opengl3.cpp.o
+.PHONY : imgui/imgui_impl_opengl3.cpp.o
+
+imgui/imgui_impl_opengl3.i: imgui/imgui_impl_opengl3.cpp.i
+.PHONY : imgui/imgui_impl_opengl3.i
+
+# target to preprocess a source file
+imgui/imgui_impl_opengl3.cpp.i:
+	cd /home/dalton/desktop/z80Emu2/build && $(MAKE) $(MAKESILENT) -f libs/CMakeFiles/imgui.dir/build.make libs/CMakeFiles/imgui.dir/imgui/imgui_impl_opengl3.cpp.i
+.PHONY : imgui/imgui_impl_opengl3.cpp.i
+
+imgui/imgui_impl_opengl3.s: imgui/imgui_impl_opengl3.cpp.s
+.PHONY : imgui/imgui_impl_opengl3.s
+
+# target to generate assembly for a file
+imgui/imgui_impl_opengl3.cpp.s:
+	cd /home/dalton/desktop/z80Emu2/build && $(MAKE) $(MAKESILENT) -f libs/CMakeFiles/imgui.dir/build.make libs/CMakeFiles/imgui.dir/imgui/imgui_impl_opengl3.cpp.s
+.PHONY : imgui/imgui_impl_opengl3.cpp.s
+
 imgui/imgui_tables.o: imgui/imgui_tables.cpp.o
 .PHONY : imgui/imgui_tables.o
 
@@ -268,6 +316,12 @@ help:
 	@echo "... imgui/imgui_draw.o"
 	@echo "... imgui/imgui_draw.i"
 	@echo "... imgui/imgui_draw.s"
+	@echo "... imgui/imgui_impl_glfw.o"
+	@echo "... imgui/imgui_impl_glfw.i"
+	@echo "... imgui/imgui_impl_glfw.s"
+	@echo "... imgui/imgui_impl_opengl3.o"
+	@echo "... imgui/imgui_impl_opengl3.i"
+	@echo "... imgui/imgui_impl_opengl3.s"
 	@echo "... imgui/imgui_tables.o"
 	@echo "... imgui/imgui_tables.i"
 	@echo "... imgui/imgui_tables.s"

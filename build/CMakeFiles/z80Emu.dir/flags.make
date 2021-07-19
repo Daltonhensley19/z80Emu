@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/dalton/desktop/z80Emu2/libs/imgui
 
-CXX_FLAGS = -Wall -Wextra -std=gnu++20
+CXX_FLAGS = -Wall -Wextra -pthread -lGLEW -lglfw -lGL -std=gnu++20
 

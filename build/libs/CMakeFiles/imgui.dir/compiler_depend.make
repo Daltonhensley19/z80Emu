@@ -564,6 +564,90 @@ libs/CMakeFiles/imgui.dir/imgui/imgui_draw.cpp.o: ../libs/imgui/imgui_draw.cpp \
   ../libs/imgui/imstb_rectpack.h \
   ../libs/imgui/imstb_truetype.h
 
+libs/CMakeFiles/imgui.dir/imgui/imgui_impl_glfw.cpp.o: ../libs/imgui/imgui_impl_glfw.cpp \
+  /usr/include/stdc-predef.h \
+  ../libs/imgui/imgui.h \
+  ../libs/imgui/imconfig.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/include/float.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/include/stdarg.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/include/stddef.h \
+  /usr/include/string.h \
+  /usr/include/bits/libc-header-start.h \
+  /usr/include/features.h \
+  /usr/include/sys/cdefs.h \
+  /usr/include/bits/wordsize.h \
+  /usr/include/bits/long-double.h \
+  /usr/include/gnu/stubs.h \
+  /usr/include/gnu/stubs-64.h \
+  /usr/include/bits/types/locale_t.h \
+  /usr/include/bits/types/__locale_t.h \
+  /usr/include/strings.h \
+  /usr/include/assert.h \
+  ../libs/imgui/imgui_impl_glfw.h \
+  /usr/include/GLFW/glfw3.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/include/stdint.h \
+  /usr/include/stdint.h \
+  /usr/include/bits/types.h \
+  /usr/include/bits/timesize.h \
+  /usr/include/bits/typesizes.h \
+  /usr/include/bits/time64.h \
+  /usr/include/bits/wchar.h \
+  /usr/include/bits/stdint-intn.h \
+  /usr/include/bits/stdint-uintn.h \
+  /usr/include/GL/gl.h \
+  /usr/include/GL/glext.h \
+  /usr/include/KHR/khrplatform.h
+
+libs/CMakeFiles/imgui.dir/imgui/imgui_impl_opengl3.cpp.o: ../libs/imgui/imgui_impl_opengl3.cpp \
+  /usr/include/stdc-predef.h \
+  ../libs/imgui/imgui.h \
+  ../libs/imgui/imconfig.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/include/float.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/include/stdarg.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/include/stddef.h \
+  /usr/include/string.h \
+  /usr/include/bits/libc-header-start.h \
+  /usr/include/features.h \
+  /usr/include/sys/cdefs.h \
+  /usr/include/bits/wordsize.h \
+  /usr/include/bits/long-double.h \
+  /usr/include/gnu/stubs.h \
+  /usr/include/gnu/stubs-64.h \
+  /usr/include/bits/types/locale_t.h \
+  /usr/include/bits/types/__locale_t.h \
+  /usr/include/strings.h \
+  /usr/include/assert.h \
+  ../libs/imgui/imgui_impl_opengl3.h \
+  /usr/include/stdio.h \
+  /usr/include/bits/types.h \
+  /usr/include/bits/timesize.h \
+  /usr/include/bits/typesizes.h \
+  /usr/include/bits/time64.h \
+  /usr/include/bits/types/__fpos_t.h \
+  /usr/include/bits/types/__mbstate_t.h \
+  /usr/include/bits/types/__fpos64_t.h \
+  /usr/include/bits/types/__FILE.h \
+  /usr/include/bits/types/FILE.h \
+  /usr/include/bits/types/struct_FILE.h \
+  /usr/include/bits/types/cookie_io_functions_t.h \
+  /usr/include/bits/stdio_lim.h \
+  /usr/include/bits/floatn.h \
+  /usr/include/bits/floatn-common.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/include/stdint.h \
+  /usr/include/stdint.h \
+  /usr/include/bits/wchar.h \
+  /usr/include/bits/stdint-intn.h \
+  /usr/include/bits/stdint-uintn.h \
+  /usr/include/GL/glew.h \
+  /usr/include/c++/11.1.0/cstddef \
+  /usr/include/c++/11.1.0/x86_64-pc-linux-gnu/bits/c++config.h \
+  /usr/include/c++/11.1.0/x86_64-pc-linux-gnu/bits/os_defines.h \
+  /usr/include/c++/11.1.0/x86_64-pc-linux-gnu/bits/cpu_defines.h \
+  /usr/include/c++/11.1.0/pstl/pstl_config.h \
+  /usr/include/c++/11.1.0/cstdint \
+  /usr/include/GL/glu.h \
+  /usr/include/GL/gl.h
+
 libs/CMakeFiles/imgui.dir/imgui/imgui_tables.cpp.o: ../libs/imgui/imgui_tables.cpp \
   /usr/include/stdc-predef.h \
   ../libs/imgui/imgui.h \
@@ -1000,6 +1084,18 @@ libs/CMakeFiles/imgui.dir/imgui/imgui_widgets.cpp.o: ../libs/imgui/imgui_widgets
 
 ../libs/imgui/imgui_widgets.cpp:
 
+/usr/include/c++/11.1.0/cstddef:
+
+/usr/include/GL/glew.h:
+
+/usr/include/KHR/khrplatform.h:
+
+/usr/include/GL/glext.h:
+
+../libs/imgui/imgui_impl_glfw.cpp:
+
+/usr/include/c++/11.1.0/cstdint:
+
 ../libs/imgui/imstb_truetype.h:
 
 ../libs/imgui/imgui_demo.cpp:
@@ -1007,6 +1103,8 @@ libs/CMakeFiles/imgui.dir/imgui/imgui_widgets.cpp.o: ../libs/imgui/imgui_widgets
 /usr/include/bits/stdint-uintn.h:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/include/prfchwintrin.h:
+
+../libs/imgui/imgui_impl_opengl3.cpp:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/include/avx512bf16intrin.h:
 
@@ -1019,6 +1117,8 @@ libs/CMakeFiles/imgui.dir/imgui/imgui_widgets.cpp.o: ../libs/imgui/imgui_widgets
 /usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/include/avx512vp2intersectvlintrin.h:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/include/avx512vpopcntdqvlintrin.h:
+
+../libs/imgui/imgui_impl_opengl3.h:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/include/avx512vnnivlintrin.h:
 
@@ -1108,6 +1208,8 @@ libs/CMakeFiles/imgui.dir/imgui/imgui_widgets.cpp.o: ../libs/imgui/imgui_widgets
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/include/x86gprintrin.h:
 
+/usr/include/GL/gl.h:
+
 /usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/include/immintrin.h:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/include/adxintrin.h:
@@ -1149,6 +1251,8 @@ libs/CMakeFiles/imgui.dir/imgui/imgui_widgets.cpp.o: ../libs/imgui/imgui_widgets
 /usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/include/avx512ifmaintrin.h:
 
 /usr/include/stdlib.h:
+
+../libs/imgui/imgui_impl_glfw.h:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/include/bmi2intrin.h:
 
@@ -1232,6 +1336,8 @@ libs/CMakeFiles/imgui.dir/imgui/imgui_widgets.cpp.o: ../libs/imgui/imgui_widgets
 
 /usr/include/gnu/stubs-64.h:
 
+/usr/include/GLFW/glfw3.h:
+
 /usr/include/sys/cdefs.h:
 
 /usr/include/stdc-predef.h:
@@ -1257,6 +1363,8 @@ libs/CMakeFiles/imgui.dir/imgui/imgui_widgets.cpp.o: ../libs/imgui/imgui_widgets
 /usr/include/bits/iscanonical.h:
 
 /usr/include/bits/types/__locale_t.h:
+
+/usr/include/GL/glu.h:
 
 /usr/include/bits/types.h:
 
