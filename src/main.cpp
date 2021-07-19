@@ -22,7 +22,7 @@ int main()
 
 
 
-#define ENABLE_GUI 0
+#define ENABLE_GUI 1
 #if (ENABLE_GUI == 1)
 
   // Start GLFW API
@@ -65,7 +65,7 @@ int main()
 
     // GUI action
     ImGui::Begin("Test");
-    ImGui::Text("Hello, Betsy!");
+    ImGui::Text("Hello, Derek!");
     ImGui::End();
 
     // Render GUI to opengl  
