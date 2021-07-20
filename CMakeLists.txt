@@ -3,7 +3,7 @@ project(z80Emu)
 
 set(CMAKE_CXX_STANDARD 20)
 
-set(CMAKE_CXX_FLAGS "-Wall -Wextra -pthread -lGLEW -lglfw -lGL")
+set(CMAKE_CXX_FLAGS "-O0 -g -Wall -Wextra -lGLEW -lglfw -lGL")
 
 
 

@@ -26,26 +26,26 @@ Word HLasWord()
 }
 
 // Main register set
-Byte ByteRegister::A_Reg_A;
-Byte ByteRegister::B_Reg_A;
-Byte ByteRegister::D_Reg_A;
-Byte ByteRegister::H_Reg_A;
+Byte ByteRegister::A_Reg_A = 10;
+Byte ByteRegister::B_Reg_A = 0;
+Byte ByteRegister::D_Reg_A = 0;
+Byte ByteRegister::H_Reg_A = 20;
 
-Byte ByteRegister::F_Reg_A;
-Byte ByteRegister::C_Reg_A;
-Byte ByteRegister::E_Reg_A;
-Byte ByteRegister::L_Reg_A;
+Byte ByteRegister::F_Reg_A = 0;
+Byte ByteRegister::C_Reg_A = 0;
+Byte ByteRegister::E_Reg_A = 0;
+Byte ByteRegister::L_Reg_A = 0;
 
 // Alternate register set
-Byte ByteRegister::A_Reg_B;
-Byte ByteRegister::B_Reg_B;
-Byte ByteRegister::D_Reg_B;
-Byte ByteRegister::H_Reg_B;
+Byte ByteRegister::A_Reg_B = 0;
+Byte ByteRegister::B_Reg_B = 0;
+Byte ByteRegister::D_Reg_B = 0;
+Byte ByteRegister::H_Reg_B = 0;
 
-Byte ByteRegister::F_Reg_B;
-Byte ByteRegister::C_Reg_B;
-Byte ByteRegister::E_Reg_B;
-Byte ByteRegister::L_Reg_B;
+Byte ByteRegister::F_Reg_B = 0;
+Byte ByteRegister::C_Reg_B = 0;
+Byte ByteRegister::E_Reg_B = 20;
+Byte ByteRegister::L_Reg_B = 0;
 
 void debugRegisters::displayRegisterTable()
 {
