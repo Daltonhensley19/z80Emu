@@ -48,7 +48,7 @@ GLFWwindow* debug_glfw_init()
 
   // Create glfw_window handle
   GLFWwindow* window =
-    glfwCreateWindow(480, 720, "Dear ImGui GLFW+OpenGL3 example", NULL, NULL);
+    glfwCreateWindow(1920, 1080, "Dear ImGui GLFW+OpenGL3 example", NULL, NULL);
 
   // Use glfw_window handle
   glfwMakeContextCurrent(window);
@@ -99,6 +99,11 @@ void debug_event_loop(GLFWwindow* window, int counter)
                            ByteRegister::E_Reg_B,
                            ByteRegister::L_Reg_B};
 
+  const std::size_t buff    = 4;
+  Word auxiliary_regs[buff] = {cpu.pc, cpu.ix, cpu.iy, cpu.sp};
+
+  const char* auxiliary_regs_names[buff] = {"pc", "ix", "iy", "sp"};
+
   const char* reg_names[buffer_size] = {"ByteRegister::A_Reg_A",
                                         "ByteRegister::B_Reg_A",
                                         "ByteRegister::D_Reg_A",
@@ -119,15 +124,10 @@ void debug_event_loop(GLFWwindow* window, int counter)
                                         "ByteRegister::E_Reg_B",
                                         "ByteRegister::L_Reg_B"};
 
-  bool execute_next_frame = true;
+  bool execute_next_frame = false;
 
   while (!glfwWindowShouldClose(window))
   {
-    if (debug_counter >= 2)
-    {
-
-      return;
-    }
 
     update_register_values(reg);
 
@@ -139,6 +139,11 @@ void debug_event_loop(GLFWwindow* window, int counter)
     ///////// GUI action ///////////////////////
 
     ImGui::Begin("Debugger");
+
+    if (ImGui::Button("Next frame"))
+    {
+      execute_next_frame = true;
+    }
 
     if (ImGui::BeginTable("##table1", 1))
     {
@@ -160,6 +165,21 @@ void debug_event_loop(GLFWwindow* window, int counter)
         ImGui::TableNextRow();
         ImGui::TableSetColumnIndex(0);
         ImGui::Text("%s \t value: 0x%X", reg_names[row], (int)reg[row]);
+      }
+
+      ImGui::EndTable();
+    }
+
+    if (ImGui::BeginTable("##table3", 1))
+    {
+
+      for (int row = 0; row < 4; row++)
+      {
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("%s \t\t\t\t\t    value: 0x%X",
+                    auxiliary_regs_names[row],
+                    (int)auxiliary_regs[row]);
       }
 
       ImGui::EndTable();
@@ -187,6 +207,10 @@ void debug_event_loop(GLFWwindow* window, int counter)
     glfwPollEvents();
 
     debug_counter++;
+
+    // If flag is true, we handle another emu frame
+    if (execute_next_frame)
+      return;
   }
 }
 
