@@ -11,8 +11,10 @@
 int main()
 {
 
+    Z80CPU cpu{};
+
+    cpu.executeInstruction();
   
-  debug_handle();
 
 
   return 0;

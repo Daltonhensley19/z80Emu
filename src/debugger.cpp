@@ -1,7 +1,9 @@
 #include "../include/debugger.h"
 #include "../include/registers.h"
 #include "../include/z80.h"
+
 #include <cstddef>
+#include <iostream>
 
 void update_register_values(Byte* reg_buf)
 {
@@ -34,7 +36,7 @@ void update_register_values(Byte* reg_buf)
   }
 }
 
-auto debug_glfw_init()
+GLFWwindow* debug_glfw_init()
 {
   // Start GLFW API
   glfwInit();
@@ -68,8 +70,10 @@ void debug_imgui_init(GLFWwindow* window)
   ImGui_ImplOpenGL3_Init("#version 460");
 }
 
-void debug_event_loop(GLFWwindow* window)
+void debug_event_loop(GLFWwindow* window, int counter)
 {
+
+  int debug_counter = 0;
 
   Z80CPU cpu{};
 
@@ -114,14 +118,15 @@ void debug_event_loop(GLFWwindow* window)
                                         "ByteRegister::C_Reg_B",
                                         "ByteRegister::E_Reg_B",
                                         "ByteRegister::L_Reg_B"};
-  bool execute_next_frame            = true;
+
+  bool execute_next_frame = true;
+
   while (!glfwWindowShouldClose(window))
   {
-
-    if (execute_next_frame)
+    if (debug_counter >= 2)
     {
-      cpu.executeInstruction();
-      execute_next_frame = false;
+
+      return;
     }
 
     update_register_values(reg);
@@ -160,9 +165,12 @@ void debug_event_loop(GLFWwindow* window)
       ImGui::EndTable();
     }
 
+    ImGui::Text("Current step: %d", counter);
+
     ImGui::End();
 
     ////////////////////////////////////////////
+
     // Render GUI to opengl
     ImGui::Render();
 
@@ -177,6 +185,8 @@ void debug_event_loop(GLFWwindow* window)
     glfwSwapBuffers(window);
 
     glfwPollEvents();
+
+    debug_counter++;
   }
 }
 
@@ -193,23 +203,25 @@ void debug_cleanup(GLFWwindow* window)
   glfwTerminate();
 }
 
-void debug_handle()
+bool debug_handle(GLFWwindow* glfw_win, int counter_handle)
 {
 
-  // initalize GLFW and return a window handle
-  auto glfw_win = debug_glfw_init();
-
-  // GLEW provides efficient run-time mechanisms
-  // for determining which OpenGL extensions are supported
-  // on the target platform.
-  glewInit();
-
-  // Initalize Dear ImGui
-  debug_imgui_init(glfw_win);
-
   // Trigger event-loop, action happens here!
-  debug_event_loop(glfw_win);
+  debug_event_loop(glfw_win, counter_handle);
 
   // Clean up Dear ImGui and GLFW
-  debug_cleanup(glfw_win);
+  bool cleanup_GLFW = false;
+  std::cout << "Want to turn off debugger? Type `1` for yes. \n";
+  std::cin >> cleanup_GLFW;
+
+  if (cleanup_GLFW)
+  {
+    debug_cleanup(glfw_win);
+    exit(EXIT_SUCCESS);
+  }
+
+  else
+  {
+    return false;
+  }
 }

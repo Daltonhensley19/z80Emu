@@ -5,32 +5,54 @@
 #include "../include/z80.h"
 #include "../include/debugger.h"
 #include "../include/opcodes.h"
+
 #include <iostream>
+
+#define ENABLE_DEBUG 1
 
 // I must apologize for the very long switch table.
 // This is the quickest (yet dirtiest) way to implement the Z80 opcodes.
 void Z80CPU::executeInstruction()
-
 {
+
+#ifdef ENABLE_DEBUG
   int counter = 0;
-  bool pause = true;
+  bool pause  = true;
+#endif
 
-  cycles     = 10;
-  pc = 0x78;
-  ram[pc] = 0x78;
+  // SANDBOX VALUES FOR TESTING //////
+  cycles    = 10;
+  pc        = 0x78;
+  ram[pc]   = 0x78;
   ram[0x79] = 0x48;
+  ////////////////////////////////////
 
-  std::cout << "Next frame? Enter `1` for yes. \n";
-  std::cin >> pause;
+#ifdef ENABLE_DEBUG
+  GLFWwindow* glfw_win = debug_glfw_init();
+
+  // GLEW provides efficient run-time mechanisms
+  // for determining which OpenGL extensions are supported
+  // on the target platform.
+  glewInit();
+
+  // Initalize Dear ImGui
+  debug_imgui_init(glfw_win);
+
+  bool glfw_is_shutdown = debug_handle(glfw_win, counter);
+#endif
 
   while (cycles > 0 && pause)
   {
-    if (pause && counter >= 1)
+
+    if (pause && !glfw_is_shutdown)
     {
-        std::cout << "Go another frame? Enter `1` for yes. \n";
-        std::cin >> pause;
+      std::cout << "Process emu clock? Enter `1` for yes. \n";
+      std::cin >> pause;
     }
-   counter++;
+#ifdef ENABLE_DEBUG
+    counter++;
+#endif
+
     // fetch current opcode
     currentOpcode = ram[pc];
     switch (currentOpcode)
@@ -56,7 +78,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::A_Reg_A = ByteRegister::C_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::D_A_LD:
@@ -64,7 +86,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::A_Reg_A = ByteRegister::D_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::E_A_LD:
@@ -72,7 +94,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::A_Reg_A = ByteRegister::E_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::H_A_LD:
@@ -80,7 +102,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::A_Reg_A = ByteRegister::H_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::L_A_LD:
@@ -88,7 +110,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::A_Reg_A = ByteRegister::L_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::HL_A_LD:
@@ -96,7 +118,7 @@ void Z80CPU::executeInstruction()
         cycles += 8;
         ByteRegister::A_Reg_A = ram[HLasWord()];
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::B_B_LD:
@@ -104,7 +126,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::B_Reg_A = ByteRegister::B_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::C_B_LD:
@@ -112,7 +134,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::B_Reg_A = ByteRegister::C_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::D_B_LD:
@@ -120,7 +142,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::B_Reg_A = ByteRegister::D_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::E_B_LD:
@@ -128,7 +150,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::B_Reg_A = ByteRegister::E_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::H_B_LD:
@@ -136,7 +158,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::B_Reg_A = ByteRegister::H_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::L_B_LD:
@@ -144,7 +166,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::B_Reg_A = ByteRegister::L_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::HL_B_LD:
@@ -152,7 +174,7 @@ void Z80CPU::executeInstruction()
         cycles += 8;
         ByteRegister::B_Reg_A = ram[HLasWord()];
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::B_C_LD:
@@ -160,7 +182,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::C_Reg_A = ByteRegister::B_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::C_C_LD:
@@ -168,7 +190,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::C_Reg_A = ByteRegister::C_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::D_C_LD:
@@ -176,7 +198,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::C_Reg_A = ByteRegister::D_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::E_C_LD:
@@ -184,7 +206,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::C_Reg_A = ByteRegister::E_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::H_C_LD:
@@ -192,7 +214,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::C_Reg_A = ByteRegister::H_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::L_C_LD:
@@ -200,7 +222,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::C_Reg_A = ByteRegister::L_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::HL_C_LD:
@@ -208,7 +230,7 @@ void Z80CPU::executeInstruction()
         cycles += 8;
         ByteRegister::B_Reg_A = ram[HLasWord()];
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::B_D_LD:
@@ -216,7 +238,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::D_Reg_A = ByteRegister::B_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::C_D_LD:
@@ -224,7 +246,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::D_Reg_A = ByteRegister::C_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::D_D_LD:
@@ -232,7 +254,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::D_Reg_A = ByteRegister::D_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::E_D_LD:
@@ -240,7 +262,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::D_Reg_A = ByteRegister::E_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::H_D_LD:
@@ -248,7 +270,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::D_Reg_A = ByteRegister::H_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::L_D_LD:
@@ -256,7 +278,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::D_Reg_A = ByteRegister::L_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::HL_D_LD:
@@ -264,7 +286,7 @@ void Z80CPU::executeInstruction()
         cycles += 8;
         ByteRegister::D_Reg_A = ram[HLasWord()];
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::B_E_LD:
@@ -272,7 +294,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::E_Reg_A = ByteRegister::B_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::C_E_LD:
@@ -280,7 +302,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::E_Reg_A = ByteRegister::C_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::D_E_LD:
@@ -288,7 +310,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::E_Reg_A = ByteRegister::D_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::E_E_LD:
@@ -296,7 +318,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::E_Reg_A = ByteRegister::E_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::H_E_LD:
@@ -304,7 +326,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::E_Reg_A = ByteRegister::H_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::L_E_LD:
@@ -312,7 +334,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::E_Reg_A = ByteRegister::L_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::HL_E_LD:
@@ -320,7 +342,7 @@ void Z80CPU::executeInstruction()
         cycles += 8;
         ByteRegister::E_Reg_A = ram[HLasWord()];
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::B_H_LD:
@@ -328,7 +350,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::H_Reg_A = ByteRegister::B_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::C_H_LD:
@@ -336,7 +358,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::H_Reg_A = ByteRegister::C_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::D_H_LD:
@@ -344,7 +366,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::H_Reg_A = ByteRegister::D_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::E_H_LD:
@@ -352,7 +374,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::H_Reg_A = ByteRegister::E_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::H_H_LD:
@@ -360,7 +382,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::H_Reg_A = ByteRegister::H_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::L_H_LD:
@@ -368,7 +390,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::H_Reg_A = ByteRegister::L_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::HL_H_LD:
@@ -376,7 +398,7 @@ void Z80CPU::executeInstruction()
         cycles += 8;
         ByteRegister::H_Reg_A = ram[HLasWord()];
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::B_L_LD:
@@ -384,7 +406,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::L_Reg_A = ByteRegister::B_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::C_L_LD:
@@ -392,7 +414,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::L_Reg_A = ByteRegister::C_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::D_L_LD:
@@ -400,7 +422,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::L_Reg_A = ByteRegister::D_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::E_L_LD:
@@ -408,7 +430,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::L_Reg_A = ByteRegister::E_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::H_L_LD:
@@ -416,7 +438,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::L_Reg_A = ByteRegister::H_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::L_L_LD:
@@ -424,7 +446,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::L_Reg_A = ByteRegister::L_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::HL_L_LD:
@@ -432,7 +454,7 @@ void Z80CPU::executeInstruction()
         cycles += 8;
         ByteRegister::L_Reg_A = ram[HLasWord()];
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::B_HL_LD:
@@ -440,7 +462,7 @@ void Z80CPU::executeInstruction()
         cycles += 8;
         ram[HLasWord()] = ByteRegister::B_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::C_HL_LD:
@@ -448,7 +470,7 @@ void Z80CPU::executeInstruction()
         cycles += 8;
         ram[HLasWord()] = ByteRegister::C_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::D_HL_LD:
@@ -456,7 +478,7 @@ void Z80CPU::executeInstruction()
         cycles += 8;
         ram[HLasWord()] = ByteRegister::D_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::E_HL_LD:
@@ -464,7 +486,7 @@ void Z80CPU::executeInstruction()
         cycles += 8;
         ram[HLasWord()] = ByteRegister::E_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::H_HL_LD:
@@ -472,7 +494,7 @@ void Z80CPU::executeInstruction()
         cycles += 8;
         ram[HLasWord()] = ByteRegister::H_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::L_HL_LD:
@@ -480,7 +502,7 @@ void Z80CPU::executeInstruction()
         cycles += 8;
         ram[HLasWord()] = ByteRegister::L_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::n_HL_LD:
@@ -488,7 +510,7 @@ void Z80CPU::executeInstruction()
         cycles += 8;
         ram[HLasWord()] = ram[pc + 1]; // LD imm to indirect address
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::A_B_LD:
@@ -496,7 +518,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::B_Reg_A = ByteRegister::A_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::A_C_LD:
@@ -504,7 +526,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::C_Reg_A = ByteRegister::A_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::A_D_LD:
@@ -512,7 +534,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::D_Reg_A = ByteRegister::A_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::A_E_LD:
@@ -520,7 +542,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::E_Reg_A = ByteRegister::A_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::A_H_LD:
@@ -528,7 +550,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::H_Reg_A = ByteRegister::A_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::A_L_LD:
@@ -536,7 +558,7 @@ void Z80CPU::executeInstruction()
         cycles += 4;
         ByteRegister::L_Reg_A = ByteRegister::A_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::A_BC_LD:
@@ -544,7 +566,7 @@ void Z80CPU::executeInstruction()
         cycles += 8;
         ram[BCasWord()] = ByteRegister::A_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::A_DE_LD:
@@ -552,7 +574,7 @@ void Z80CPU::executeInstruction()
         cycles += 8;
         ram[DEasWord()] = ByteRegister::A_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::A_HL_LD:
@@ -560,7 +582,7 @@ void Z80CPU::executeInstruction()
         cycles += 8;
         ram[HLasWord()] = ByteRegister::A_Reg_A;
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::A_nn_LD:
@@ -568,7 +590,7 @@ void Z80CPU::executeInstruction()
         cycles += 8;
         writeByte(ByteRegister::A_Reg_A, bytesToWord(ram[pc + 2], ram[pc + 1]));
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::n_A_LD:
@@ -576,7 +598,7 @@ void Z80CPU::executeInstruction()
         cycles += 8;
         ByteRegister::A_Reg_A = ram[pc + 1]; // LD imm to register
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::n_B_LD:
@@ -584,7 +606,7 @@ void Z80CPU::executeInstruction()
         cycles += 8;
         ByteRegister::B_Reg_A = ram[pc + 1]; // LD imm to register
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::n_C_LD:
@@ -592,7 +614,7 @@ void Z80CPU::executeInstruction()
         cycles += 8;
         ByteRegister::C_Reg_A = ram[pc + 1]; // LD imm to register
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::n_D_LD:
@@ -600,7 +622,7 @@ void Z80CPU::executeInstruction()
         cycles += 8;
         ByteRegister::D_Reg_A = ram[pc + 1]; // LD imm to register
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::n_E_LD:
@@ -608,7 +630,7 @@ void Z80CPU::executeInstruction()
         cycles += 8;
         ByteRegister::E_Reg_A = ram[pc + 1]; // LD imm to register
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::n_H_LD:
@@ -616,7 +638,7 @@ void Z80CPU::executeInstruction()
         cycles += 8;
         ByteRegister::H_Reg_A = ram[pc + 1]; // LD imm to register
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::n_L_LD:
@@ -624,7 +646,7 @@ void Z80CPU::executeInstruction()
         cycles += 8;
         ByteRegister::L_Reg_A = ram[pc + 1]; // LD imm to register
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::BC_A_LD:
@@ -632,7 +654,7 @@ void Z80CPU::executeInstruction()
         cycles += 8;
         ByteRegister::A_Reg_A = ram[BCasWord()]; // LD indirect address to reg.
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::DE_A_LD:
@@ -640,7 +662,7 @@ void Z80CPU::executeInstruction()
         cycles += 8;
         ByteRegister::A_Reg_A = ram[DEasWord()]; // LD indirect address to reg.
         cycles--;
-          pc++;
+        pc++;
       }
       break;
       case LD8::nn_A_LD:
@@ -648,7 +670,7 @@ void Z80CPU::executeInstruction()
         cycles += 13; // TODO(Dalton): possible mistake in cycles?
         ByteRegister::A_Reg_A = readByte(bytesToWord(ram[pc + 2], ram[pc + 1]));
         cycles--;
-          pc++;
+        pc++;
       }
       break;
         // DD Prefixed Opcodes
@@ -1510,7 +1532,11 @@ void Z80CPU::executeInstruction()
       }
       break;
     }
-  }
 
+#ifdef ENABLE_DEBUG
+    if (!glfw_is_shutdown)
+      debug_handle(glfw_win, counter);
+#endif
+  }
 }
 

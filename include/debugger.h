@@ -17,13 +17,13 @@
 
 
 
-void debug_handle();
+bool debug_handle(GLFWwindow* glfw_win, int counter_handle);
 
-auto debug_glfw_init();
+GLFWwindow* debug_glfw_init();
 
 void debug_imgui_init(GLFWwindow* window);
 
-void debug_event_loop(GLFWwindow* window);
+void debug_event_loop(GLFWwindow* window, int counter);
 
 void debug_cleanup(GLFWwindow* window);
 
