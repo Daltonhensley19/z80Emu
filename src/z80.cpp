@@ -12,45 +12,48 @@
 
 // I must apologize for the very long switch table.
 // This is the quickest (yet dirtiest) way to implement the Z80 opcodes.
-void Z80CPU::executeInstruction()
-{
+void Z80CPU::executeInstruction() {
 
-#ifdef ENABLE_DEBUG
-  int counter = 0;
-  bool pause  = true;
+#if ENABLE_DEBUG
+    int counter = 0;
+    bool pause  = true;
 #endif
 
-  // SANDBOX VALUES FOR TESTING //////
-  cycles    = 10;
-  pc        = 0x78;
-  ram[pc]   = 0x78;
-  ram[0x79] = 0x48;
-  ////////////////////////////////////
+    // SANDBOX VALUES FOR TESTING //////
+    cycles = 10;
+    pc = 0x78;
+    ram[pc] = 0x78;
+    ram[0x79] = 0x48;
+    // currentOpcode = ram[pc];
+    ////////////////////////////////////
 
-#ifdef ENABLE_DEBUG
-  GLFWwindow* glfw_win = debug_glfw_init();
+#if ENABLE_DEBUG
+    GLFWwindow* glfw_win = debug_glfw_init();
 
-  // GLEW provides efficient run-time mechanisms
-  // for determining which OpenGL extensions are supported
-  // on the target platform.
-  glewInit();
+    // GLEW provides efficient run-time mechanisms
+    // for determining which OpenGL extensions are supported
+    // on the target platform.
+    glewInit();
 
-  // Initalize Dear ImGui
-  debug_imgui_init(glfw_win);
+    // Initalize Dear ImGui
+    debug_imgui_init(glfw_win);
 
-  bool glfw_is_shutdown = debug_handle(glfw_win, counter);
+    bool glfw_is_shutdown = debug_handle(glfw_win, counter, this);
 #endif
-
-  while (cycles > 0 && pause)
-  {
-
-    if (pause && !glfw_is_shutdown)
+#if ENABLE_DEBUG
+    while (cycles > 0 && pause)
     {
-      std::cout << "Process emu clock? Enter `1` for yes. \n";
-      std::cin >> pause;
-    }
-#ifdef ENABLE_DEBUG
-    counter++;
+
+      if (pause && !glfw_is_shutdown)
+      {
+        std::cout << "Processing emu cycle. \n";
+      }
+
+      counter++;
+
+#else
+    while (cycles > 0)
+    {
 #endif
 
     // fetch current opcode
@@ -1533,9 +1536,9 @@ void Z80CPU::executeInstruction()
       break;
     }
 
-#ifdef ENABLE_DEBUG
+#if ENABLE_DEBUG
     if (!glfw_is_shutdown)
-      debug_handle(glfw_win, counter);
+      debug_handle(glfw_win, counter, this);
 #endif
   }
 }

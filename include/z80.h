@@ -8,25 +8,25 @@
 struct Z80CPU {
 
     // Program Counter
-    Word pc;
+    Word pc = 0;
     // Stack Pointer
-    inline static Word sp;
+    inline static Word sp = 0;
     // Index Register
-    Word ix;
+    Word ix = 0;
     // Index Register
-    Word iy;
+    Word iy = 0;
     // Interrupt Page Register
-    Byte I;
+    Byte I = 0;
     // Memory Refresh Register
-    Byte R;
+    Byte R = 0;
 
     /*
         During the LD A, I and LD A, R instructions, the P/V Flag is
         set with the value of the
         interrupt enable flip-flop (IFF2) for storage or testing.
     */
-    bool IFF1;
-    bool IFF2;
+    bool IFF1 = 0;
+    bool IFF2 = 0;
 
     // Bit Field for common Z80 Flags
     FlagBitField flag;
@@ -38,7 +38,7 @@ struct Z80CPU {
 
     // Usually 8-bits (currentOpcode & 0xFF00 >> 8),
     // but sometimes 16-bits due to prefixes (DD, ED, FD, CB).
-    Word currentOpcode;
+    Word currentOpcode = 0x0000;
 
     // Stack operations
     Stack stack;

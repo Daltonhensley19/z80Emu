@@ -4,6 +4,8 @@
 
 #include <cstddef>
 #include <iostream>
+#include <map>
+#include <string>
 
 void update_register_values(Byte* reg_buf)
 {
@@ -70,13 +72,12 @@ void debug_imgui_init(GLFWwindow* window)
   ImGui_ImplOpenGL3_Init("#version 460");
 }
 
-void debug_event_loop(GLFWwindow* window, int counter)
+bool debug_event_loop(GLFWwindow* window, int counter, Z80CPU* cpu)
 {
 
   int debug_counter = 0;
 
-  Z80CPU cpu{};
-
+  // Info from the Z80 that is sent to the debugger /////
   const std::size_t buffer_size = 16;
 
   Byte reg[buffer_size] = {ByteRegister::A_Reg_A,
@@ -100,7 +101,7 @@ void debug_event_loop(GLFWwindow* window, int counter)
                            ByteRegister::L_Reg_B};
 
   const std::size_t buff    = 4;
-  Word auxiliary_regs[buff] = {cpu.pc, cpu.ix, cpu.iy, cpu.sp};
+  Word auxiliary_regs[buff] = {cpu->pc, cpu->ix, cpu->iy, Z80CPU::sp};
 
   const char* auxiliary_regs_names[buff] = {"pc", "ix", "iy", "sp"};
 
@@ -124,12 +125,131 @@ void debug_event_loop(GLFWwindow* window, int counter)
                                         "ByteRegister::E_Reg_B",
                                         "ByteRegister::L_Reg_B"};
 
+  std::map<std::string, Byte> instr = {
+    {"Unknown", 0x00},
+    {"A_A_LD", 0x7F},
+    {"B_A_LD", 0x78},
+    {"C_A_LD", 0x79},
+    {"D_A_LD", 0x7A},
+    {"E_A_LD", 0x7B},
+    {"H_A_LD", 0x7C},
+    {"L_A_LD", 0x7D},
+
+    {"A_B_LD", 0x47},
+    {"B_B_LD", 0x40},
+    {"C_B_LD", 0x41},
+    {"D_B_LD", 0x42},
+    {"E_B_LD", 0x43},
+    {"H_B_LD", 0x44},
+    {"L_B_LD", 0x45},
+
+    {"A_C_LD", 0x4F},
+    {"B_C_LD", 0x48},
+    {"C_C_LD", 0x49},
+    {"D_C_LD", 0x4A},
+    {"E_C_LD", 0x4B},
+    {"H_C_LD", 0x4C},
+    {"L_C_LD", 0x4D},
+
+    {"A_D_LD", 0x57},
+    {"B_D_LD", 0x50},
+    {"C_D_LD", 0x51},
+    {"D_D_LD", 0x52},
+    {"E_D_LD", 0x53},
+    {"H_D_LD", 0x54},
+    {"L_D_LD", 0x55},
+
+    {"A_E_LD", 0x5F},
+    {"B_E_LD", 0x58},
+    {"C_E_LD", 0x59},
+    {"D_E_LD", 0x5A},
+    {"E_E_LD", 0x5B},
+    {"H_E_LD", 0x5C},
+    {"L_E_LD", 0x5D},
+
+    {"A_H_LD", 0x67},
+    {"B_H_LD", 0x60},
+    {"C_H_LD", 0x61},
+    {"D_H_LD", 0x62},
+    {"E_H_LD", 0x63},
+    {"H_H_LD", 0x64},
+    {"L_H_LD", 0x65},
+
+    {"A_L_LD", 0x6F},
+    {"B_L_LD", 0x68},
+    {"C_L_LD", 0x69},
+    {"D_L_LD", 0x6A},
+    {"E_L_LD", 0x6B},
+    {"H_L_LD", 0x6C},
+    {"L_L_LD", 0x6D},
+
+    // LD Immediate to register
+    {"n_A_LD", 0x3E},
+    {"n_B_LD", 0x06},
+    {"n_C_LD", 0x0E},
+    {"n_D_LD", 0x16},
+    {"n_E_LD", 0x1E},
+    {"n_H_LD", 0x26},
+    {"n_L_LD", 0x2E},
+
+    // Reg indirect to register
+    {"HL_A_LD", 0x7E},
+    {"HL_B_LD", 0x46},
+    {"HL_C_LD", 0x4E},
+    {"HL_D_LD", 0x56},
+    {"HL_E_LD", 0x5E},
+    {"HL_H_LD", 0x66},
+    {"HL_L_LD", 0x6E},
+
+    // Reg indirect to register
+    {"BC_A_LD", 0x0A},
+    {"DE_A_LD", 0x1A},
+
+    // Indexed (NOTE: Indexed is source [IDX or IDY] to generic register [R], A
+    // B C D E F L, which is the destination.
+    {"IDX_R_LD", 0xDD},
+    {"IDY_R_LD", 0xFD},
+
+    // Extended to register
+    {"nn_A_LD", 0x3A},
+
+    // Implied to register
+    {"I_A_LD", 0x57},
+    {"R_A_LD", 0x5F},
+
+    {"ED_PREFIX", 0xED},
+
+    // Register to HL
+    {"A_HL_LD", 0x77},
+    {"B_HL_LD", 0x70},
+    {"C_HL_LD", 0x71},
+    {"D_HL_LD", 0x72},
+    {"E_HL_LD", 0x73},
+    {"H_HL_LD", 0x74},
+    {"L_HL_LD", 0x75},
+
+    // Register to register indirect (BC and DE)
+    {"A_BC_LD", 0x02},
+    {"A_DE_LD", 0x12},
+
+    // Register to Ext. Addr.
+    {"A_nn_LD", 0x32},
+
+    // Register to implied
+    {"A_I_LD", 0x47},
+    {"A_R_LD", 0x4F},
+
+    // Imm. to register indirect
+    {"n_HL_LD", 0x36}};
+
+  //////////////////////////////////////////////////////////////
+
   bool execute_next_frame = false;
 
   while (!glfwWindowShouldClose(window))
   {
 
-    update_register_values(reg);
+    //   update_register_values(reg);
 
     // Update ImGui
     ImGui_ImplOpenGL3_NewFrame();
@@ -143,6 +263,13 @@ void debug_event_loop(GLFWwindow* window, int counter)
     if (ImGui::Button("Next frame"))
     {
       execute_next_frame = true;
+    }
+
+    if (ImGui::Button("Shutdown Program"))
+    {
+      bool shutting_down = true;
+
+      return shutting_down;
     }
 
     if (ImGui::BeginTable("##table1", 1))
@@ -185,6 +312,15 @@ void debug_event_loop(GLFWwindow* window, int counter)
       ImGui::EndTable();
     }
 
+    for (auto& [key, value] : instr)
+    {
+      if (value == (Byte)cpu->currentOpcode)
+      {
+        ImGui::Text("Current Instruction: %s", key.c_str());
+      }
+    }
+
+    ImGui::Text("Current opcode: 0x%X", cpu->currentOpcode);
     ImGui::Text("Current step: %d", counter);
 
     ImGui::End();
@@ -210,7 +346,7 @@ void debug_event_loop(GLFWwindow* window, int counter)
 
     // If flag is true, we handle another emu frame
     if (execute_next_frame)
-      return;
+      return false;
   }
 }
 
@@ -227,19 +363,17 @@ void debug_cleanup(GLFWwindow* window)
   glfwTerminate();
 }
 
-bool debug_handle(GLFWwindow* glfw_win, int counter_handle)
+bool debug_handle(GLFWwindow* glfw_win, int counter_handle, Z80CPU* cpu)
 {
 
   // Trigger event-loop, action happens here!
-  debug_event_loop(glfw_win, counter_handle);
+  bool shutdown_handle = debug_event_loop(glfw_win, counter_handle, cpu);
 
-  // Clean up Dear ImGui and GLFW
-  bool cleanup_GLFW = false;
-  std::cout << "Want to turn off debugger? Type `1` for yes. \n";
-  std::cin >> cleanup_GLFW;
-
-  if (cleanup_GLFW)
+  if (shutdown_handle)
   {
+    // Clean up Dear ImGui and GLFW
+    std::cout << "Shuting off. \n";
+
     debug_cleanup(glfw_win);
     exit(EXIT_SUCCESS);
   }

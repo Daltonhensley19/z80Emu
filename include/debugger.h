@@ -17,13 +17,13 @@
 
 
 
-bool debug_handle(GLFWwindow* glfw_win, int counter_handle);
+bool debug_handle(GLFWwindow* glfw_win, int counter_handle, Z80CPU* cpu);
 
 GLFWwindow* debug_glfw_init();
 
 void debug_imgui_init(GLFWwindow* window);
 
-void debug_event_loop(GLFWwindow* window, int counter);
+bool debug_event_loop(GLFWwindow* window, int counter, Z80CPU* cpu);
 
 void debug_cleanup(GLFWwindow* window);
 
