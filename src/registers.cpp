@@ -4,6 +4,7 @@
 #define FMT_HEADER_ONLY 1
 #include "../include/registers.h"
 #include "../include/fmt/core.h"
+#include "../include/z80.h"
 
 Word BCasWord()
 {
@@ -27,7 +28,7 @@ Word HLasWord()
 
 // Main register set
 Byte ByteRegister::A_Reg_A = 10;
-Byte ByteRegister::B_Reg_A = 0;
+Byte ByteRegister::B_Reg_A = 200;
 Byte ByteRegister::D_Reg_A = 0;
 Byte ByteRegister::H_Reg_A = 20;
 

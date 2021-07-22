@@ -1,6 +1,38 @@
 #include "../include/debugger.h"
 #include "../include/registers.h"
+#include "../include/z80.h"
 #include <cstddef>
+
+void update_register_values(Byte* reg_buf)
+{
+
+  const int buffer_size         = 16;
+  Byte update_regs[buffer_size] = {ByteRegister::A_Reg_A,
+                                   ByteRegister::B_Reg_A,
+                                   ByteRegister::D_Reg_A,
+                                   ByteRegister::H_Reg_A,
+
+                                   ByteRegister::F_Reg_A,
+                                   ByteRegister::C_Reg_A,
+                                   ByteRegister::E_Reg_A,
+                                   ByteRegister::L_Reg_A,
+
+                                   // Alternate register set
+                                   ByteRegister::A_Reg_B,
+                                   ByteRegister::B_Reg_B,
+                                   ByteRegister::D_Reg_B,
+                                   ByteRegister::H_Reg_B,
+
+                                   ByteRegister::F_Reg_B,
+                                   ByteRegister::C_Reg_B,
+                                   ByteRegister::E_Reg_B,
+                                   ByteRegister::L_Reg_B};
+
+  for (int i = 0; i < buffer_size; i++)
+  {
+    reg_buf[i] = update_regs[i];
+  }
+}
 
 auto debug_glfw_init()
 {
@@ -38,6 +70,8 @@ void debug_imgui_init(GLFWwindow* window)
 
 void debug_event_loop(GLFWwindow* window)
 {
+
+  Z80CPU cpu{};
 
   const std::size_t buffer_size = 16;
 
@@ -80,9 +114,18 @@ void debug_event_loop(GLFWwindow* window)
                                         "ByteRegister::C_Reg_B",
                                         "ByteRegister::E_Reg_B",
                                         "ByteRegister::L_Reg_B"};
-
+  bool execute_next_frame            = true;
   while (!glfwWindowShouldClose(window))
   {
+
+    if (execute_next_frame)
+    {
+      cpu.executeInstruction();
+      execute_next_frame = false;
+    }
+
+    update_register_values(reg);
+
     // Update ImGui
     ImGui_ImplOpenGL3_NewFrame();
     ImGui_ImplGlfw_NewFrame();

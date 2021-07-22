@@ -10,6 +10,8 @@
 
 #include "glfw3.h"
 
+#include "z80.h"
+
 
 
 
@@ -24,3 +26,5 @@ void debug_imgui_init(GLFWwindow* window);
 void debug_event_loop(GLFWwindow* window);
 
 void debug_cleanup(GLFWwindow* window);
+
+void update_register_values();

@@ -23,10 +23,10 @@ struct ByteRegister
 {
 
   // Main register set
-  static Byte A_Reg_A;
-  static Byte B_Reg_A;
-  static Byte D_Reg_A;
-  static Byte H_Reg_A;
+ static  Byte A_Reg_A;
+ static  Byte B_Reg_A;
+ static  Byte D_Reg_A;
+ static  Byte H_Reg_A;
 
   static Byte F_Reg_A;
   static Byte C_Reg_A;
