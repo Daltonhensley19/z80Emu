@@ -5,13 +5,12 @@ set(CMAKE_CXX_STANDARD 20)
 
 set(CMAKE_CXX_FLAGS "-O0 -g -Wall -Wextra -lGLEW -lglfw -lGL")
 
-
-
-
-
-add_executable(z80Emu
-        src/main.cpp src/z80.cpp src/registers.cpp src/memory.cpp 
+set(SOURCES src/main.cpp src/z80.cpp src/registers.cpp src/memory.cpp 
         src/stack.cpp src/debugger.cpp)
+
+
+
+add_executable(z80Emu ${SOURCES})
 
 
 
