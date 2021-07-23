@@ -242,6 +242,28 @@ bool debug_event_loop(GLFWwindow* window, int counter, Z80CPU* cpu)
     // Imm. to register indirect
     {"n_HL_LD", 0x36}};
 
+  const std::size_t flag_buffer                  = 9;
+  const std::string flag_regs_names[flag_buffer] = {"flag_C",
+                                                    "flag_N",
+                                                    "flag_P",
+                                                    "flag_V",
+                                                    "flag_X1",
+                                                    "flag_H",
+                                                    "flag_Z",
+                                                    "flag_S",
+                                                    "flag_X2"};
+
+  Byte flag_regs[flag_buffer] =
+  { cpu->flag.C,
+    cpu->flag.N,
+    cpu->flag.P,
+    cpu->flag.V,
+    cpu->flag.X1,
+    cpu->flag.H,
+    cpu->flag.Z,
+    cpu->flag.S,
+    cpu->flag.X2};
+
   //////////////////////////////////////////////////////////////
 
   bool execute_next_frame = false;
