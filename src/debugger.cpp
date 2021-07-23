@@ -253,16 +253,15 @@ bool debug_event_loop(GLFWwindow* window, int counter, Z80CPU* cpu)
                                                     "flag_S",
                                                     "flag_X2"};
 
-  Byte flag_regs[flag_buffer] =
-  { cpu->flag.C,
-    cpu->flag.N,
-    cpu->flag.P,
-    cpu->flag.V,
-    cpu->flag.X1,
-    cpu->flag.H,
-    cpu->flag.Z,
-    cpu->flag.S,
-    cpu->flag.X2};
+  Byte flag_regs[flag_buffer] = {cpu->flag.C,
+                                 cpu->flag.N,
+                                 cpu->flag.P,
+                                 cpu->flag.V,
+                                 cpu->flag.X1,
+                                 cpu->flag.H,
+                                 cpu->flag.Z,
+                                 cpu->flag.S,
+                                 cpu->flag.X2};
 
   //////////////////////////////////////////////////////////////
 
@@ -282,11 +281,13 @@ bool debug_event_loop(GLFWwindow* window, int counter, Z80CPU* cpu)
 
     ImGui::Begin("Debugger");
 
+    // Next frame button
     if (ImGui::Button("Next frame"))
     {
       execute_next_frame = true;
     }
 
+    // Shutdown program button
     if (ImGui::Button("Shutdown Program"))
     {
       bool shutting_down = true;
@@ -294,6 +295,7 @@ bool debug_event_loop(GLFWwindow* window, int counter, Z80CPU* cpu)
       return shutting_down;
     }
 
+    // Table of main registers
     if (ImGui::BeginTable("##table1", 1))
     {
       for (int row = 0; row < 8; row++)
@@ -306,6 +308,7 @@ bool debug_event_loop(GLFWwindow* window, int counter, Z80CPU* cpu)
       ImGui::EndTable();
     }
 
+    // Table of secondary registers
     if (ImGui::BeginTable("##table2", 1))
     {
 
@@ -319,6 +322,7 @@ bool debug_event_loop(GLFWwindow* window, int counter, Z80CPU* cpu)
       ImGui::EndTable();
     }
 
+    // Table of special registers
     if (ImGui::BeginTable("##table3", 1))
     {
 
@@ -334,6 +338,7 @@ bool debug_event_loop(GLFWwindow* window, int counter, Z80CPU* cpu)
       ImGui::EndTable();
     }
 
+    // Current instruction
     for (auto& [key, value] : instr)
     {
       if (value == (Byte)cpu->currentOpcode)
