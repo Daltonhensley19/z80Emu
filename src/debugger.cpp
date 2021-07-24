@@ -7,36 +7,9 @@
 #include <map>
 #include <string>
 
-void update_register_values(Byte* reg_buf)
-{
 
-  const int buffer_size         = 16;
-  Byte update_regs[buffer_size] = {ByteRegister::A_Reg_A,
-                                   ByteRegister::B_Reg_A,
-                                   ByteRegister::D_Reg_A,
-                                   ByteRegister::H_Reg_A,
 
-                                   ByteRegister::F_Reg_A,
-                                   ByteRegister::C_Reg_A,
-                                   ByteRegister::E_Reg_A,
-                                   ByteRegister::L_Reg_A,
 
-                                   // Alternate register set
-                                   ByteRegister::A_Reg_B,
-                                   ByteRegister::B_Reg_B,
-                                   ByteRegister::D_Reg_B,
-                                   ByteRegister::H_Reg_B,
-
-                                   ByteRegister::F_Reg_B,
-                                   ByteRegister::C_Reg_B,
-                                   ByteRegister::E_Reg_B,
-                                   ByteRegister::L_Reg_B};
-
-  for (int i = 0; i < buffer_size; i++)
-  {
-    reg_buf[i] = update_regs[i];
-  }
-}
 
 GLFWwindow* debug_glfw_init()
 {
@@ -270,7 +243,6 @@ bool debug_event_loop(GLFWwindow* window, int counter, Z80CPU* cpu)
   while (!glfwWindowShouldClose(window))
   {
 
-    //   update_register_values(reg);
 
     // Update ImGui
     ImGui_ImplOpenGL3_NewFrame();
