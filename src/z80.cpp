@@ -2,62 +2,68 @@
 // Created by dalton on 5/29/21.
 //
 
-#include "../include/z80.h"
+#define FMT_HEADER_ONLY 1
+#include "../include/fmt/core.h"
+
 #include "../include/debugger.h"
 #include "../include/opcodes.h"
-
-#include <iostream>
+#include "../include/z80.h"
 
 #define ENABLE_DEBUG 1
 
 // I must apologize for the very long switch table.
 // This is the quickest (yet dirtiest) way to implement the Z80 opcodes.
-void Z80CPU::executeInstruction() {
+void Z80CPU::executeInstruction()
+{
 
 #if ENABLE_DEBUG
-    int counter = 0;
-    bool pause  = true;
+  int counter = 0;
+  bool pause  = true;
 #endif
 
-    // SANDBOX VALUES FOR TESTING //////
-    cycles = 10;
-    pc = 0x78;
-    ram[pc] = 0x78;
-    ram[0x79] = 0x48;
-    // currentOpcode = ram[pc];
-    ////////////////////////////////////
+  // SANDBOX VALUES FOR TESTING //////
+  cycles    = 10;
+  pc        = 0x78;
+  ram[pc]   = 0xED;
+  ram[0x79] = 0x57;
+  // currentOpcode = ram[pc];
+  ////////////////////////////////////
 
 #if ENABLE_DEBUG
-    GLFWwindow* glfw_win = debug_glfw_init();
+  GLFWwindow* glfw_win = debug_glfw_init();
 
-    // GLEW provides efficient run-time mechanisms
-    // for determining which OpenGL extensions are supported
-    // on the target platform.
-    glewInit();
+  // GLEW provides efficient run-time mechanisms
+  // for determining which OpenGL extensions are supported
+  // on the target platform.
+  glewInit();
 
-    // Initalize Dear ImGui
-    debug_imgui_init(glfw_win);
+  // Initalize Dear ImGui
+  debug_imgui_init(glfw_win);
 
-    bool glfw_is_shutdown = debug_handle(glfw_win, counter, this);
 #endif
 #if ENABLE_DEBUG
-    while (cycles > 0 && pause)
-    {
+  while (cycles > 0 && pause)
+  {
 
-      if (pause && !glfw_is_shutdown)
-      {
-        std::cout << "Processing emu cycle. \n";
-      }
-
+    fmt::print("At emu start\n");
+    if (counter > 0)
       counter++;
 
-#else
-    while (cycles > 0)
+    bool glfw_is_shutdown = debug_handle(glfw_win, counter, this);
+
+    if (pause && !glfw_is_shutdown)
     {
+      fmt::print("Processing emu cycle. \n");
+    }
+
+#else
+  while (cycles > 0)
+  {
 #endif
 
     // fetch current opcode
     currentOpcode = ram[pc];
+    debugOpcode   = ram[pc];
     switch (currentOpcode)
     {
       case LD8::A_A_LD:
@@ -679,6 +685,11 @@ void Z80CPU::executeInstruction() {
         // DD Prefixed Opcodes
       case LD8::IDX_R_LD:
       {
+#if ENABLE_DEBUG
+        fmt::print("At prefix DD.\n");
+        counter++;
+        debug_handle(glfw_win, counter, this);
+#endif
         Byte d = ram[pc + 2];
         switch (ram[pc + 1])
         {
@@ -897,6 +908,11 @@ void Z80CPU::executeInstruction() {
         // FD Prefixed Opcodes
       case LD8::IDY_R_LD:
       {
+#if ENABLE_DEBUG
+        fmt::print("At prefix FD.\n");
+        counter++;
+        debug_handle(glfw_win, counter, this);
+#endif
         Byte d = ram[pc + 2];
         switch (ram[pc + 1])
         {
@@ -1125,10 +1141,16 @@ void Z80CPU::executeInstruction() {
         // ED Prefixed Opcodes
       case LD8::ED_PREFIX:
       {
+#if ENABLE_DEBUG
+        fmt::print("At prefix ED.\n");
+        counter++;
+        debug_handle(glfw_win, counter, this);
+#endif
         switch (ram[pc + 1])
         {
           case LD8::I_A_LD:
           {
+
             cycles += 9;
             ByteRegister::A_Reg_A = I;
 
@@ -1139,7 +1161,15 @@ void Z80CPU::executeInstruction() {
             flag.N = 0;                                // N
             // C flag not affected
             cycles--;
-            pc += 2;
+            pc++;
+
+#if ENABLE_DEBUG
+            fmt::print("At site of operation.\n");
+            debugOpcode = ram[pc];
+            counter++;
+            debug_handle(glfw_win, counter, this);
+#endif
+            ram[pc] = ram[pc + 1];
           }
           break;
           case LD8::R_A_LD:
@@ -1538,7 +1568,12 @@ void Z80CPU::executeInstruction() {
 
 #if ENABLE_DEBUG
     if (!glfw_is_shutdown)
+    {
+      fmt::print("At end of opcode search.\n");
+      counter++;
       debug_handle(glfw_win, counter, this);
+    }
+
 #endif
   }
 }

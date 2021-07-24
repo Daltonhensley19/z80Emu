@@ -7,10 +7,6 @@
 #include <map>
 #include <string>
 
-
-
-
-
 GLFWwindow* debug_glfw_init()
 {
   // Start GLFW API
@@ -213,7 +209,30 @@ bool debug_event_loop(GLFWwindow* window, int counter, Z80CPU* cpu)
     {"A_R_LD", 0x4F},
 
     // Imm. to register indirect
-    {"n_HL_LD", 0x36}};
+    {"n_HL_LD", 0x36},
+
+    /* This starts the 16-bit load opcode table. */
+    // Imm. Extended to Register pair
+
+    {"nn_BC_LD", 0x01},
+    {"nn_DE_LD", 0x11},
+    {"nn_HL_LD", 0x21},
+    {"nn_SP_LD", 0x31},
+
+    // Ext. to register
+    {"ED_nn_BC_LD", 0x4B},
+    {"ED_nn_DE_LD", 0x5B},
+    {"nn_HL_LD_EXT", 0x2A},
+    {"ED_nn_SP_LD", 0x7B},
+
+    // Register to extended
+    {"ED_BC_nn_LD", 0x43},
+    {"ED_DE_nn_LD", 0x53},
+    {"HL_nn_LD", 0x22},
+    {"ED_SP_nn_LD", 0x73},
+
+    // Register to register
+    {"HL_SP_LD", 0xF9}};
 
   const std::size_t flag_buffer            = 9;
   const char* flag_regs_names[flag_buffer] = {"flag_C",
@@ -242,7 +261,6 @@ bool debug_event_loop(GLFWwindow* window, int counter, Z80CPU* cpu)
 
   while (!glfwWindowShouldClose(window))
   {
-
 
     // Update ImGui
     ImGui_ImplOpenGL3_NewFrame();
@@ -339,16 +357,17 @@ bool debug_event_loop(GLFWwindow* window, int counter, Z80CPU* cpu)
       ImGui::EndTable();
     }
 
-    // Current instruction
+    // Display the current instruction.
     for (auto& [key, value] : instr)
     {
-      if (value == (Byte)cpu->currentOpcode)
+
+      if (value == (Byte)cpu->debugOpcode)
       {
-        ImGui::Text("Current Instruction: %s", key.c_str());
+        ImGui::Text("Current Possible Instruction: %s", key.c_str());
       }
     }
 
-    ImGui::Text("Current opcode: 0x%X", cpu->currentOpcode);
+    ImGui::Text("Current opcode: 0x%X", cpu->debugOpcode);
     ImGui::Text("Current step: %d", counter);
 
     ImGui::End();

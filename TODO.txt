@@ -119,3 +119,27 @@
 
   // Imm. to register indirect
   {"n_HL_LD", 0x36}
+
+  /* This starts the 16-bit load opcode table. */
+
+    // Imm. Extended to Register pair
+
+    {"nn_BC_LD", 0x01},
+    {"nn_DE_LD", 0x11},
+    {"nn_HL_LD", 0x21},
+    {"nn_SP_LD", 0x31},
+
+    // Ext. to register
+     {"ED_nn_BC_LD", 0x4B},
+     {"ED_nn_DE_LD", 0x5B},
+     {"nn_HL_LD_EXT", 0x2A},
+     {"ED_nn_SP_LD", 0x7B},
+
+    // Register to extended
+    {"ED_BC_nn_LD", 0x43},
+    {"ED_DE_nn_LD", 0x53},
+    {"HL_nn_LD", 0x22},
+    {"ED_SP_nn_LD", 0x73},
+
+    // Register to register
+    {"HL_SP_LD", 0xF9}

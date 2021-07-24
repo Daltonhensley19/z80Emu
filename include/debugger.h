@@ -27,4 +27,3 @@ bool debug_event_loop(GLFWwindow* window, int counter, Z80CPU* cpu);
 
 void debug_cleanup(GLFWwindow* window);
 
-void update_register_values();

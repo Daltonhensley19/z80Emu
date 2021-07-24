@@ -39,6 +39,7 @@ struct Z80CPU {
     // Usually 8-bits (currentOpcode & 0xFF00 >> 8),
     // but sometimes 16-bits due to prefixes (DD, ED, FD, CB).
     Word currentOpcode = 0x0000;
+    Word debugOpcode = 0x0000;
 
     // Stack operations
     Stack stack;
