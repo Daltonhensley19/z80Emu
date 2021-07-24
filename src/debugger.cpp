@@ -242,16 +242,16 @@ bool debug_event_loop(GLFWwindow* window, int counter, Z80CPU* cpu)
     // Imm. to register indirect
     {"n_HL_LD", 0x36}};
 
-  const std::size_t flag_buffer                  = 9;
-  const std::string flag_regs_names[flag_buffer] = {"flag_C",
-                                                    "flag_N",
-                                                    "flag_P",
-                                                    "flag_V",
-                                                    "flag_X1",
-                                                    "flag_H",
-                                                    "flag_Z",
-                                                    "flag_S",
-                                                    "flag_X2"};
+  const std::size_t flag_buffer            = 9;
+  const char* flag_regs_names[flag_buffer] = {"flag_C",
+                                              "flag_N",
+                                              "flag_P",
+                                              "flag_V",
+                                              "flag_X1",
+                                              "flag_H",
+                                              "flag_Z",
+                                              "flag_S",
+                                              "flag_X2"};
 
   Byte flag_regs[flag_buffer] = {cpu->flag.C,
                                  cpu->flag.N,
@@ -298,13 +298,17 @@ bool debug_event_loop(GLFWwindow* window, int counter, Z80CPU* cpu)
     // Table of main registers
     if (ImGui::BeginTable("##table1", 1))
     {
-      for (int row = 0; row < 8; row++)
+
+      ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(0, 131, 129, 255));
+
+      for (std::size_t row = 0; row < buffer_size / 2; row++)
       {
         ImGui::TableNextRow();
         ImGui::TableSetColumnIndex(0);
         ImGui::Text("%s \t value: 0x%X", reg_names[row], (int)reg[row]);
       }
 
+      ImGui::PopStyleColor();
       ImGui::EndTable();
     }
 
@@ -312,13 +316,16 @@ bool debug_event_loop(GLFWwindow* window, int counter, Z80CPU* cpu)
     if (ImGui::BeginTable("##table2", 1))
     {
 
-      for (int row = 8; row < 16; row++)
+      ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(0, 255, 155, 119));
+
+      for (std::size_t row = 8; row < buffer_size; row++)
       {
         ImGui::TableNextRow();
         ImGui::TableSetColumnIndex(0);
         ImGui::Text("%s \t value: 0x%X", reg_names[row], (int)reg[row]);
       }
 
+      ImGui::PopStyleColor();
       ImGui::EndTable();
     }
 
@@ -326,7 +333,9 @@ bool debug_event_loop(GLFWwindow* window, int counter, Z80CPU* cpu)
     if (ImGui::BeginTable("##table3", 1))
     {
 
-      for (int row = 0; row < 4; row++)
+      ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(0, 255, 110, 233));
+
+      for (std::size_t row = 0; row < buff; row++)
       {
         ImGui::TableNextRow();
         ImGui::TableSetColumnIndex(0);
@@ -335,6 +344,26 @@ bool debug_event_loop(GLFWwindow* window, int counter, Z80CPU* cpu)
                     (int)auxiliary_regs[row]);
       }
 
+      ImGui::PopStyleColor();
+      ImGui::EndTable();
+    }
+
+    // Table of flag registers
+    if (ImGui::BeginTable("##table4", 1))
+    {
+
+      ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(0, 255, 0, 255));
+
+      for (std::size_t row = 0; row < flag_buffer; row++)
+      {
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("%s \t\t\t\t    value: 0x%X",
+                    flag_regs_names[row],
+                    (int)flag_regs[row]);
+      }
+
+      ImGui::PopStyleColor();
       ImGui::EndTable();
     }
 
@@ -375,6 +404,7 @@ bool debug_event_loop(GLFWwindow* window, int counter, Z80CPU* cpu)
     if (execute_next_frame)
       return false;
   }
+  return false;
 }
 
 void debug_cleanup(GLFWwindow* window)

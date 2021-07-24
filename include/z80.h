@@ -46,7 +46,7 @@ struct Z80CPU {
     void executeInstruction();
 
     Z80CPU()
-            : flag{0, 0, 0, 0, 0, 0, 0}
+            : flag{0, 0, 0, 0, 0, 0, 0, 0}
                {}
 
 };
