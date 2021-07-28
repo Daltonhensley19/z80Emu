@@ -7,7 +7,7 @@
 #include <map>
 #include <string>
 
-GLFWwindow* debug_glfw_init()
+GLFWwindow* debug::debug_glfw_init()
 {
   // Start GLFW API
   glfwInit();
@@ -28,7 +28,7 @@ GLFWwindow* debug_glfw_init()
   return window;
 }
 
-void debug_imgui_init(GLFWwindow* window)
+void debug::debug_imgui_init(GLFWwindow* window)
 {
 
   // Initalize Dear ImGui
@@ -41,7 +41,7 @@ void debug_imgui_init(GLFWwindow* window)
   ImGui_ImplOpenGL3_Init("#version 460");
 }
 
-bool debug_event_loop(GLFWwindow* window, int counter, Z80CPU* cpu)
+bool debug::debug_event_loop(GLFWwindow* window, int counter, Z80CPU* cpu)
 {
 
   int debug_counter = 0;
@@ -398,7 +398,7 @@ bool debug_event_loop(GLFWwindow* window, int counter, Z80CPU* cpu)
   return false;
 }
 
-void debug_cleanup(GLFWwindow* window)
+void debug::debug_cleanup(GLFWwindow* window)
 {
 
   // ImGui Cleanup
@@ -411,18 +411,18 @@ void debug_cleanup(GLFWwindow* window)
   glfwTerminate();
 }
 
-bool debug_handle(GLFWwindow* glfw_win, int counter_handle, Z80CPU* cpu)
+bool debug::debug_handle(GLFWwindow* glfw_win, int counter_handle, Z80CPU* cpu)
 {
 
   // Trigger event-loop, action happens here!
-  bool shutdown_handle = debug_event_loop(glfw_win, counter_handle, cpu);
+  bool shutdown_handle = debug::debug_event_loop(glfw_win, counter_handle, cpu);
 
   if (shutdown_handle)
   {
     // Clean up Dear ImGui and GLFW
     std::cout << "Shuting off. \n";
 
-    debug_cleanup(glfw_win);
+    debug::debug_cleanup(glfw_win);
     exit(EXIT_SUCCESS);
   }
 

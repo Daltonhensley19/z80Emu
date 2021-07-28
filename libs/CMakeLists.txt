@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.20)
 
-set(LIBSOURCES imgui/imgui.cpp 
+set(IMGUILIBSOURCES imgui/imgui.cpp 
                imgui/imgui_demo.cpp
                imgui/imgui_draw.cpp
                imgui/imgui_tables.cpp
@@ -8,5 +8,8 @@ set(LIBSOURCES imgui/imgui.cpp
                imgui/imgui_impl_glfw.cpp
                imgui/imgui_impl_opengl3.cpp)
 
-add_library(imgui STATIC ${LIBSOURCES})
+
+
+add_library(imgui STATIC ${IMGUILIBSOURCES})
+
 

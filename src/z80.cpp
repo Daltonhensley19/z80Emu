@@ -5,6 +5,10 @@
 #define FMT_HEADER_ONLY 1
 #include "../include/fmt/core.h"
 
+#include "../libs/spdlog/include/spdlog/spdlog.h"
+
+
+
 #include "../include/debugger.h"
 #include "../include/opcodes.h"
 #include "../include/z80.h"
@@ -30,7 +34,7 @@ void Z80CPU::executeInstruction()
   ////////////////////////////////////
 
 #if ENABLE_DEBUG
-  GLFWwindow* glfw_win = debug_glfw_init();
+  GLFWwindow* glfw_win = debug::debug_glfw_init();
 
   // GLEW provides efficient run-time mechanisms
   // for determining which OpenGL extensions are supported
@@ -38,22 +42,22 @@ void Z80CPU::executeInstruction()
   glewInit();
 
   // Initalize Dear ImGui
-  debug_imgui_init(glfw_win);
+  debug::debug_imgui_init(glfw_win);
 
 #endif
 #if ENABLE_DEBUG
   while (cycles > 0 && pause)
   {
 
-    fmt::print("At emu start\n");
+    spdlog::info("At emu start\n");
     if (counter > 0)
       counter++;
 
-    bool glfw_is_shutdown = debug_handle(glfw_win, counter, this);
+    bool glfw_is_shutdown = debug::debug_handle(glfw_win, counter, this);
 
     if (pause && !glfw_is_shutdown)
     {
-      fmt::print("Processing emu cycle. \n");
+      spdlog::info("Processing emu cycle. \n");
     }
 
 #else
@@ -686,9 +690,9 @@ void Z80CPU::executeInstruction()
       case LD8::IDX_R_LD:
       {
 #if ENABLE_DEBUG
-        fmt::print("At prefix DD.\n");
+        spdlog::info("At prefix DD.\n");
         counter++;
-        debug_handle(glfw_win, counter, this);
+        debug::debug_handle(glfw_win, counter, this);
 #endif
         Byte d = ram[pc + 2];
         switch (ram[pc + 1])
@@ -909,9 +913,9 @@ void Z80CPU::executeInstruction()
       case LD8::IDY_R_LD:
       {
 #if ENABLE_DEBUG
-        fmt::print("At prefix FD.\n");
+        spdlog::info("At prefix FD.\n");
         counter++;
-        debug_handle(glfw_win, counter, this);
+        debug::debug_handle(glfw_win, counter, this);
 #endif
         Byte d = ram[pc + 2];
         switch (ram[pc + 1])
@@ -1142,9 +1146,9 @@ void Z80CPU::executeInstruction()
       case LD8::ED_PREFIX:
       {
 #if ENABLE_DEBUG
-        fmt::print("At prefix ED.\n");
+        spdlog::info("At prefix ED.\n");
         counter++;
-        debug_handle(glfw_win, counter, this);
+        debug::debug_handle(glfw_win, counter, this);
 #endif
         switch (ram[pc + 1])
         {
@@ -1164,10 +1168,10 @@ void Z80CPU::executeInstruction()
             pc++;
 
 #if ENABLE_DEBUG
-            fmt::print("At site of operation.\n");
+            spdlog::info("At site of operation.\n");
             debugOpcode = ram[pc];
             counter++;
-            debug_handle(glfw_win, counter, this);
+            debug::debug_handle(glfw_win, counter, this);
 #endif
             ram[pc] = ram[pc + 1];
           }
@@ -1569,9 +1573,9 @@ void Z80CPU::executeInstruction()
 #if ENABLE_DEBUG
     if (!glfw_is_shutdown)
     {
-      fmt::print("At end of opcode search.\n");
+      spdlog::info("At end of opcode search.\n");
       counter++;
-      debug_handle(glfw_win, counter, this);
+      debug::debug_handle(glfw_win, counter, this);
     }
 
 #endif

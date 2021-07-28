@@ -60,7 +60,7 @@ Word DEasWord();
 // Used for register indirect addressing
 Word HLasWord();
 
-namespace debugRegisters
+namespace debug
 {
 void displayRegisterTable();
 void displaySingleRegister(char reg);

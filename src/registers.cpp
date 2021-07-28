@@ -48,7 +48,7 @@ Byte ByteRegister::C_Reg_B = 0;
 Byte ByteRegister::E_Reg_B = 20;
 Byte ByteRegister::L_Reg_B = 0;
 
-void debugRegisters::displayRegisterTable()
+void debug::displayRegisterTable()
 {
   fmt::print("\n A_Reg_A: {0:#X}\n "
              "B_Reg_A: {1:#X}\n "
@@ -68,7 +68,7 @@ void debugRegisters::displayRegisterTable()
              ByteRegister::L_Reg_A);
 }
 
-void debugRegisters::displaySingleRegister(char reg)
+void debug::displaySingleRegister(char reg)
 {
   switch (reg)
   {
