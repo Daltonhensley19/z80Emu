@@ -25,5 +25,5 @@ add_subdirectory(libs)
 
 
 
-target_include_directories(z80Emu PUBLIC libs/imgui/ libs/spdlog/include/)
+target_include_directories(z80Emu PUBLIC libs/imgui/)
 target_link_libraries(z80Emu PUBLIC imgui)

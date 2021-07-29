@@ -5,7 +5,6 @@
 #define FMT_HEADER_ONLY 1
 #include "../include/fmt/core.h"
 
-#include "../libs/spdlog/include/spdlog/spdlog.h"
 
 
 
@@ -49,7 +48,7 @@ void Z80CPU::executeInstruction()
   while (cycles > 0 && pause)
   {
 
-    spdlog::info("At emu start\n");
+    fmt::print("At emu start\n");
     if (counter > 0)
       counter++;
 
@@ -57,7 +56,7 @@ void Z80CPU::executeInstruction()
 
     if (pause && !glfw_is_shutdown)
     {
-      spdlog::info("Processing emu cycle. \n");
+      fmt::print("Processing emu cycle. \n");
     }
 
 #else
@@ -690,7 +689,7 @@ void Z80CPU::executeInstruction()
       case LD8::IDX_R_LD:
       {
 #if ENABLE_DEBUG
-        spdlog::info("At prefix DD.\n");
+        fmt::print("At prefix DD.\n");
         counter++;
         debug::debug_handle(glfw_win, counter, this);
 #endif
@@ -913,7 +912,7 @@ void Z80CPU::executeInstruction()
       case LD8::IDY_R_LD:
       {
 #if ENABLE_DEBUG
-        spdlog::info("At prefix FD.\n");
+        fmt::print("At prefix FD.\n");
         counter++;
         debug::debug_handle(glfw_win, counter, this);
 #endif
@@ -1146,7 +1145,7 @@ void Z80CPU::executeInstruction()
       case LD8::ED_PREFIX:
       {
 #if ENABLE_DEBUG
-        spdlog::info("At prefix ED.\n");
+        fmt::print("At prefix ED.\n");
         counter++;
         debug::debug_handle(glfw_win, counter, this);
 #endif
@@ -1168,7 +1167,7 @@ void Z80CPU::executeInstruction()
             pc++;
 
 #if ENABLE_DEBUG
-            spdlog::info("At site of operation.\n");
+            fmt::print("At site of operation.\n");
             debugOpcode = ram[pc];
             counter++;
             debug::debug_handle(glfw_win, counter, this);
@@ -1573,7 +1572,7 @@ void Z80CPU::executeInstruction()
 #if ENABLE_DEBUG
     if (!glfw_is_shutdown)
     {
-      spdlog::info("At end of opcode search.\n");
+      fmt::print("At end of opcode search.\n");
       counter++;
       debug::debug_handle(glfw_win, counter, this);
     }
