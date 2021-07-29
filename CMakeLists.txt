@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_FLAGS "-O0 -g -Wall -Wextra -lGLEW -lglfw -lGL")
 
 set(SOURCES src/main.cpp src/z80.cpp src/registers.cpp src/memory.cpp 
-        src/stack.cpp src/debugger.cpp src/utility/timer.cpp)
+        src/stack.cpp src/debugger.cpp src/utility/timer.cpp src/utility/load_rom.cpp)
 
 
 

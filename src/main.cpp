@@ -5,26 +5,24 @@
 #include "../include/registers.h"
 #include "../include/z80.h"
 
-#include "../include/debugger.h"
+
 
 #include "../include/timer.h"
+#include "../include/load_rom.h"
 
-int main()
+int main(int argc, char** argv)
 {
 
-  // Z80CPU cpu{};
+    if(argc != 2)
+        fmt::print("Error! Invaild number of arguments. Expected a path to binary test rom.");
+    else 
+    {
+        util::load_rom(argv[1]);
+    }
+  
+  Z80CPU cpu{};
 
-  //  cpu.executeInstruction();
-  Timer stop_watch{};
-
-  stop_watch.start();
-
-  for (int i = 0; i < 10000000; i++)
-  {
-    fmt::print("{}\n", i);
-  }
-  stop_watch.stop();
-  stop_watch.timer_duration();
+  cpu.executeInstruction();
 
   return 0;
 }

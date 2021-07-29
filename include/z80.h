@@ -25,8 +25,8 @@ struct Z80CPU {
         set with the value of the
         interrupt enable flip-flop (IFF2) for storage or testing.
     */
-    bool IFF1 = 0;
-    bool IFF2 = 0;
+    bool IFF1 = false;
+    bool IFF2 = false;
 
     // Bit Field for common Z80 Flags
     FlagBitField flag;
@@ -47,7 +47,7 @@ struct Z80CPU {
     void executeInstruction();
 
     Z80CPU()
-            : flag{0, 0, 0, 0, 0, 0, 0, 0}
+            : flag{0, 0, {0}, 0, 0, 0, 0, 0}
                {}
 
 };
