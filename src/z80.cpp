@@ -5,12 +5,8 @@
 #define FMT_HEADER_ONLY 1
 #include "../include/fmt/core.h"
 
-
-
-
 #include "../include/debugger.h"
 #include "../include/opcodes.h"
-
 
 #define ENABLE_DEBUG 1
 
@@ -25,10 +21,10 @@ void Z80CPU::executeInstruction()
 #endif
 
   // SANDBOX VALUES FOR TESTING //////
-//  cycles    = 10;
- // pc        = 0x78;
- // ram[pc]   = 0xED;
- // ram[0x79] = 0x57;
+  //  cycles    = 10;
+  // pc        = 0x78;
+  // ram[pc]   = 0xED;
+  // ram[0x79] = 0x57;
   // currentOpcode = ram[pc];
   ////////////////////////////////////
 
@@ -1574,7 +1570,7 @@ void Z80CPU::executeInstruction()
     {
       fmt::print("At end of opcode search.\n");
       counter++;
-        debugOpcode = ram[pc];
+      debugOpcode = ram[pc];
       debug::debug_handle(glfw_win, counter, this);
     }
 
