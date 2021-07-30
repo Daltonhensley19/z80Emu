@@ -6,7 +6,6 @@
 struct LD8
 {
 
-  // TODO(Dalton): Add prefixes to opcodes in 8-bit table.
 
   // NOTE: Format is register (source) to register (destination).
   const static Word A_A_LD = 0x7F;
@@ -156,15 +155,16 @@ struct LD16
   const static Word HL_SP_LD = 0xF9;
 };
 
+// Pop opcodes (found in the table with 16-bit load)
 struct Pop
 {
-  // Push opcodes (found in the table with 16-bit load)
   const static Word POP_AF = 0xF1;
   const static Word POP_BC = 0xC1;
   const static Word POP_DE = 0xD1;
   const static Word POP_HL = 0xE1;
 };
 
+// Push opcodes (found in the table with 16-bit load)
 struct Push
 {
   const static Word PUSH_AF = 0xF5;
