@@ -182,3 +182,18 @@ struct Ex
   const static Word HL_SP          = 0xE3;
   const static Word HL_DE          = 0xEB;
 };
+
+// Call opcode group
+struct Call
+{
+  const static Word UNCON_CALL    = 0xCD;
+  const static Word CARRY_CALL    = 0xDC;
+  const static Word NONCARRY_CALL = 0xD4;
+  const static Word ZERO_CALL     = 0xCC;
+  const static Word NONZERO_CALL  = 0xC4;
+  const static Word EVEN_CALL     = 0xEC;
+  const static Word ODD_CALL      = 0xE4;
+  const static Word NEG_CALL      = 0xFC;
+  const static Word POS_CALL      = 0xF4;
+};
+
