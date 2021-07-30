@@ -18,7 +18,6 @@ void Z80CPU::executeInstruction()
 #if ENABLE_DEBUG
   int counter = 0;
   bool pause  = true;
-#endif
 
   // SANDBOX VALUES FOR TESTING //////
   //  cycles    = 10;
@@ -28,7 +27,6 @@ void Z80CPU::executeInstruction()
   // currentOpcode = ram[pc];
   ////////////////////////////////////
 
-#if ENABLE_DEBUG
   GLFWwindow* glfw_win = debug::debug_glfw_init();
 
   // GLEW provides efficient run-time mechanisms
@@ -39,8 +37,6 @@ void Z80CPU::executeInstruction()
   // Initalize Dear ImGui
   debug::debug_imgui_init(glfw_win);
 
-#endif
-#if ENABLE_DEBUG
   while (cycles > 0 && pause)
   {
 
