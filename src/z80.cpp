@@ -2,6 +2,7 @@
 // Created by dalton on 5/29/21.
 //
 
+#include <memory.h>
 #define FMT_HEADER_ONLY 1
 #include "../include/fmt/core.h"
 
@@ -1557,6 +1558,20 @@ void Z80CPU::executeInstruction()
 
         cycles--;
         pc += 2;
+      }
+      break;
+      case Call::UNCON_CALL:
+      {
+        cycles += 3;
+
+        ram[sp - 1] = (pc << BYTE_SHIFT_ALIGNMENT) & MAX_BYTE_SIZE;
+        ram[sp - 2] = (pc & MAX_BYTE_SIZE);
+
+        pc = ((ram[pc + 2] << BYTE_SHIFT_ALIGNMENT) & MAX_BYTE_SIZE) |
+             (ram[pc + 1] & MAX_BYTE_SIZE);
+
+
+        cycles--;
       }
       break;
     }
