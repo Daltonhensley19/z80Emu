@@ -1150,8 +1150,24 @@ void Z80CPU::executeInstruction()
             cycles += 9;
             ByteRegister::A_Reg_A = I;
 
-            ((I & 0x80) != 0) ? (flag.S = 1) : (flag.S = 0); // Two's complement, S
-            (I == 0) ? (flag.Z = 1) : (flag.Z = 0);        // Z
+           // Two's complement, S
+              if ((I & 0x80) != 0)
+              {
+                  flag.S = 1;
+              }
+              else
+              {
+                  flag.S = 0;
+              }
+                  // Z
+              if (I == 0)
+              {
+                  flag.Z = 1;
+              }
+              else
+              {
+                  flag.Z = 0;
+              }
             flag.H = 0;                                // H
             flag.P = IFF2;                             // P
             flag.N = 0;                                // N
@@ -1173,8 +1189,24 @@ void Z80CPU::executeInstruction()
             cycles += 9;
             ByteRegister::A_Reg_A = R;
 
-            ((R & 0x80) != 0) ? (flag.S = 1) : (flag.S = 0); // Two's complement, S
-            (R == 0) ? (flag.Z = 1) : (flag.Z = 0);        // Z
+            // Two's complement, S
+              if ((R & 0x80) != 0)
+              {
+                  flag.S = 1;
+              }
+              else
+              {
+                  flag.S = 0;
+              }
+                  // Z
+            if(R == 0)
+            {
+                flag.Z = 1;
+            }
+            else
+            {
+                flag.Z = 0;
+            }
             flag.H = 0;                                // H
             flag.P = IFF2;                             // P
             flag.N = 0;                                // N
