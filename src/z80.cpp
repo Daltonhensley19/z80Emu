@@ -1570,7 +1570,6 @@ void Z80CPU::executeInstruction()
         pc = ((ram[pc + 2] << BYTE_SHIFT_ALIGNMENT) & MAX_BYTE_SIZE) |
              (ram[pc + 1] & MAX_BYTE_SIZE);
 
-
         cycles--;
       }
       break;

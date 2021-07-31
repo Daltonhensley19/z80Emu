@@ -1,4 +1,10 @@
-cmake_minimum_required(VERSION 3.20)
+if (APPLE)
+    cmake_minimum_required(VERSION 3.18)
+endif (APPLE)
+
+if (UNIX AND NOT APPLE)
+    cmake_minimum_required(VERSION 3.20)
+endif (UNIX AND NOT APPLE)
 
 set(IMGUILIBSOURCES imgui/imgui.cpp 
                imgui/imgui_demo.cpp
