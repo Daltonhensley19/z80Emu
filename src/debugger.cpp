@@ -45,7 +45,12 @@ void debug::debug_imgui_init(GLFWwindow* window)
   ImGui::StyleColorsDark();
 
   ImGui_ImplGlfw_InitForOpenGL(window, true);
-  ImGui_ImplOpenGL3_Init("#version 460");
+
+#if defined(__linux__)
+    ImGui_ImplOpenGL3_Init("#version 460");
+#elif defined(__APPLE__)
+    ImGui_ImplOpenGL3_Init("#version 150");
+#endif
 }
 
 bool debug::debug_event_loop(GLFWwindow* window, int counter, Z80CPU* cpu)
