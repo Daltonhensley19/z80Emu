@@ -47,9 +47,9 @@ void debug::debug_imgui_init(GLFWwindow* window)
   ImGui_ImplGlfw_InitForOpenGL(window, true);
 
 #if defined(__linux__)
-    ImGui_ImplOpenGL3_Init("#version 460");
+  ImGui_ImplOpenGL3_Init("#version 460");
 #elif defined(__APPLE__)
-    ImGui_ImplOpenGL3_Init("#version 150");
+  ImGui_ImplOpenGL3_Init("#version 150");
 #endif
 }
 

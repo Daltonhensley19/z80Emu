@@ -1150,27 +1150,27 @@ void Z80CPU::executeInstruction()
             cycles += 9;
             ByteRegister::A_Reg_A = I;
 
-           // Two's complement, S
-              if ((I & 0x80) != 0)
-              {
-                  flag.S = 1;
-              }
-              else
-              {
-                  flag.S = 0;
-              }
-                  // Z
-              if (I == 0)
-              {
-                  flag.Z = 1;
-              }
-              else
-              {
-                  flag.Z = 0;
-              }
-            flag.H = 0;                                // H
-            flag.P = IFF2;                             // P
-            flag.N = 0;                                // N
+            // Two's complement, S
+            if ((I & 0x80) != 0)
+            {
+              flag.S = 1;
+            }
+            else
+            {
+              flag.S = 0;
+            }
+            // Z
+            if (I == 0)
+            {
+              flag.Z = 1;
+            }
+            else
+            {
+              flag.Z = 0;
+            }
+            flag.H = 0;    // H
+            flag.P = IFF2; // P
+            flag.N = 0;    // N
             // C flag not affected
             cycles--;
             pc++;
@@ -1190,26 +1190,26 @@ void Z80CPU::executeInstruction()
             ByteRegister::A_Reg_A = R;
 
             // Two's complement, S
-              if ((R & 0x80) != 0)
-              {
-                  flag.S = 1;
-              }
-              else
-              {
-                  flag.S = 0;
-              }
-                  // Z
-            if(R == 0)
+            if ((R & 0x80) != 0)
             {
-                flag.Z = 1;
+              flag.S = 1;
             }
             else
             {
-                flag.Z = 0;
+              flag.S = 0;
             }
-            flag.H = 0;                                // H
-            flag.P = IFF2;                             // P
-            flag.N = 0;                                // N
+            // Z
+            if (R == 0)
+            {
+              flag.Z = 1;
+            }
+            else
+            {
+              flag.Z = 0;
+            }
+            flag.H = 0;    // H
+            flag.P = IFF2; // P
+            flag.N = 0;    // N
             // C is not affected
             cycles--;
             pc += 2;
