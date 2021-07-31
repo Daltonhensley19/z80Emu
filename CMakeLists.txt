@@ -11,7 +11,13 @@ project(z80Emu)
 
 set(CMAKE_CXX_STANDARD 20)
 
-set(CMAKE_CXX_FLAGS "-O0 -g -Wall -Wextra -lglfw -lGL")
+if (APPLE)
+    set(CMAKE_CXX_FLAGS "-O0 -g -Wall -Wextra")
+endif (APPLE)
+
+if (UNIX AND NOT APPLE)
+    set(CMAKE_CXX_FLAGS "-O0 -g -Wall -Wextra -lglfw -lGL")
+endif (UNIX AND NOT APPLE)
 
 set(SOURCES src/main.cpp
         src/z80.cpp
