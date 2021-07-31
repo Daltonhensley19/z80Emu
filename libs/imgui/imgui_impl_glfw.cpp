@@ -43,7 +43,12 @@
 #include "imgui_impl_glfw.h"
 
 // GLFW
+#if defined(__linux__)
 #include <GLFW/glfw3.h>
+#elif defined(__APPLE__)
+#include "/usr/local/Cellar/glfw/3.3.4/include/GLFW/glfw3.h"
+#endif
+
 #ifdef _WIN32
 #undef APIENTRY
 #define GLFW_EXPOSE_NATIVE_WIN32

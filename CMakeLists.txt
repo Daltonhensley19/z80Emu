@@ -6,7 +6,7 @@ if (UNIX AND NOT APPLE)
     cmake_minimum_required(VERSION 3.20)
 endif (UNIX AND NOT APPLE)
 
-cmake_minimum_required(VERSION 3.20)
+
 project(z80Emu)
 
 set(CMAKE_CXX_STANDARD 20)
@@ -29,6 +29,7 @@ add_executable(z80Emu ${SOURCES})
 add_subdirectory(tests)
 add_subdirectory(libs)
 
+# MacOS platforms
 if (APPLE)
     find_library(COCOA_LIBRARY Cocoa)
     find_library(OpenGL_LIBRARY OpenGL)
@@ -48,6 +49,7 @@ if (APPLE)
     target_link_libraries(z80Emu PUBLIC imgui)
 endif (APPLE)
 
+# Linux platforms
 if (UNIX AND NOT APPLE)
 
     target_include_directories(z80Emu PUBLIC libs/imgui/)
