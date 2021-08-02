@@ -5,9 +5,9 @@
 struct Stack
 {
 public:
-  void pushByte(Byte byte);
-  void pushWord(Word word);
+  void push_byte(Byte byte);
+  void push_word(Word word);
 
-  Word popWord();
+  Word pop_word();
 };
 
