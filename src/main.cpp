@@ -26,7 +26,7 @@ int main(int argc, char** argv)
 
   Z80CPU cpu{};
 
-  cpu.executeInstruction();
+  cpu.execute_instruction();
 
   return 0;
 }
