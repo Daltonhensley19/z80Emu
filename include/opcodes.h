@@ -184,6 +184,16 @@ struct Ex
 };
 
 // Call opcode group
+ /*         cc     * Condition          * Flag
+  * *
+  *         * 000  * Non-Zero (NZ)      * Z
+  *         * 001  * Zero (Z)           * Z
+  *         * 010  * Non Carry (NC)     * C
+  *         * 011  * Carry (C)          * Z
+  *         * 100  * Parity Odd (PO)    * P/V
+  *         * 101  * Parity Even (PE)   * P/V
+  *         * 110  * Sign Positive (P)  * S
+  *         * 111  * Sign Negative (M)  * S */
 struct Call
 {
   const static Word UNCON_CALL    = 0xCD;

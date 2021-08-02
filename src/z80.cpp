@@ -1610,6 +1610,256 @@ void Z80CPU::execute_instruction()
         cycles--;
       }
       break;
+      case Call::NONZERO_CALL:
+      {
+
+        /* cc   * Condition          * Flag
+         *
+         * 000  * Non-Zero (NZ)      * Z
+         * 001  * Zero (Z)           * Z
+         * 010  * Non Carry (NC)     * C
+         * 011  * Carry (C)          * Z
+         * 100  * Parity Odd (PO)    * P/V
+         * 101  * Parity Even (PE)   * P/V
+         * 110  * Sign Positive (P)  * S
+         * 111  * Sign Negative (M)  * S */
+
+        cycles += 3;
+
+        if (!flag.Z)
+        {
+
+          ram[sp - 1] = (pc >> BYTE_SHIFT_ALIGNMENT) & MAX_BYTE_SIZE;
+          ram[sp - 2] = (pc & MAX_BYTE_SIZE);
+
+          pc = ((ram[pc + 2] << BYTE_SHIFT_ALIGNMENT) & MAX_BYTE_SIZE) |
+               (ram[pc + 1] & MAX_BYTE_SIZE);
+        }
+        else
+        {
+          pc += 3;
+        }
+      }
+      break;
+
+      case Call::ZERO_CALL:
+      {
+
+        /* cc   * Condition          * Flag
+         *
+         * 000  * Non-Zero (NZ)      * Z
+         * 001  * Zero (Z)           * Z
+         * 010  * Non Carry (NC)     * C
+         * 011  * Carry (C)          * Z
+         * 100  * Parity Odd (PO)    * P/V
+         * 101  * Parity Even (PE)   * P/V
+         * 110  * Sign Positive (P)  * S
+         * 111  * Sign Negative (M)  * S */
+
+        cycles += 3;
+
+        if (flag.Z)
+        {
+
+          ram[sp - 1] = (pc >> BYTE_SHIFT_ALIGNMENT) & MAX_BYTE_SIZE;
+          ram[sp - 2] = (pc & MAX_BYTE_SIZE);
+
+          pc = ((ram[pc + 2] << BYTE_SHIFT_ALIGNMENT) & MAX_BYTE_SIZE) |
+               (ram[pc + 1] & MAX_BYTE_SIZE);
+        }
+        else
+        {
+          pc += 3;
+        }
+      }
+      break;
+      case Call::NONCARRY_CALL:
+      {
+
+        /* cc   * Condition          * Flag
+         *
+         * 000  * Non-Zero (NZ)      * Z
+         * 001  * Zero (Z)           * Z
+         * 010  * Non Carry (NC)     * C
+         * 011  * Carry (C)          * Z
+         * 100  * Parity Odd (PO)    * P/V
+         * 101  * Parity Even (PE)   * P/V
+         * 110  * Sign Positive (P)  * S
+         * 111  * Sign Negative (M)  * S */
+
+        cycles += 3;
+
+        if (!flag.C)
+        {
+
+          ram[sp - 1] = (pc >> BYTE_SHIFT_ALIGNMENT) & MAX_BYTE_SIZE;
+          ram[sp - 2] = (pc & MAX_BYTE_SIZE);
+
+          pc = ((ram[pc + 2] << BYTE_SHIFT_ALIGNMENT) & MAX_BYTE_SIZE) |
+               (ram[pc + 1] & MAX_BYTE_SIZE);
+        }
+        else
+        {
+          pc += 3;
+        }
+      }
+      break;
+
+      case Call::CARRY_CALL:
+      {
+
+        /* cc   * Condition          * Flag
+         *
+         * 000  * Non-Zero (NZ)      * Z
+         * 001  * Zero (Z)           * Z
+         * 010  * Non Carry (NC)     * C
+         * 011  * Carry (C)          * Z
+         * 100  * Parity Odd (PO)    * P/V
+         * 101  * Parity Even (PE)   * P/V
+         * 110  * Sign Positive (P)  * S
+         * 111  * Sign Negative (M)  * S */
+
+        cycles += 3;
+
+        if (flag.C)
+        {
+
+          ram[sp - 1] = (pc >> BYTE_SHIFT_ALIGNMENT) & MAX_BYTE_SIZE;
+          ram[sp - 2] = (pc & MAX_BYTE_SIZE);
+
+          pc = ((ram[pc + 2] << BYTE_SHIFT_ALIGNMENT) & MAX_BYTE_SIZE) |
+               (ram[pc + 1] & MAX_BYTE_SIZE);
+        }
+        else
+        {
+          pc += 3;
+        }
+      }
+      break;
+      case Call::ODD_CALL:
+      {
+
+        /*  cc   * Condition         * Flag
+         *
+         * 000  * Non-Zero (NZ)      * Z
+         * 001  * Zero (Z)           * Z
+         * 010  * Non Carry (NC)     * C
+         * 011  * Carry (C)          * Z
+         * 100  * Parity Odd (PO)    * P/V
+         * 101  * Parity Even (PE)   * P/V
+         * 110  * Sign Positive (P)  * S
+         * 111  * Sign Negative (M)  * S */
+
+        cycles += 3;
+
+        if (!flag.P)
+        {
+
+          ram[sp - 1] = (pc >> BYTE_SHIFT_ALIGNMENT) & MAX_BYTE_SIZE;
+          ram[sp - 2] = (pc & MAX_BYTE_SIZE);
+
+          pc = ((ram[pc + 2] << BYTE_SHIFT_ALIGNMENT) & MAX_BYTE_SIZE) |
+               (ram[pc + 1] & MAX_BYTE_SIZE);
+        }
+        else
+        {
+          pc += 3;
+        }
+      }
+      break;
+      case Call::EVEN_CALL:
+      {
+
+        /* cc   * Condition          * Flag
+         *
+         * 000  * Non-Zero (NZ)      * Z
+         * 001  * Zero (Z)           * Z
+         * 010  * Non Carry (NC)     * C
+         * 011  * Carry (C)          * Z
+         * 100  * Parity Odd (PO)    * P/V
+         * 101  * Parity Even (PE)   * P/V
+         * 110  * Sign Positive (P)  * S
+         * 111  * Sign Negative (M)  * S */
+
+        cycles += 3;
+
+        if (flag.P)
+        {
+
+          ram[sp - 1] = (pc >> BYTE_SHIFT_ALIGNMENT) & MAX_BYTE_SIZE;
+          ram[sp - 2] = (pc & MAX_BYTE_SIZE);
+
+          pc = ((ram[pc + 2] << BYTE_SHIFT_ALIGNMENT) & MAX_BYTE_SIZE) |
+               (ram[pc + 1] & MAX_BYTE_SIZE);
+        }
+        else
+        {
+          pc += 3;
+        }
+      }
+      break;
+      case Call::POS_CALL:
+      {
+
+        /* cc   * Condition          * Flag
+         *
+         * 000  * Non-Zero (NZ)      * Z
+         * 001  * Zero (Z)           * Z
+         * 010  * Non Carry (NC)     * C
+         * 011  * Carry (C)          * Z
+         * 100  * Parity Odd (PO)    * P/V
+         * 101  * Parity Even (PE)   * P/V
+         * 110  * Sign Positive (P)  * S
+         * 111  * Sign Negative (M)  * S */
+
+        cycles += 3;
+
+        if (flag.S)
+        {
+
+          ram[sp - 1] = (pc >> BYTE_SHIFT_ALIGNMENT) & MAX_BYTE_SIZE;
+          ram[sp - 2] = (pc & MAX_BYTE_SIZE);
+
+          pc = ((ram[pc + 2] << BYTE_SHIFT_ALIGNMENT) & MAX_BYTE_SIZE) |
+               (ram[pc + 1] & MAX_BYTE_SIZE);
+        }
+        else
+        {
+          pc += 3;
+        }
+      }
+      break;
+      case Call::NEG_CALL:
+      {
+
+        /* cc   * Condition          * Flag
+         *
+         * 000  * Non-Zero (NZ)      * Z
+         * 001  * Zero (Z)           * Z
+         * 010  * Non Carry (NC)     * C
+         * 011  * Carry (C)          * Z
+         * 100  * Parity Odd (PO)    * P/V
+         * 101  * Parity Even (PE)   * P/V
+         * 110  * Sign Positive (P)  * S
+         * 111  * Sign Negative (M)  * S */
+
+        cycles += 3;
+
+        if (!flag.S)
+        {
+
+          ram[sp - 1] = (pc >> BYTE_SHIFT_ALIGNMENT) & MAX_BYTE_SIZE;
+          ram[sp - 2] = (pc & MAX_BYTE_SIZE);
+
+          pc = ((ram[pc + 2] << BYTE_SHIFT_ALIGNMENT) & MAX_BYTE_SIZE) |
+               (ram[pc + 1] & MAX_BYTE_SIZE);
+        }
+        else
+        {
+          pc += 3;
+        }
+      }
+      break;
     }
 
 #if ENABLE_DEBUG
