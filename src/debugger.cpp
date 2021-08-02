@@ -373,13 +373,13 @@ bool debug::debug_event_loop(GLFWwindow* window, int counter, Z80CPU* cpu)
     for (auto& [key, value] : instr)
     {
 
-      if (value == (Byte)cpu->debugOpcode)
+      if (value == (Byte)cpu->debug_opcode)
       {
         ImGui::Text("Current Possible Instruction: %s", key.c_str());
       }
     }
 
-    ImGui::Text("Current opcode: 0x%X", cpu->debugOpcode);
+    ImGui::Text("Current opcode: 0x%X", cpu->debug_opcode);
     ImGui::Text("Current step: %d", counter);
 
     ImGui::End();
