@@ -49,21 +49,21 @@ struct ByteRegister
 };
 
 // Used for register indirect addressing
-Word BCasWord();
+Word bc_as_word();
 
 // Used for register indirect addressing
-Word AFasWord();
+Word af_as_word();
 
 // Used for register indirect addressing
-Word DEasWord();
+Word de_as_word();
 
 // Used for register indirect addressing
-Word HLasWord();
+Word hl_as_word();
 
 namespace debug
 {
-void displayRegisterTable();
-void displaySingleRegister(char reg);
+void display_register_table();
+void display_single_register(char reg);
 
 }
 
