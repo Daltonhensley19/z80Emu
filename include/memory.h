@@ -12,15 +12,15 @@ const Byte MAX_BYTE_SIZE               = 0xff;   // 255
 const Word MAX_WORD_SIZE               = 0xffff; // 65535
 const std::size_t BYTE_SHIFT_ALIGNMENT = 8;
 
-Byte readByte(const Word address);
+Byte read_byte(const Word address);
 
-void writeByte(const Byte byte, Word address);
+void write_byte(const Byte byte, Word address);
 
-Word readWord(const Word address);
+Word read_word(const Word address);
 
-void writeWord(Word word, Word address);
+void write_word(Word word, Word address);
 
-void resetMem(std::array<Byte, RAM_SIZE>& p_ram);
+void reset_mem(std::array<Byte, RAM_SIZE>& p_ram);
 
-Word bytesToWord(const Byte highByte, const Byte lowByte);
+Word bytes_to_word(const Byte high_byte, const Byte low_byte);
 

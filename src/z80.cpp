@@ -1150,6 +1150,7 @@ void Z80CPU::executeInstruction()
             cycles += 9;
             ByteRegister::A_Reg_A = I;
 
+            // TODO: Look into using conditional operator
             // Two's complement, S
             if ((I & 0x80) != 0)
             {
