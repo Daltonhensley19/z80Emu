@@ -13,7 +13,7 @@
 
 // I must apologize for the very long switch table.
 // This is the quickest (yet dirtiest) way to implement the Z80 opcodes.
-void Z80CPU::executeInstruction()
+void Z80CPU::execute_instruction()
 {
 
 #if ENABLE_DEBUG
@@ -25,7 +25,7 @@ void Z80CPU::executeInstruction()
   // pc        = 0x78;
   // ram[pc]   = 0xED;
   // ram[0x79] = 0x57;
-  // currentOpcode = ram[pc];
+  // current_opcode = ram[pc];
   ////////////////////////////////////
 
   GLFWwindow* glfw_win = debug::debug_glfw_init();
@@ -58,9 +58,9 @@ void Z80CPU::executeInstruction()
 #endif
 
     // fetch current opcode
-    currentOpcode = ram[pc];
-    debugOpcode   = ram[pc];
-    switch (currentOpcode)
+    current_opcode = ram[pc];
+    debug_opcode   = ram[pc];
+    switch (current_opcode)
     {
       case LD8::A_A_LD:
       {
@@ -121,7 +121,7 @@ void Z80CPU::executeInstruction()
       case LD8::HL_A_LD:
       {
         cycles += 8;
-        ByteRegister::A_Reg_A = ram[HLasWord()];
+        ByteRegister::A_Reg_A = ram[hl_as_word()];
         cycles--;
         pc++;
       }
@@ -177,7 +177,7 @@ void Z80CPU::executeInstruction()
       case LD8::HL_B_LD:
       {
         cycles += 8;
-        ByteRegister::B_Reg_A = ram[HLasWord()];
+        ByteRegister::B_Reg_A = ram[hl_as_word()];
         cycles--;
         pc++;
       }
@@ -233,7 +233,7 @@ void Z80CPU::executeInstruction()
       case LD8::HL_C_LD:
       {
         cycles += 8;
-        ByteRegister::B_Reg_A = ram[HLasWord()];
+        ByteRegister::B_Reg_A = ram[hl_as_word()];
         cycles--;
         pc++;
       }
@@ -289,7 +289,7 @@ void Z80CPU::executeInstruction()
       case LD8::HL_D_LD:
       {
         cycles += 8;
-        ByteRegister::D_Reg_A = ram[HLasWord()];
+        ByteRegister::D_Reg_A = ram[hl_as_word()];
         cycles--;
         pc++;
       }
@@ -345,7 +345,7 @@ void Z80CPU::executeInstruction()
       case LD8::HL_E_LD:
       {
         cycles += 8;
-        ByteRegister::E_Reg_A = ram[HLasWord()];
+        ByteRegister::E_Reg_A = ram[hl_as_word()];
         cycles--;
         pc++;
       }
@@ -401,7 +401,7 @@ void Z80CPU::executeInstruction()
       case LD8::HL_H_LD:
       {
         cycles += 8;
-        ByteRegister::H_Reg_A = ram[HLasWord()];
+        ByteRegister::H_Reg_A = ram[hl_as_word()];
         cycles--;
         pc++;
       }
@@ -457,7 +457,7 @@ void Z80CPU::executeInstruction()
       case LD8::HL_L_LD:
       {
         cycles += 8;
-        ByteRegister::L_Reg_A = ram[HLasWord()];
+        ByteRegister::L_Reg_A = ram[hl_as_word()];
         cycles--;
         pc++;
       }
@@ -465,7 +465,7 @@ void Z80CPU::executeInstruction()
       case LD8::B_HL_LD:
       {
         cycles += 8;
-        ram[HLasWord()] = ByteRegister::B_Reg_A;
+        ram[hl_as_word()] = ByteRegister::B_Reg_A;
         cycles--;
         pc++;
       }
@@ -473,7 +473,7 @@ void Z80CPU::executeInstruction()
       case LD8::C_HL_LD:
       {
         cycles += 8;
-        ram[HLasWord()] = ByteRegister::C_Reg_A;
+        ram[hl_as_word()] = ByteRegister::C_Reg_A;
         cycles--;
         pc++;
       }
@@ -481,7 +481,7 @@ void Z80CPU::executeInstruction()
       case LD8::D_HL_LD:
       {
         cycles += 8;
-        ram[HLasWord()] = ByteRegister::D_Reg_A;
+        ram[hl_as_word()] = ByteRegister::D_Reg_A;
         cycles--;
         pc++;
       }
@@ -489,7 +489,7 @@ void Z80CPU::executeInstruction()
       case LD8::E_HL_LD:
       {
         cycles += 8;
-        ram[HLasWord()] = ByteRegister::E_Reg_A;
+        ram[hl_as_word()] = ByteRegister::E_Reg_A;
         cycles--;
         pc++;
       }
@@ -497,7 +497,7 @@ void Z80CPU::executeInstruction()
       case LD8::H_HL_LD:
       {
         cycles += 8;
-        ram[HLasWord()] = ByteRegister::H_Reg_A;
+        ram[hl_as_word()] = ByteRegister::H_Reg_A;
         cycles--;
         pc++;
       }
@@ -505,7 +505,7 @@ void Z80CPU::executeInstruction()
       case LD8::L_HL_LD:
       {
         cycles += 8;
-        ram[HLasWord()] = ByteRegister::L_Reg_A;
+        ram[hl_as_word()] = ByteRegister::L_Reg_A;
         cycles--;
         pc++;
       }
@@ -513,7 +513,7 @@ void Z80CPU::executeInstruction()
       case LD8::n_HL_LD:
       {
         cycles += 8;
-        ram[HLasWord()] = ram[pc + 1]; // LD imm to indirect address
+        ram[hl_as_word()] = ram[pc + 1]; // LD imm to indirect address
         cycles--;
         pc++;
       }
@@ -569,7 +569,7 @@ void Z80CPU::executeInstruction()
       case LD8::A_BC_LD:
       {
         cycles += 8;
-        ram[BCasWord()] = ByteRegister::A_Reg_A;
+        ram[bc_as_word()] = ByteRegister::A_Reg_A;
         cycles--;
         pc++;
       }
@@ -577,7 +577,7 @@ void Z80CPU::executeInstruction()
       case LD8::A_DE_LD:
       {
         cycles += 8;
-        ram[DEasWord()] = ByteRegister::A_Reg_A;
+        ram[de_as_word()] = ByteRegister::A_Reg_A;
         cycles--;
         pc++;
       }
@@ -585,7 +585,7 @@ void Z80CPU::executeInstruction()
       case LD8::A_HL_LD:
       {
         cycles += 8;
-        ram[HLasWord()] = ByteRegister::A_Reg_A;
+        ram[hl_as_word()] = ByteRegister::A_Reg_A;
         cycles--;
         pc++;
       }
@@ -593,7 +593,7 @@ void Z80CPU::executeInstruction()
       case LD8::A_nn_LD:
       {
         cycles += 8;
-        writeByte(ByteRegister::A_Reg_A, bytesToWord(ram[pc + 2], ram[pc + 1]));
+        write_byte(ByteRegister::A_Reg_A, bytes_to_word(ram[pc + 2], ram[pc + 1]));
         cycles--;
         pc++;
       }
@@ -657,7 +657,7 @@ void Z80CPU::executeInstruction()
       case LD8::BC_A_LD:
       {
         cycles += 8;
-        ByteRegister::A_Reg_A = ram[BCasWord()]; // LD indirect address to reg.
+        ByteRegister::A_Reg_A = ram[bc_as_word()]; // LD indirect address to reg.
         cycles--;
         pc++;
       }
@@ -665,7 +665,7 @@ void Z80CPU::executeInstruction()
       case LD8::DE_A_LD:
       {
         cycles += 8;
-        ByteRegister::A_Reg_A = ram[DEasWord()]; // LD indirect address to reg.
+        ByteRegister::A_Reg_A = ram[de_as_word()]; // LD indirect address to reg.
         cycles--;
         pc++;
       }
@@ -673,7 +673,7 @@ void Z80CPU::executeInstruction()
       case LD8::nn_A_LD:
       {
         cycles += 13; // TODO(Dalton): possible mistake in cycles?
-        ByteRegister::A_Reg_A = readByte(bytesToWord(ram[pc + 2], ram[pc + 1]));
+        ByteRegister::A_Reg_A = read_byte(bytes_to_word(ram[pc + 2], ram[pc + 1]));
         cycles--;
         pc++;
       }
@@ -813,7 +813,7 @@ void Z80CPU::executeInstruction()
           {
             cycles += 14;
 
-            ix = readWord(pc + 2);
+            ix = read_word(pc + 2);
             cycles--;
             pc += 2;
           }
@@ -822,7 +822,7 @@ void Z80CPU::executeInstruction()
           {
             cycles += 20;
 
-            Word position = readWord(pc + 2);
+            Word position = read_word(pc + 2);
             ix = ram[position + 1] << BYTE_SHIFT_ALIGNMENT | ram[position];
 
             cycles--;
@@ -833,7 +833,7 @@ void Z80CPU::executeInstruction()
           {
             cycles += 14;
 
-            ix = stack.popWord();
+            ix = stack.pop_word();
 
             cycles--;
             pc += 2;
@@ -853,7 +853,7 @@ void Z80CPU::executeInstruction()
           {
             cycles += 20;
 
-            std::uint32_t location = readWord(pc + 2);
+            std::uint32_t location = read_word(pc + 2);
 
             Byte highByte = (ix >> BYTE_SHIFT_ALIGNMENT) & MAX_BYTE_SIZE;
             Byte lowByte  = ix & MAX_BYTE_SIZE;
@@ -869,7 +869,7 @@ void Z80CPU::executeInstruction()
           {
             cycles += 15;
 
-            stack.pushWord(ix);
+            stack.push_word(ix);
 
             cycles--;
             pc += 2;
@@ -1038,7 +1038,7 @@ void Z80CPU::executeInstruction()
           {
             cycles += 20;
 
-            std::uint32_t location = readWord(pc + 2);
+            std::uint32_t location = read_word(pc + 2);
 
             Byte highByte = (iy >> BYTE_SHIFT_ALIGNMENT) & MAX_BYTE_SIZE;
             Byte lowByte  = iy & MAX_BYTE_SIZE;
@@ -1054,7 +1054,7 @@ void Z80CPU::executeInstruction()
           {
             cycles += 20;
 
-            std::uint32_t location = readWord(pc + 2);
+            std::uint32_t location = read_word(pc + 2);
 
             Byte IByte = (iy >> BYTE_SHIFT_ALIGNMENT) & MAX_BYTE_SIZE;
             Byte YByte = iy & MAX_BYTE_SIZE;
@@ -1062,7 +1062,7 @@ void Z80CPU::executeInstruction()
             IByte = ram[location + 1];
             YByte = ram[location];
 
-            iy = bytesToWord(IByte, YByte);
+            iy = bytes_to_word(IByte, YByte);
 
             cycles--;
             pc += 2;
@@ -1072,7 +1072,7 @@ void Z80CPU::executeInstruction()
           {
             cycles += 14;
 
-            iy = readWord(pc + 2);
+            iy = read_word(pc + 2);
 
             cycles--;
             pc += 2;
@@ -1082,7 +1082,7 @@ void Z80CPU::executeInstruction()
           {
             cycles += 14;
 
-            iy = stack.popWord();
+            iy = stack.pop_word();
 
             cycles--;
             pc += 2;
@@ -1102,7 +1102,7 @@ void Z80CPU::executeInstruction()
           {
             cycles += 15;
 
-            stack.pushWord(iy);
+            stack.push_word(iy);
 
             cycles--;
             pc += 2;
@@ -1178,7 +1178,7 @@ void Z80CPU::executeInstruction()
 
 #if ENABLE_DEBUG
             fmt::print("At site of operation.\n");
-            debugOpcode = ram[pc];
+            debug_opcode = ram[pc];
             counter++;
             debug::debug_handle(glfw_win, counter, this);
 #endif
@@ -1238,7 +1238,7 @@ void Z80CPU::executeInstruction()
           {
             cycles += 20;
 
-            std::uint32_t location = readWord(pc + 2);
+            std::uint32_t location = read_word(pc + 2);
 
             ram[location + 1] = ByteRegister::B_Reg_A;
             ram[location]     = ByteRegister::C_Reg_A;
@@ -1251,7 +1251,7 @@ void Z80CPU::executeInstruction()
           {
             cycles += 20;
 
-            std::uint32_t location = readWord(pc + 2);
+            std::uint32_t location = read_word(pc + 2);
 
             ram[location + 1] = ByteRegister::D_Reg_A;
             ram[location]     = ByteRegister::E_Reg_A;
@@ -1264,7 +1264,7 @@ void Z80CPU::executeInstruction()
           {
             cycles += 20;
 
-            std::uint32_t location = readWord(pc + 2);
+            std::uint32_t location = read_word(pc + 2);
 
             Byte S = (sp >> BYTE_SHIFT_ALIGNMENT) & MAX_BYTE_SIZE;
             Byte P = sp & MAX_BYTE_SIZE;
@@ -1280,7 +1280,7 @@ void Z80CPU::executeInstruction()
           {
             cycles += 20;
 
-            std::uint32_t location = readWord(pc + 2);
+            std::uint32_t location = read_word(pc + 2);
 
             ByteRegister::B_Reg_A = ram[location + 1];
             ByteRegister::C_Reg_A = ram[location];
@@ -1293,7 +1293,7 @@ void Z80CPU::executeInstruction()
           {
             cycles += 20;
 
-            std::uint32_t location = readWord(pc + 2);
+            std::uint32_t location = read_word(pc + 2);
 
             ByteRegister::D_Reg_A = ram[location + 1];
             ByteRegister::E_Reg_A = ram[location];
@@ -1306,7 +1306,7 @@ void Z80CPU::executeInstruction()
           {
             cycles += 20;
 
-            std::uint32_t location = readWord(pc + 2);
+            std::uint32_t location = read_word(pc + 2);
 
             Byte S = (sp >> BYTE_SHIFT_ALIGNMENT) & MAX_BYTE_SIZE;
             Byte P = sp & MAX_BYTE_SIZE;
@@ -1314,7 +1314,7 @@ void Z80CPU::executeInstruction()
             S = ram[location + 1];
             P = ram[location];
 
-            sp = bytesToWord(S, P);
+            sp = bytes_to_word(S, P);
 
             cycles--;
             pc += 2;
@@ -1356,7 +1356,7 @@ void Z80CPU::executeInstruction()
       case LD16::nn_SP_LD:
       {
         cycles += 10;
-        sp = readWord(pc + 1);
+        sp = read_word(pc + 1);
 
         cycles--;
         pc += 2;
@@ -1410,7 +1410,7 @@ void Z80CPU::executeInstruction()
       {
         cycles += 6;
 
-        sp = HLasWord();
+        sp = hl_as_word();
 
         cycles--;
         pc += 2;
@@ -1420,7 +1420,7 @@ void Z80CPU::executeInstruction()
       {
         cycles += 11;
 
-        stack.pushWord(BCasWord());
+        stack.push_word(bc_as_word());
 
         cycles--;
         pc += 2;
@@ -1430,7 +1430,7 @@ void Z80CPU::executeInstruction()
       {
         cycles += 11;
 
-        stack.pushWord(DEasWord());
+        stack.push_word(de_as_word());
 
         cycles--;
         pc += 2;
@@ -1440,7 +1440,7 @@ void Z80CPU::executeInstruction()
       {
         cycles += 11;
 
-        stack.pushWord(HLasWord());
+        stack.push_word(hl_as_word());
 
         cycles--;
         pc += 2;
@@ -1450,7 +1450,7 @@ void Z80CPU::executeInstruction()
       {
         cycles += 11;
 
-        stack.pushWord(AFasWord());
+        stack.push_word(af_as_word());
 
         cycles--;
         pc += 2;
@@ -1459,7 +1459,7 @@ void Z80CPU::executeInstruction()
       case LD16::nn_HL_LD_EXT:
       {
         cycles += 16;
-        std::uint32_t location = readWord(pc + 1);
+        std::uint32_t location = read_word(pc + 1);
 
         ByteRegister::H_Reg_A = ram[location + 1];
         ByteRegister::L_Reg_A = ram[location];
@@ -1472,7 +1472,7 @@ void Z80CPU::executeInstruction()
       {
         cycles += 16;
 
-        std::uint32_t location = readWord(pc + 1);
+        std::uint32_t location = read_word(pc + 1);
 
         ram[location + 1] = ByteRegister::H_Reg_A;
         ram[location]     = ByteRegister::L_Reg_A;
@@ -1613,7 +1613,7 @@ void Z80CPU::executeInstruction()
     {
       fmt::print("At end of opcode search.\n");
       counter++;
-      debugOpcode = ram[pc];
+      debug_opcode = ram[pc];
       debug::debug_handle(glfw_win, counter, this);
     }
 
