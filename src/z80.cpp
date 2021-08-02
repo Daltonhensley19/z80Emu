@@ -593,7 +593,8 @@ void Z80CPU::execute_instruction()
       case LD8::A_nn_LD:
       {
         cycles += 8;
-        write_byte(ByteRegister::A_Reg_A, bytes_to_word(ram[pc + 2], ram[pc + 1]));
+        write_byte(ByteRegister::A_Reg_A,
+                   bytes_to_word(ram[pc + 2], ram[pc + 1]));
         cycles--;
         pc++;
       }
@@ -657,7 +658,8 @@ void Z80CPU::execute_instruction()
       case LD8::BC_A_LD:
       {
         cycles += 8;
-        ByteRegister::A_Reg_A = ram[bc_as_word()]; // LD indirect address to reg.
+        ByteRegister::A_Reg_A =
+          ram[bc_as_word()]; // LD indirect address to reg.
         cycles--;
         pc++;
       }
@@ -665,7 +667,8 @@ void Z80CPU::execute_instruction()
       case LD8::DE_A_LD:
       {
         cycles += 8;
-        ByteRegister::A_Reg_A = ram[de_as_word()]; // LD indirect address to reg.
+        ByteRegister::A_Reg_A =
+          ram[de_as_word()]; // LD indirect address to reg.
         cycles--;
         pc++;
       }
@@ -673,7 +676,8 @@ void Z80CPU::execute_instruction()
       case LD8::nn_A_LD:
       {
         cycles += 13; // TODO(Dalton): possible mistake in cycles?
-        ByteRegister::A_Reg_A = read_byte(bytes_to_word(ram[pc + 2], ram[pc + 1]));
+        ByteRegister::A_Reg_A =
+          read_byte(bytes_to_word(ram[pc + 2], ram[pc + 1]));
         cycles--;
         pc++;
       }
@@ -1597,7 +1601,7 @@ void Z80CPU::execute_instruction()
       {
         cycles += 3;
 
-        ram[sp - 1] = (pc << BYTE_SHIFT_ALIGNMENT) & MAX_BYTE_SIZE;
+        ram[sp - 1] = (pc >> BYTE_SHIFT_ALIGNMENT) & MAX_BYTE_SIZE;
         ram[sp - 2] = (pc & MAX_BYTE_SIZE);
 
         pc = ((ram[pc + 2] << BYTE_SHIFT_ALIGNMENT) & MAX_BYTE_SIZE) |
