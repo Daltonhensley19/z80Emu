@@ -16,7 +16,7 @@ TEST_CASE("testing the readByte function")
         Byte fetchedByte;
         WHEN("User chooses a location in memory to read...")
         {
-            fetchedByte = readByte(location);
+            fetchedByte = read_byte(location);
             THEN("Fetch Byte is correct!")
             {
                 CHECK(fetchedByte == 0xB);
@@ -36,7 +36,7 @@ TEST_CASE("testing the writeByte function")
         Byte byteToWrite = 0xC;
         WHEN("User chooses a location of memory to write to...")
         {
-            writeByte(byteToWrite, location);
+            write_byte(byteToWrite, location);
             THEN("Byte is written to in a correct manner!")
             {
                 CHECK(ram[location] == 0xC);
@@ -57,7 +57,7 @@ TEST_CASE("testing the readWord function")
         ram[location] = 0xC;
         WHEN("User chooses a location of memory to read word...")
         {
-            fetchedWord = readWord(location);
+            fetchedWord = read_word(location);
             THEN("Fetch Word is correct!")
             {
                 CHECK(fetchedWord == 0xC);
@@ -78,7 +78,7 @@ TEST_CASE("testing the writeWord function")
 
         WHEN("User chooses a location of memory to write word...")
         {
-            writeWord(wordToWrite, location);
+            write_word(wordToWrite, location);
             THEN("Word data was written correctly!")
             {
                 // NOTE: Current Implementation is Little Endian!
@@ -102,7 +102,7 @@ TEST_CASE("testing the restMem function")
 
         WHEN("writing data to RAM then testing reset mechanism..")
         {
-            writeWord(wordToWrite, location);
+            write_word(wordToWrite, location);
             THEN("Word data was written correctly!")
             {
                 // NOTE: Current Implementation is Little Endian!
@@ -111,7 +111,7 @@ TEST_CASE("testing the restMem function")
                 CHECK(ram[location + 1] == 1); // 0b00000001 = 1
             }
 
-            resetMem(ram);
+            reset_mem(ram);
             bool isCleared = true;
 
             // Note: we check here to see if RAM is clear
