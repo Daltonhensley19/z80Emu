@@ -32,20 +32,20 @@ struct Z80CPU
   // Bit Field for common Z80 Flags
   FlagBitField flag;
 
-  ByteRegister byteRegister;
+  ByteRegister byte_register;
 
   // CPU clock cycle counter
   std::size_t cycles;
 
   // Usually 8-bits (currentOpcode & 0xFF00 >> 8),
   // but sometimes 16-bits due to prefixes (DD, ED, FD, CB).
-  Word currentOpcode = 0x0000;
-  Word debugOpcode   = 0x0000;
+  Word current_opcode = 0x0000;
+  Word debug_opcode   = 0x0000;
 
   // Stack operations
   Stack stack;
 
-  void executeInstruction();
+  void execute_instruction();
 
   Z80CPU()
     : flag{0, 0, {0}, 0, 0, 0, 0, 0}
