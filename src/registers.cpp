@@ -6,22 +6,22 @@
 #include "../include/fmt/core.h"
 #include "../include/z80.h"
 
-Word BCasWord()
+Word bc_as_word()
 {
   return ByteRegister::B_Reg_A << BYTE_SHIFT_ALIGNMENT | ByteRegister::C_Reg_A;
 }
 
-Word AFasWord()
+Word af_as_word()
 {
   return ByteRegister::A_Reg_A << BYTE_SHIFT_ALIGNMENT | ByteRegister::F_Reg_A;
 }
 
-Word DEasWord()
+Word de_as_word()
 {
   return ByteRegister::D_Reg_A << BYTE_SHIFT_ALIGNMENT | ByteRegister::E_Reg_A;
 }
 
-Word HLasWord()
+Word hl_as_word()
 {
   return ByteRegister::H_Reg_A << BYTE_SHIFT_ALIGNMENT | ByteRegister::L_Reg_A;
 }
