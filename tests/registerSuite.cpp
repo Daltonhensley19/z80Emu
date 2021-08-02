@@ -13,7 +13,7 @@ TEST_CASE("Testing BCasWord function.")
         {
             THEN("Function returns expected value.")
             {
-                CHECK(BCasWord() == 2571);
+                CHECK(bc_as_word() == 2571);
             }
         }
     }
@@ -30,7 +30,7 @@ TEST_CASE("Testing HLasWord function.")
         {
             THEN("Function returns expected value.")
             {
-                CHECK(HLasWord() == 2571);
+                CHECK(hl_as_word() == 2571);
             }
         }
     }
@@ -47,7 +47,7 @@ TEST_CASE("Testing AFasWord function.")
         {
             THEN("Function returns expected value.")
             {
-                CHECK(AFasWord() == 2571);
+                CHECK(af_as_word() == 2571);
             }
         }
     }
@@ -64,7 +64,7 @@ TEST_CASE("Testing DEasWord function.")
         {
             THEN("Function returns expected value.")
             {
-                CHECK(DEasWord() == 2571);
+                CHECK(de_as_word() == 2571);
             }
         }
     }
