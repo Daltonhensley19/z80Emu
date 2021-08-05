@@ -207,3 +207,16 @@ struct Call
   const static Word POS_CALL      = 0xF4;
 };
 
+// Jump opcode group.
+struct Jump 
+{
+  const static Word UNCON_JP    = 0xC3;
+  const static Word CARRY_JP    = 0xD8;
+  const static Word NONCARRY_JP = 0xD2;
+  const static Word ZERO_JP     = 0xCA;
+  const static Word NONZERO_JP  = 0xC2;
+  const static Word EVEN_JP     = 0xEA;
+  const static Word ODD_JP      = 0xE2;
+  const static Word NEG_JP      = 0xFA;
+  const static Word POS_JP      = 0xF2;
+};
