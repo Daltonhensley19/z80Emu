@@ -6,7 +6,6 @@
 struct LD8
 {
 
-
   // NOTE: Format is register (source) to register (destination).
   const static Word A_A_LD = 0x7F;
   const static Word B_A_LD = 0x78;
@@ -184,16 +183,16 @@ struct Ex
 };
 
 // Call opcode group
- /*         cc     * Condition          * Flag
-  * *
-  *         * 000  * Non-Zero (NZ)      * Z
-  *         * 001  * Zero (Z)           * Z
-  *         * 010  * Non Carry (NC)     * C
-  *         * 011  * Carry (C)          * Z
-  *         * 100  * Parity Odd (PO)    * P/V
-  *         * 101  * Parity Even (PE)   * P/V
-  *         * 110  * Sign Positive (P)  * S
-  *         * 111  * Sign Negative (M)  * S */
+/*         cc     * Condition          * Flag
+ * *
+ *         * 000  * Non-Zero (NZ)      * Z
+ *         * 001  * Zero (Z)           * Z
+ *         * 010  * Non Carry (NC)     * C
+ *         * 011  * Carry (C)          * Z
+ *         * 100  * Parity Odd (PO)    * P/V
+ *         * 101  * Parity Even (PE)   * P/V
+ *         * 110  * Sign Positive (P)  * S
+ *         * 111  * Sign Negative (M)  * S */
 struct Call
 {
   const static Word UNCON_CALL    = 0xCD;
@@ -207,8 +206,19 @@ struct Call
   const static Word POS_CALL      = 0xF4;
 };
 
+// Call opcode group
+/*         cc     * Condition          * Flag
+ * *
+ *         * 000  * Non-Zero (NZ)      * Z
+ *         * 001  * Zero (Z)           * Z
+ *         * 010  * Non Carry (NC)     * C
+ *         * 011  * Carry (C)          * Z
+ *         * 100  * Parity Odd (PO)    * P/V
+ *         * 101  * Parity Even (PE)   * P/V
+ *         * 110  * Sign Positive (P)  * S
+ *         * 111  * Sign Negative (M)  * S */
 // Jump opcode group.
-struct Jump 
+struct Jump
 {
   const static Word UNCON_JP    = 0xC3;
   const static Word CARRY_JP    = 0xD8;
