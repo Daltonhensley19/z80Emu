@@ -229,4 +229,10 @@ struct Jump
   const static Word ODD_JP      = 0xE2;
   const static Word NEG_JP      = 0xFA;
   const static Word POS_JP      = 0xF2;
+
+  const static Word UNCON_JR    = 0x18;
+  const static Word CARRY_JR    = 0x38;
+  const static Word NONCARRY_JR = 0x30;
+  const static Word ZERO_JR     = 0x28;
+  const static Word NONZERO_JR  = 0x20;
 };
