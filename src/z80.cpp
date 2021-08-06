@@ -1860,6 +1860,130 @@ void Z80CPU::execute_instruction()
         }
       }
       break;
+      case Jump::UNCON_JP:
+      {
+        cycles += 10;
+
+        // Load next two bytes from ram into pc.
+        pc = ram[pc + 2] | ram[pc + 1];
+
+        cycles--;
+
+        // pc is not incremented in JP.
+      }
+      break;
+      case Jump::NONZERO_JP:
+      {
+        cycles += 10;
+
+        if (!flag.Z)
+          pc = ram[pc + 2] | ram[pc + 1];
+        else
+          pc += 3;
+
+        cycles--;
+
+        // pc is not incremented in JP.
+      }
+      break;
+      case Jump::ZERO_JP:
+      {
+        cycles += 10;
+
+        if (flag.Z)
+          pc = ram[pc + 2] | ram[pc + 1];
+        else
+          pc += 3;
+
+        cycles--;
+
+        // pc is not incremented in JP.
+      }
+      break;
+      case Jump::NONCARRY_JP:
+      {
+        cycles += 10;
+
+        if (!flag.C)
+          pc = ram[pc + 2] | ram[pc + 1];
+        else
+          pc += 3;
+
+        cycles--;
+
+        // pc is not incremented in JP.
+      }
+      break;
+      case Jump::CARRY_JP:
+      {
+        cycles += 10;
+
+        if (flag.C)
+          pc = ram[pc + 2] | ram[pc + 1];
+        else
+          pc += 3;
+
+        cycles--;
+
+        // pc is not incremented in JP.
+      }
+      break;
+      case Jump::ODD_JP:
+      {
+        cycles += 10;
+
+        if (!flag.P)
+          pc = ram[pc + 2] | ram[pc + 1];
+        else
+          pc += 3;
+
+        cycles--;
+
+        // pc is not incremented in JP.
+      }
+      break;
+      case Jump::EVEN_JP:
+      {
+        cycles += 10;
+
+        if (flag.P)
+          pc = ram[pc + 2] | ram[pc + 1];
+        else
+          pc += 3;
+
+        cycles--;
+
+        // pc is not incremented in JP.
+      }
+      break;
+      case Jump::POS_JP:
+      {
+        cycles += 10;
+
+        if (flag.S)
+          pc = ram[pc + 2] | ram[pc + 1];
+        else
+          pc += 3;
+
+        cycles--;
+
+        // pc is not incremented in JP.
+      }
+      break;
+      case Jump::NEG_JP:
+      {
+        cycles += 10;
+
+        if (!flag.S)
+          pc = ram[pc + 2] | ram[pc + 1];
+        else
+          pc += 3;
+
+        cycles--;
+
+        // pc is not incremented in JP.
+      }
+      break;
     }
 
 #if ENABLE_DEBUG
