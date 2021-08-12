@@ -2005,6 +2005,83 @@ void Z80CPU::execute_instruction()
         cycles--;
       }
       break;
+      case Jump::CARRY_JR:
+      {
+
+        cycles += 12;
+
+        // `d` represents displacement relative to `pc`
+        // and is added to `pc`
+        auto d = ram[pc + 1];
+
+        // We skip the jump if the operand is `0x00`
+        // or if the carry flag is not set.
+        // Otherwise, jump to pc + d offset in memory.
+        if (d == 0x00 || !flag.C)
+          pc += 2;
+        else
+          pc += d;
+
+        cycles--;
+      }
+      break;
+      case Jump::NONCARRY_JR:
+      {
+        cycles += 12;
+
+        // `d` represents displacement relative to `pc`
+        // and is added to `pc`
+        auto d = ram[pc + 1];
+
+        // We skip the jump if the operand is `0x00`
+        // or if the Carry flag is set.
+        // Otherwise, jump to pc + d offset in memory.
+        if (d == 0x00 || flag.C)
+          pc += 2;
+        else
+          pc += d;
+
+        cycles--;
+      }
+      break;
+      case Jump::ZERO_JR:
+      {
+        cycles += 12;
+
+        // `d` represents displacement relative to `pc`
+        // and is added to `pc`
+        auto d = ram[pc + 1];
+
+        // We skip the jump if the operand is `0x00`
+        // or if the Zero flag is not set.
+        // Otherwise, jump to pc + d offset in memory.
+        if (d == 0x00 || !flag.Z)
+          pc += 2;
+        else
+          pc += d;
+
+        cycles--;
+      }
+      break;
+      case Jump::NONZERO_JR:
+      {
+        cycles += 12;
+
+        // `d` represents displacement relative to `pc`
+        // and is added to `pc`
+        auto d = ram[pc + 1];
+
+        // We skip the jump if the operand is `0x00`
+        // or if the Zero flag is not set.
+        // Otherwise, jump to pc + d offset in memory.
+        if (d == 0x00 || flag.Z)
+          pc += 2;
+        else
+          pc += d;
+
+        cycles--;
+      }
+      break;
     }
 
 #if ENABLE_DEBUG
