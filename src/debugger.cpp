@@ -225,7 +225,6 @@ bool debug::debug_event_loop(GLFWwindow* window, int counter, Z80CPU* cpu)
 
     /* This starts the 16-bit load opcode table. */
     // Imm. Extended to Register pair
-
     {"nn_BC_LD", 0x01},
     {"nn_DE_LD", 0x11},
     {"nn_HL_LD", 0x21},
@@ -244,7 +243,53 @@ bool debug::debug_event_loop(GLFWwindow* window, int counter, Z80CPU* cpu)
     {"ED_SP_nn_LD", 0x73},
 
     // Register to register
-    {"HL_SP_LD", 0xF9}};
+    {"HL_SP_LD", 0xF9},
+
+    // Push opcodes (found in the table with 16-bit load)
+    {"PUSH_AF", 0xF5},
+    {"PUSH_BC", 0xC5},
+    {"PUSH_DE", 0xD5},
+    {"PUSH_HL", 0xE5},
+
+    // Pop opcodes (found in the table with 16-bit load)
+    {"POP_AF", 0xF1},
+    {"POP_BC", 0xC1},
+    {"POP_DE", 0xD1},
+    {"POP_HL", 0xE1},
+
+    // Exchange opcode group
+    {"AFPRIME_AF", 0x08},
+    {"PAIRPRIME_PAIR", 0xD9},
+    {"HL_SP", 0xE3},
+    {"HL_DE", 0xEB},
+
+    // Call opcode group
+    {"UNCON_CALL", 0xCD},
+    {"CARRY_CALL", 0xDC},
+    {"NONCARRY_CALL", 0xD4},
+    {"ZERO_CALL", 0xCC},
+    {"NONZERO_CALL", 0xC4},
+    {"EVEN_CALL", 0xEC},
+    {"ODD_CALL", 0xE4},
+    {"NEG_CALL", 0xFC},
+    {"POS_CALL", 0xF4},
+
+    // Jump opcode group.
+    {"UNCON_JP", 0xC3},
+    {"CARRY_JP", 0xD8},
+    {"NONCARRY_JP", 0xD2},
+    {"ZERO_JP", 0xCA},
+    {"NONZERO_JP", 0xC2},
+    {"EVEN_JP", 0xEA},
+    {"ODD_JP", 0xE2},
+    {"NEG_JP", 0xFA},
+    {"POS_JP", 0xF2},
+
+    {"UNCON_JR", 0x18},
+    {"CARRY_JR", 0x38},
+    {"NONCARRY_JR", 0x30},
+    {"ZERO_JR", 0x28},
+    {"NONZERO_JR", 0x20}};
 
   const std::size_t flag_buffer            = 9;
   const char* flag_regs_names[flag_buffer] = {"flag_C",
