@@ -1984,6 +1984,27 @@ void Z80CPU::execute_instruction()
         // pc is not incremented in JP.
       }
       break;
+      case Jump::UNCON_JR:
+      {
+        cycles += 12;
+
+        // `d` represents displacement relative to `pc`
+        // and is added to `pc`
+        auto d = ram[pc + 1];
+
+        // We skip the jump if the operand is `0x00`.
+        // Otherwise, jump to pc + d offset in memory.
+        if (d == 0x00)
+          pc += 2;
+        else
+          pc += d;
+
+        fmt::print("ram[pc + 2] == {:X}\n", ram[pc + 2]);
+        fmt::print("e value {:X}\n", d);
+        fmt::print("Opcode {:X}\n", ram[pc]);
+        cycles--;
+      }
+      break;
     }
 
 #if ENABLE_DEBUG
