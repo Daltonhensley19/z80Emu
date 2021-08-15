@@ -1159,7 +1159,7 @@ void Z80CPU::execute_instruction()
             set_flag_reg(condition_S, flag.S);
 
             // Z flag
-            bool condition_Z = I == 0;
+            bool condition_Z = (I == 0);
             set_flag_reg(condition_Z, flag.Z);
 
             flag.H = 0;    // H
