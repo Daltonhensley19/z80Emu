@@ -180,6 +180,8 @@ struct Ex
   const static Word PAIRPRIME_PAIR = 0xD9;
   const static Word HL_SP          = 0xE3;
   const static Word HL_DE          = 0xEB;
+
+  const static Word CPIR = 0xB1;
 };
 
 // Call opcode group
@@ -236,3 +238,4 @@ struct Jump
   const static Word ZERO_JR     = 0x28;
   const static Word NONZERO_JR  = 0x20;
 };
+

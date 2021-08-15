@@ -480,7 +480,8 @@ bool debug::debug_handle(GLFWwindow* glfw_win, int counter_handle, Z80CPU* cpu)
     std::cout << "Shuting off. \n";
 
     debug::debug_cleanup(glfw_win);
-    exit(EXIT_SUCCESS);
+
+    return true;
   }
 
   else
