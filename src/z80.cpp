@@ -675,7 +675,7 @@ void Z80CPU::execute_instruction()
       break;
       case LD8::nn_A_LD:
       {
-        cycles += 13; // TODO(Dalton): possible mistake in cycles?
+        cycles += 13;
         ByteRegister::A_Reg_A =
           read_byte(bytes_to_word(ram[pc + 2], ram[pc + 1]));
         cycles--;
@@ -1154,25 +1154,14 @@ void Z80CPU::execute_instruction()
             cycles += 9;
             ByteRegister::A_Reg_A = I;
 
-            // TODO: Look into using conditional operator
-            // Two's complement, S
-            if ((I & 0x80) != 0)
-            {
-              flag.S = 1;
-            }
-            else
-            {
-              flag.S = 0;
-            }
-            // Z
-            if (I == 0)
-            {
-              flag.Z = 1;
-            }
-            else
-            {
-              flag.Z = 0;
-            }
+            // Two's complement, S flag
+            bool condition_S = (I & 0x80) != 0;
+            set_flag_reg(condition_S, flag.S);
+
+            // Z flag
+            bool condition_Z = I == 0;
+            set_flag_reg(condition_Z, flag.Z);
+
             flag.H = 0;    // H
             flag.P = IFF2; // P
             flag.N = 0;    // N
@@ -1194,24 +1183,14 @@ void Z80CPU::execute_instruction()
             cycles += 9;
             ByteRegister::A_Reg_A = R;
 
-            // Two's complement, S
-            if ((R & 0x80) != 0)
-            {
-              flag.S = 1;
-            }
-            else
-            {
-              flag.S = 0;
-            }
-            // Z
-            if (R == 0)
-            {
-              flag.Z = 1;
-            }
-            else
-            {
-              flag.Z = 0;
-            }
+            // Two's complement, S flag
+            bool condition_S = (R & 0x80) != 0;
+            set_flag_reg(condition_S, flag.S);
+
+            // Z flag
+            bool condition_Z = (R == 0);
+            set_flag_reg(condition_Z, flag.Z);
+
             flag.H = 0;    // H
             flag.P = IFF2; // P
             flag.N = 0;    // N
@@ -1994,14 +1973,13 @@ void Z80CPU::execute_instruction()
 
         // We skip the jump if the operand is `0x00`.
         // Otherwise, jump to pc + d offset in memory.
+        // Though, this might be correct behaviour?
+        // TODO: Make sure this is correct!
         if (d == 0x00)
           pc += 2;
         else
           pc += d;
 
-        fmt::print("ram[pc + 2] == {:X}\n", ram[pc + 2]);
-        fmt::print("e value {:X}\n", d);
-        fmt::print("Opcode {:X}\n", ram[pc]);
         cycles--;
       }
       break;

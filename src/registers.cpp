@@ -26,6 +26,15 @@ Word hl_as_word()
   return ByteRegister::H_Reg_A << BYTE_SHIFT_ALIGNMENT | ByteRegister::L_Reg_A;
 }
 
+void set_flag_reg(bool condition, Byte flag_reg)
+{
+
+  if (condition)
+    flag_reg = 1;
+  else
+    flag_reg = 0;
+}
+
 // Main register set
 Byte ByteRegister::A_Reg_A = 10;
 Byte ByteRegister::B_Reg_A = 200;

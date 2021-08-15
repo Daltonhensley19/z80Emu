@@ -60,6 +60,9 @@ Word de_as_word();
 // Used for register indirect addressing
 Word hl_as_word();
 
+void set_flag_reg(bool condition, Byte flag_reg);
+
+
 namespace debug
 {
 void display_register_table();
