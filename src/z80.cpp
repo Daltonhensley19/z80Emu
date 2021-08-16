@@ -2080,6 +2080,7 @@ void Z80CPU::execute_instruction()
     }
 
 #if ENABLE_DEBUG
+
     if (!glfw_is_shutdown)
     {
       fmt::print("At end of opcode search.\n");

@@ -335,12 +335,9 @@ bool debug::debug_event_loop(GLFWwindow* window, int counter, Z80CPU* cpu)
     }
 
     // Shutdown program button
+    bool shutting_down = false;
     if (ImGui::Button("Shutdown Program"))
-    {
-      bool shutting_down = true;
-
-      return shutting_down;
-    }
+      shutting_down = true;
 
     // Table of main registers
     if (ImGui::BeginTable("##table1", 1))
@@ -451,6 +448,9 @@ bool debug::debug_event_loop(GLFWwindow* window, int counter, Z80CPU* cpu)
     // If flag is true, we handle another emu frame
     if (execute_next_frame)
       return false;
+
+    if (shutting_down)
+      return true;
   }
   return false;
 }
