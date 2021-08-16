@@ -31,7 +31,7 @@
 ## About The Project
 
 
-Hello, all! Emulating the Ziglog Z80 has been nothing short of a purely academic venture. However, I would be lying to you if I were to say that I did not have fun along the way. More to the point--the Z80 is the perfect project to enrich your understanding of lower-level system's programming magic. While not for everyone, it does have its benefits™:
+Hello, all! Emulating the Zilog Z80 has been nothing short of a purely academic venture. However, I would be lying to you if I were to say that I did not have fun along the way. More to the point--the Z80 is the perfect project to enrich your understanding of lower-level system's programming magic. While not for everyone, it does have its benefits™:
 
 The benefits™:
 * Learn how to reason about the interconnected processes between the CPU and RAM.
