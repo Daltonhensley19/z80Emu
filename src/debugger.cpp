@@ -186,8 +186,8 @@ bool debug::debug_event_loop(GLFWwindow* window, int counter, Z80CPU* cpu)
     {"BC_A_LD", 0x0A},
     {"DE_A_LD", 0x1A},
 
-    // Indexed (NOTE: Indexed is source [IDX or IDY] to generic register [R], A
-    // B C D E F L, which is the destination.
+    // Indexed (NOTE: Indexed is source [IDX or IDY] to generic register [R],
+    // A B C D E F L, which is the destination.
     {"IDX_R_LD", 0xDD},
     {"IDY_R_LD", 0xFD},
 

@@ -14,7 +14,9 @@ int main(int argc, char** argv)
   if (argc != 2)
   {
     fmt::print("Error! Invaild number of arguments.\nExpected a path to binary "
-               "test rom.\n");
+               "test rom.\n\n");
+    
+    fmt::print("[USAGE]: ./z80Emu [test binary]\n");
 
     // Spit error code.
     return -1;

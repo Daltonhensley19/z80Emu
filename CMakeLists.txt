@@ -12,7 +12,7 @@ project(z80Emu)
 set(CMAKE_CXX_STANDARD 20)
 
 if (APPLE)
-    set(CMAKE_CXX_FLAGS "-O0 -g -Wall -Wextra")
+    set(CMAKE_CXX_FLAGS "-O0 -g -Wall -Wextra -std=c++20")
 endif (APPLE)
 
 if (UNIX AND NOT APPLE)
