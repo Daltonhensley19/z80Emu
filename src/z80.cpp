@@ -13,6 +13,8 @@
 
 // I must apologize for the very long switch table.
 // This is the quickest (yet dirtiest) way to implement the Z80 opcodes.
+// There might also be a way to breakup repeated operations into a function
+// of some kind. 
 void Z80CPU::execute_instruction()
 {
 

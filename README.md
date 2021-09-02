@@ -99,6 +99,13 @@ Z80Emu2 works in a rather simple way.
    ```sh
    z80Emu2 ../memory_test.bin
    ```
+
+## Supported Platforms
+
+Currently, only Linux and MacOS are supported. A Windows port is rather 
+unlikely due to my extreme adversion to the OS. I am glad willing to accept
+pull requests, however, if someone is willing to make it happen.
+
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
