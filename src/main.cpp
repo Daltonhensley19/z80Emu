@@ -10,17 +10,18 @@
 
 int main(int argc, char** argv)
 {
-
+  // Handle the case of invaild user arguments
   if (argc != 2)
   {
     fmt::print("Error! Invaild number of arguments.\nExpected a path to binary "
                "test rom.\n\n");
-    
+
     fmt::print("[USAGE]: ./z80Emu [test binary]\n");
 
     // Spit error code.
     return -1;
   }
+  // If all if good, load ROM into memory. 
   else
   {
     util::load_rom(argv[1]);
