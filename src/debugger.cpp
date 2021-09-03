@@ -7,6 +7,7 @@
 #include <map>
 #include <string>
 
+// Initalizes GLFW
 GLFWwindow* debug::debug_glfw_init()
 {
   // Start GLFW API
@@ -26,7 +27,7 @@ GLFWwindow* debug::debug_glfw_init()
 
   // Create glfw_window handle
   GLFWwindow* window =
-    glfwCreateWindow(1920, 1080, "Dear ImGui GLFW+OpenGL3 example", NULL, NULL);
+    glfwCreateWindow(1920, 1080, "Z80 Debugger", NULL, NULL);
 
   // Use glfw_window handle
   glfwMakeContextCurrent(window);
@@ -35,6 +36,7 @@ GLFWwindow* debug::debug_glfw_init()
   return window;
 }
 
+// Initalizes Dear ImGui
 void debug::debug_imgui_init(GLFWwindow* window)
 {
 
@@ -53,6 +55,7 @@ void debug::debug_imgui_init(GLFWwindow* window)
 #endif
 }
 
+// Event loop of the debugger. Hooks into the Z80 emulator. 
 bool debug::debug_event_loop(GLFWwindow* window, int counter, Z80CPU* cpu)
 {
 
@@ -455,6 +458,7 @@ bool debug::debug_event_loop(GLFWwindow* window, int counter, Z80CPU* cpu)
   return false;
 }
 
+// Teardown of ImGui, OpenGl, and GLFW.
 void debug::debug_cleanup(GLFWwindow* window)
 {
 
@@ -468,6 +472,7 @@ void debug::debug_cleanup(GLFWwindow* window)
   glfwTerminate();
 }
 
+// Debugger API that offers a means to inject into the Z80 emulator. 
 bool debug::debug_handle(GLFWwindow* glfw_win, int counter_handle, Z80CPU* cpu)
 {
 
