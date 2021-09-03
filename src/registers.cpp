@@ -6,26 +6,31 @@
 #include "../include/fmt/core.h"
 #include "../include/z80.h"
 
+// Returns 8-bit registers B and C as a word.
 Word bc_as_word()
 {
   return ByteRegister::B_Reg_A << BYTE_SHIFT_ALIGNMENT | ByteRegister::C_Reg_A;
 }
 
+// Returns 8-bit registers A and F as a word.
 Word af_as_word()
 {
   return ByteRegister::A_Reg_A << BYTE_SHIFT_ALIGNMENT | ByteRegister::F_Reg_A;
 }
 
+// Returns 8-bit registers D and E as a word.
 Word de_as_word()
 {
   return ByteRegister::D_Reg_A << BYTE_SHIFT_ALIGNMENT | ByteRegister::E_Reg_A;
 }
 
+// Returns 8-bit registers H and L as a word.
 Word hl_as_word()
 {
   return ByteRegister::H_Reg_A << BYTE_SHIFT_ALIGNMENT | ByteRegister::L_Reg_A;
 }
 
+// A given flag is set if the given condition evaluates to true.
 void set_flag_reg(bool condition, Byte flag_reg)
 {
 
@@ -57,6 +62,7 @@ Byte ByteRegister::C_Reg_B = 0;
 Byte ByteRegister::E_Reg_B = 20;
 Byte ByteRegister::L_Reg_B = 0;
 
+// Displays the 8-bit registers.
 void debug::display_register_table()
 {
   fmt::print("\n A_Reg_A: {0:#X}\n "
@@ -77,6 +83,7 @@ void debug::display_register_table()
              ByteRegister::L_Reg_A);
 }
 
+// Displays a given 8-bit register.
 void debug::display_single_register(char reg)
 {
   switch (reg)
