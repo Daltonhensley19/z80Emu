@@ -1,3 +1,4 @@
+
 if (APPLE)
     cmake_minimum_required(VERSION 3.18)
 endif (APPLE)
@@ -8,6 +9,7 @@ endif (UNIX AND NOT APPLE)
 
 
 project(z80Emu)
+set(CMAKE_EXPORT_COMPILE_COMMNADS ON)
 
 set(CMAKE_CXX_STANDARD 20)
 

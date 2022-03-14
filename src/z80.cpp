@@ -14,7 +14,7 @@
 // I must apologize for the very long switch table.
 // This is the quickest (yet dirtiest) way to implement the Z80 opcodes.
 // There might also be a way to breakup repeated operations into a function
-// of some kind. 
+// of some kind.
 void Z80CPU::execute_instruction()
 {
 
@@ -1882,7 +1882,7 @@ void Z80CPU::execute_instruction()
 
         // Load next two bytes from ram into pc.
         pc = ram[pc + 2] | ram[pc + 1];
-
+Mx437 Sigma RM 9x8
         cycles--;
       }
       break;

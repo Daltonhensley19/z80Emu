@@ -3,6 +3,7 @@
 #include "../include/fmt/core.h"
 #include "../include/memory.h"
 #include "../include/registers.h"
+
 #include "../include/z80.h"
 
 #include "../include/load_rom.h"
@@ -21,7 +22,7 @@ int main(int argc, char** argv)
     // Spit error code.
     return -1;
   }
-  // If all if good, load ROM into memory. 
+  // If all if good, load ROM into memory.
   else
   {
     util::load_rom(argv[1]);

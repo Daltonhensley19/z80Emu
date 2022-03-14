@@ -26,8 +26,7 @@ GLFWwindow* debug::debug_glfw_init()
 #endif
 
   // Create glfw_window handle
-  GLFWwindow* window =
-    glfwCreateWindow(1920, 1080, "Z80 Debugger", NULL, NULL);
+  GLFWwindow* window = glfwCreateWindow(1920, 1080, "Z80 Debugger", NULL, NULL);
 
   // Use glfw_window handle
   glfwMakeContextCurrent(window);
@@ -55,7 +54,7 @@ void debug::debug_imgui_init(GLFWwindow* window)
 #endif
 }
 
-// Event loop of the debugger. Hooks into the Z80 emulator. 
+// Event loop of the debugger. Hooks into the Z80 emulator.
 bool debug::debug_event_loop(GLFWwindow* window, int counter, Z80CPU* cpu)
 {
 
@@ -472,7 +471,7 @@ void debug::debug_cleanup(GLFWwindow* window)
   glfwTerminate();
 }
 
-// Debugger API that offers a means to inject into the Z80 emulator. 
+// Debugger API that offers a means to inject into the Z80 emulator.
 bool debug::debug_handle(GLFWwindow* glfw_win, int counter_handle, Z80CPU* cpu)
 {
 
